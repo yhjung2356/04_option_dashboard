@@ -1,0 +1,29 @@
+# Compiled class files
+*.class
+target/
+
+# Log files
+*.log
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Application properties (sensitive data)
+application-prod.properties
+application-local.properties
+
+# KIS API Token Cache
+kis_token.cache
+
+# Temporary files
+*.tmp
+*.swp
+*~

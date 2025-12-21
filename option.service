@@ -1,0 +1,21 @@
+[Unit]
+Description=Futures Options Dashboard
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/futures-dashboard
+ExecStart=/usr/bin/java -jar /opt/futures-dashboard/target/futures-options-dashboard-1.0.0.jar
+ExecStop=/bin/kill -15 $MAINPID
+Restart=on-failure
+RestartSec=10
+StandardOutput=append:/var/log/futures-dashboard/app.log
+StandardError=append:/var/log/futures-dashboard/error.log
+
+# 환경 변수 (필요시 수정)
+Environment="JAVA_OPTS=-Xms512m -Xmx1024m"
+Environment="SPRING_PROFILES_ACTIVE=prod"
+
+[Install]
+WantedBy=multi-user.target
