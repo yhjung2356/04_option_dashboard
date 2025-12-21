@@ -14,4 +14,4 @@ echo "Ctrl+C로 종료하세요."
 echo ""
 
 # Spring Boot DevTools가 활성화되어 있으면 자동 리로드
-./mvnw spring-boot:run
+./mvnw.sh spring-boot:run

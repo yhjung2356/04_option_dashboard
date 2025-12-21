@@ -17,8 +17,8 @@ if [ ! -x "./auto-deploy.sh" ]; then
 fi
 
 # Maven Wrapper 실행 권한
-if [ ! -x "./mvnw" ]; then
-    chmod +x mvnw
+if [ ! -x "./mvnw.sh" ]; then
+    chmod +x mvnw.sh
 fi
 
 echo "1. 즉시 실행 (개발/테스트용)"

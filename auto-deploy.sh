@@ -31,7 +31,7 @@ fi
 # 3. Maven 빌드
 echo ""
 echo "[3/4] Maven 빌드..."
-./mvnw clean package -DskipTests
+./mvnw.sh clean package -DskipTests
 if [ $? -ne 0 ]; then
     echo "빌드 실패!"
     exit 1

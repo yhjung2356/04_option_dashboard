@@ -121,26 +121,41 @@
                     </div>
                     <div class="greeks-body">
                         <div class="greek-item">
-                            <span class="greek-label">Delta</span>
+                            <span class="greek-label">
+                                Delta
+                                <i class="fas fa-info-circle greek-info" data-tooltip="기초자산 가격이 1원 변할 때 옵션 가격의 변화량. Call은 0~1, Put은 -1~0 범위"></i>
+                            </span>
                             <span class="greek-value" id="greek-delta">
                                 <span class="greek-call" id="delta-call">--</span> / 
                                 <span class="greek-put" id="delta-put">--</span>
                             </span>
                         </div>
                         <div class="greek-item">
-                            <span class="greek-label">Gamma</span>
+                            <span class="greek-label">
+                                Gamma
+                                <i class="fas fa-info-circle greek-info" data-tooltip="기초자산 가격 변화에 따른 Delta의 변화율. 높을수록 Delta 변동성이 큼"></i>
+                            </span>
                             <span class="greek-value" id="greek-gamma">--</span>
                         </div>
                         <div class="greek-item">
-                            <span class="greek-label">Theta</span>
+                            <span class="greek-label">
+                                Theta
+                                <i class="fas fa-info-circle greek-info" data-tooltip="시간 경과에 따른 옵션 가격의 하락률. 보통 음수 값으로 시간 가치 소멸을 의미"></i>
+                            </span>
                             <span class="greek-value" id="greek-theta">--</span>
                         </div>
                         <div class="greek-item">
-                            <span class="greek-label">Vega</span>
+                            <span class="greek-label">
+                                Vega
+                                <i class="fas fa-info-circle greek-info" data-tooltip="변동성이 1% 변할 때 옵션 가격의 변화량. 높을수록 변동성에 민감"></i>
+                            </span>
                             <span class="greek-value" id="greek-vega">--</span>
                         </div>
                         <div class="greek-item">
-                            <span class="greek-label">IV (내재변동성)</span>
+                            <span class="greek-label">
+                                IV (내재변동성)
+                                <i class="fas fa-info-circle greek-info" data-tooltip="시장에서 거래되는 옵션 가격에 내포된 향후 변동성 예상치. 높을수록 시장 불확실성이 큼"></i>
+                            </span>
                             <span class="greek-value" id="greek-iv">--</span>
                         </div>
                     </div>
@@ -238,32 +253,6 @@
                                 </thead>
                                 <tbody id="option-chain-body">
                                     <tr style="display: none;"><td colspan="11" class="loading">데이터 로딩 중...</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-                                        <th colspan="5" class="put-header">PUT</th>
-                                    </tr>
-                                    <tr>
-                                        <th>호가</th>
-                                        <th>델타</th>
-                                        <th>거래량</th>
-                                        <th>미결제</th>
-                                        <th>현재가</th>
-                                        <th>Strike</th>
-                                        <th>현재가</th>
-                                        <th>미결제</th>
-                                        <th>거래량</th>
-                                        <th>델타</th>
-                                        <th>호가</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="option-chain-body">
-                                    <tr><td colspan="11" class="loading">데이터 로딩 중...</td></tr>
                                 </tbody>
                             </table>
                         </div>

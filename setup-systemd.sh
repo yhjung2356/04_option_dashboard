@@ -32,7 +32,7 @@ echo ""
 echo "[4/4] JAR 파일 확인..."
 if [ ! -f target/futures-options-dashboard-1.0.0.jar ]; then
     echo "JAR 파일이 없습니다. 빌드를 먼저 실행합니다..."
-    ./mvnw clean package -DskipTests
+    ./mvnw.sh clean package -DskipTests
 fi
 
 echo ""
