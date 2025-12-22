@@ -656,6 +656,12 @@ function updateOptionChainData(data) {
     document.getElementById('atm-strike').textContent = formatPrice(data.atmStrike);
     document.getElementById('max-pain').textContent = formatPrice(data.maxPainPrice);
     
+    // Update ATM strike price in option page header
+    const atmStrikePriceElement = document.getElementById('atm-strike-price');
+    if (atmStrikePriceElement) {
+        atmStrikePriceElement.textContent = formatPrice(data.atmStrike);
+    }
+    
     // Update Greeks (ATM 기준)
     updateGreeksDisplay(data.strikeChain, data.atmStrike);
     
@@ -745,15 +751,20 @@ function updateGreeksDisplay(strikeChain, atmStrike) {
     if (ivElement) {
         const iv = atmData.callImpliedVolatility;
         if (iv) {
-            ivElement.textContent = (iv * 100).toFixed(2) + '%';
+            const ivPercent = (iv * 100).toFixed(2) + '%';
+            ivElement.textContent = ivPercent;
+            console.log('IV Updated:', ivPercent);
             
             // Update IV index in sentiment card
             const ivIndexElement = document.getElementById('iv-index');
             if (ivIndexElement) {
-                ivIndexElement.textContent = (iv * 100).toFixed(1);
+                const ivValue = (iv * 100).toFixed(1);
+                ivIndexElement.textContent = ivValue;
+                console.log('IV Index Updated:', ivValue);
             }
         } else {
             ivElement.textContent = '--';
+            console.warn('IV data not available');
             const ivIndexElement = document.getElementById('iv-index');
             if (ivIndexElement) {
                 ivIndexElement.textContent = '--';
@@ -792,9 +803,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     updateTime();
     setInterval(updateTime, 1000);
     
-    // Update option chain every 2 seconds
+    // Update option chain every 1 second for real-time data
     updateOptionChain();
-    setInterval(updateOptionChain, 2000);
+    setInterval(updateOptionChain, 1000);
     
     console.log('Dashboard initialized successfully');
     console.log('현재 페이지 상태:', StateManager.getState());

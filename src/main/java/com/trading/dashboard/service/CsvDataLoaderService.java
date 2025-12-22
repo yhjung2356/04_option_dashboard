@@ -164,7 +164,7 @@ public class CsvDataLoaderService {
 
             // OptionData 생성
             OptionData option = new OptionData();
-            option.setSymbol(String.format("CALL_%d", strikePrice.intValue()));
+            option.setSymbol("CALL_%d".formatted(strikePrice.intValue()));
             option.setStrikePrice(strikePrice);
             option.setOptionType(OptionType.CALL);
             option.setCurrentPrice(currentPrice);
@@ -224,7 +224,7 @@ public class CsvDataLoaderService {
 
             // OptionData 생성
             OptionData option = new OptionData();
-            option.setSymbol(String.format("PUT_%d", strikePrice.intValue()));
+            option.setSymbol("PUT_%d".formatted(strikePrice.intValue()));
             option.setStrikePrice(strikePrice);
             option.setOptionType(OptionType.PUT);
             option.setCurrentPrice(currentPrice);

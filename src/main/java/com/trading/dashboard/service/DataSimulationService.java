@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -221,17 +222,17 @@ public class DataSimulationService {
             .symbol(symbol)
             .optionType(optionType)
             .strikePrice(strikePrice)
-            .currentPrice(BigDecimal.valueOf(optionPrice).setScale(2, BigDecimal.ROUND_HALF_UP))
+            .currentPrice(BigDecimal.valueOf(optionPrice).setScale(2, RoundingMode.HALF_UP))
             .volume(volume)
             .openInterest(openInterest)
-            .tradingValue(BigDecimal.valueOf(optionPrice * volume).setScale(0, BigDecimal.ROUND_HALF_UP))
-            .impliedVolatility(BigDecimal.valueOf(iv).setScale(2, BigDecimal.ROUND_HALF_UP))
-            .delta(BigDecimal.valueOf(delta).setScale(4, BigDecimal.ROUND_HALF_UP))
-            .gamma(BigDecimal.valueOf(0.01 + random.nextDouble() * 0.02).setScale(4, BigDecimal.ROUND_HALF_UP))
-            .theta(BigDecimal.valueOf(-0.5 - random.nextDouble()).setScale(4, BigDecimal.ROUND_HALF_UP))
-            .vega(BigDecimal.valueOf(0.1 + random.nextDouble() * 0.2).setScale(4, BigDecimal.ROUND_HALF_UP))
-            .bidPrice(BigDecimal.valueOf(optionPrice - 0.5).setScale(2, BigDecimal.ROUND_HALF_UP))
-            .askPrice(BigDecimal.valueOf(optionPrice + 0.5).setScale(2, BigDecimal.ROUND_HALF_UP))
+            .tradingValue(BigDecimal.valueOf(optionPrice * volume).setScale(0, RoundingMode.HALF_UP))
+            .impliedVolatility(BigDecimal.valueOf(iv).setScale(2, RoundingMode.HALF_UP))
+            .delta(BigDecimal.valueOf(delta).setScale(4, RoundingMode.HALF_UP))
+            .gamma(BigDecimal.valueOf(0.01 + random.nextDouble() * 0.02).setScale(4, RoundingMode.HALF_UP))
+            .theta(BigDecimal.valueOf(-0.5 - random.nextDouble()).setScale(4, RoundingMode.HALF_UP))
+            .vega(BigDecimal.valueOf(0.1 + random.nextDouble() * 0.2).setScale(4, RoundingMode.HALF_UP))
+            .bidPrice(BigDecimal.valueOf(optionPrice - 0.5).setScale(2, RoundingMode.HALF_UP))
+            .askPrice(BigDecimal.valueOf(optionPrice + 0.5).setScale(2, RoundingMode.HALF_UP))
             .bidVolume(random.nextInt(100) + 10)
             .askVolume(random.nextInt(100) + 10)
             .timestamp(timestamp)

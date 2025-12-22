@@ -73,14 +73,14 @@ public class KrxDataService {
         log.info("Loading KOSPI200 Futures data...");
         
         // KRX API 요청 (선물 시세)
-        String requestBody = String.format(
-            "bld=dbms/MDC/STAT/standard/MDCSTAT30301" +
-            "&locale=ko_KR" +
-            "&trdDd=%s" +
-            "&prodId=1" +  // KOSPI200 선물
-            "&share=1" +
-            "&money=1",
-            tradingDate
+        String requestBody = (
+                "bld=dbms/MDC/STAT/standard/MDCSTAT30301" +
+                        "&locale=ko_KR" +
+                        "&trdDd=%s" +
+                        "&prodId=1" +  // KOSPI200 선물
+                        "&share=1" +
+                        "&money=1").formatted(
+                tradingDate
         );
 
         HttpRequest request = HttpRequest.newBuilder()
@@ -130,14 +130,14 @@ public class KrxDataService {
         log.info("Loading KOSPI200 Options data...");
         
         // KRX API 요청 (옵션 시세)
-        String requestBody = String.format(
-            "bld=dbms/MDC/STAT/standard/MDCSTAT30401" +
-            "&locale=ko_KR" +
-            "&trdDd=%s" +
-            "&prodId=1" +  // KOSPI200 옵션
-            "&share=1" +
-            "&money=1",
-            tradingDate
+        String requestBody = (
+                "bld=dbms/MDC/STAT/standard/MDCSTAT30401" +
+                        "&locale=ko_KR" +
+                        "&trdDd=%s" +
+                        "&prodId=1" +  // KOSPI200 옵션
+                        "&share=1" +
+                        "&money=1").formatted(
+                tradingDate
         );
 
         HttpRequest request = HttpRequest.newBuilder()

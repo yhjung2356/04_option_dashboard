@@ -193,9 +193,9 @@ public class InitialDataLoader implements CommandLineRunner {
         double theta = -0.05 - random.nextDouble() * 0.05;
         double vega = 0.1 + random.nextDouble() * 0.1;
         
-        String symbol = String.format("O2025%s%s%03d", 
+        String symbol = "O2025%s%s%03d".formatted(
                 month,
-                optionType == OptionType.CALL ? "C" : "P", 
+                optionType == OptionType.CALL ? "C" : "P",
                 (int) strikePrice);
         
         String expiryDate = "2025-12-" + month;
