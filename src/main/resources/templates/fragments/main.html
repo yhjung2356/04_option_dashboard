@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<body>
+    <!-- Main Content Area -->
+    <main class="dashboard-content" th:fragment="main">
+        <!-- Top Section: Compact Overview -->
+        <section class="overview-section-compact">
+            <div class="card overview-card-compact">
+                <div class="card-header-compact">
+                    <i class="fas fa-rocket"></i> 선물
+                </div>
+                <div class="card-body-compact">
+                    <div class="stat-compact">
+                        <span class="stat-label-mini">거래량</span>
+                        <span class="stat-value-compact" id="futures-volume">0</span>
+                    </div>
+                    <div class="stat-compact">
+                        <span class="stat-label-mini">거래대금</span>
+                        <span class="stat-value-compact" id="futures-value">0</span>
+                    </div>
+                    <div class="stat-compact">
+                        <span class="stat-label-mini">미결제</span>
+                        <span class="stat-value-compact" id="futures-oi">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card overview-card-compact">
+                <div class="card-header-compact">
+                    <i class="fas fa-layer-group"></i> 옵션
+                </div>
+                <div class="card-body-compact">
+                    <div class="stat-compact">
+                        <span class="stat-label-mini">거래량</span>
+                        <span class="stat-value-compact" id="options-volume">0</span>
+                    </div>
+                    <div class="stat-compact">
+                        <span class="stat-label-mini">거래대금</span>
+                        <span class="stat-value-compact" id="options-value">0</span>
+                    </div>
+                    <div class="stat-compact">
+                        <span class="stat-label-mini">미결제</span>
+                        <span class="stat-value-compact" id="options-oi">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card overview-card-compact highlight-card-compact">
+                <div class="card-header-compact">
+                    <i class="fas fa-balance-scale"></i> P/C Ratio
+                </div>
+                <div class="card-body-compact">
+                    <div class="stat-compact">
+                        <span class="stat-label-mini">거래량</span>
+                        <span class="stat-value-compact ratio-value" id="pc-ratio-volume">0.00</span>
+                    </div>
+                    <div class="stat-compact">
+                        <span class="stat-label-mini">미결제</span>
+                        <span class="stat-value-compact ratio-value" id="pc-ratio-oi">0.00</span>
+                    </div>
+                    <div class="stat-compact">
+                        <span class="stat-label-mini">거래대금</span>
+                        <span class="stat-value-compact ratio-value" id="pc-ratio-value">0.00</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card overview-card-compact market-sentiment-card">
+                <div class="card-header-compact">
+                    <i class="fas fa-brain"></i> 시장 심리
+                </div>
+                <div class="card-body-compact">
+                    <div class="sentiment-gauge">
+                        <div class="gauge-bar" id="sentiment-gauge">
+                            <div class="gauge-fill" id="sentiment-fill"></div>
+                        </div>
+                        <div class="sentiment-label" id="sentiment-label">중립</div>
+                    </div>
+                    <div class="stat-compact">
+                        <span class="stat-label-mini">IV 지수</span>
+                        <span class="stat-value-compact" id="iv-index">--</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Greeks Summary Section -->
+        <section class="greeks-section">
+            <div class="card greeks-card">
+                <div class="card-header-compact">
+                    <i class="fas fa-calculator"></i> Greeks 요약 (ATM 기준)
+                </div>
+                <div class="greeks-body">
+                    <div class="greek-item">
+                        <span class="greek-label">
+                            Delta
+                            <i class="fas fa-info-circle greek-info" data-tooltip="기초자산 가격이 1원 변할 때 옵션 가격의 변화량. Call은 0~1, Put은 -1~0 범위"></i>
+                        </span>
+                        <span class="greek-value" id="greek-delta">
+                            <span class="greek-call" id="delta-call">--</span> / 
+                            <span class="greek-put" id="delta-put">--</span>
+                        </span>
+                    </div>
+                    <div class="greek-item">
+                        <span class="greek-label">
+                            Gamma
+                            <i class="fas fa-info-circle greek-info" data-tooltip="기초자산 가격 변화에 따른 Delta의 변화율. 높을수록 Delta 변동성이 큼"></i>
+                        </span>
+                        <span class="greek-value" id="greek-gamma">--</span>
+                    </div>
+                    <div class="greek-item">
+                        <span class="greek-label">
+                            Theta
+                            <i class="fas fa-info-circle greek-info" data-tooltip="시간 경과에 따른 옵션 가격의 하락률. 보통 음수 값으로 시간 가치 소멸을 의미"></i>
+                        </span>
+                        <span class="greek-value" id="greek-theta">--</span>
+                    </div>
+                    <div class="greek-item">
+                        <span class="greek-label">
+                            Vega
+                            <i class="fas fa-info-circle greek-info" data-tooltip="변동성이 1% 변할 때 옵션 가격의 변화량. 높을수록 변동성에 민감"></i>
+                        </span>
+                        <span class="greek-value" id="greek-vega">--</span>
+                    </div>
+                    <div class="greek-item">
+                        <span class="greek-label">
+                            IV (내재변동성)
+                            <i class="fas fa-info-circle greek-info" data-tooltip="시장에서 거래되는 옵션 가격에 내포된 향후 변동성 예상치. 높을수록 시장 불확실성이 큼"></i>
+                        </span>
+                        <span class="greek-value" id="greek-iv">--</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Middle Section: Top Traded (Compact) -->
+        <section class="top-traded-section-compact">
+            <div class="card top-card-compact">
+                <div class="card-header-compact">
+                    <i class="fas fa-chart-bar"></i> 거래량 TOP 5
+                </div>
+                <div class="card-body-compact">
+                    <table class="data-table-compact">
+                        <thead>
+                            <tr>
+                                <th>순위</th>
+                                <th>종목코드</th>
+                                <th>종목명</th>
+                                <th>현재가</th>
+                                <th>거래량</th>
+                                <th>거래대금</th>
+                                <th>미결제</th>
+                            </tr>
+                        </thead>
+                        <tbody id="top-by-volume">
+                            <tr style="display: none;"><td colspan="7" class="loading">데이터 로딩 중...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card top-card-compact">
+                <div class="card-header-compact">
+                    <i class="fas fa-layer-group"></i> 미결제약정 TOP 5
+                </div>
+                <div class="card-body-compact">
+                    <table class="data-table-compact">
+                        <thead>
+                            <tr>
+                                <th>순위</th>
+                                <th>종목코드</th>
+                                <th>종목명</th>
+                                <th>현재가</th>
+                                <th>거래량</th>
+                                <th>거래대금</th>
+                                <th>미결제</th>
+                            </tr>
+                        </thead>
+                        <tbody id="top-by-oi">
+                            <tr style="display: none;"><td colspan="7" class="loading">데이터 로딩 중...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Section: Option Chain Analysis (Compact) -->
+        <section class="option-chain-section-compact">
+            <div class="card option-chain-card-compact">
+                <div class="card-header-compact" style="justify-content: space-between;">
+                    <div class="option-header-left">
+                        <i class="fas fa-table"></i> 옵션 체인 분석
+                    </div>
+                    <div class="option-chain-info-compact">
+                        <span class="info-item-compact">기초: <strong id="underlying-price">0</strong></span>
+                        <span class="info-item-compact">ATM: <strong id="atm-strike">0</strong></span>
+                        <span class="info-item-compact max-pain-compact">
+                            <i class="fas fa-bullseye"></i> <strong id="max-pain">0</strong>
+                        </span>
+                    </div>
+                </div>
+                <div class="card-body-compact">
+                    <div class="option-chain-table-wrapper">
+                        <table class="option-chain-table-compact">
+                            <thead>
+                                <tr>
+                                    <th colspan="5" class="call-header">CALL</th>
+                                    <th class="strike-header">행사가</th>
+                                    <th colspan="5" class="put-header">PUT</th>
+                                </tr>
+                                <tr>
+                                    <th>호가</th>
+                                    <th>델타</th>
+                                    <th>거래량</th>
+                                    <th>미결제</th>
+                                    <th>현재가</th>
+                                    <th>Strike</th>
+                                    <th>현재가</th>
+                                    <th>미결제</th>
+                                    <th>거래량</th>
+                                    <th>델타</th>
+                                    <th>호가</th>
+                                </tr>
+                            </thead>
+                            <tbody id="option-chain-body">
+                                <tr style="display: none;"><td colspan="11" class="loading">데이터 로딩 중...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Depth (Order Book) Section -->
+        <section class="orderbook-section" style="display: none;">
+            <div id="orderbook-container"></div>
+        </section>
+    </main>
+</body>
+</html>

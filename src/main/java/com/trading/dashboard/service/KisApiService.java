@@ -16,8 +16,11 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 한국투자증권 API 서비스
@@ -43,7 +46,7 @@ public class KisApiService {
     public void loadKospi200Futures() {
         try {
             log.info("Loading KOSPI200 Futures data from KIS API...");
-            
+
             String token = getAccessToken();
             if (token == null) {
                 log.warn("Failed to get access token");
@@ -53,12 +56,12 @@ public class KisApiService {
             List<FuturesData> futuresList = new ArrayList<>();
             LocalDateTime timestamp = LocalDateTime.now();
 
-            // 실제 KOSPI200 선물 종목코드
+            // 실제 KOSPI200 선물 종목코드 (주간/야간 공통)
             String[] futureCodes = {
-                "A01603",  // 3월물
-                "A01606",  // 6월물
-                "A01609",  // 9월물
-                "A01612",  // 12월물
+                    "A01603", // 3월물
+                    "A01606", // 6월물
+                    "A01609", // 9월물
+                    "A01612", // 12월물
             };
 
             for (String code : futureCodes) {
@@ -89,7 +92,7 @@ public class KisApiService {
     public void loadKospi200Options() {
         try {
             log.info("Loading KOSPI200 Options data from KIS API...");
-            
+
             String token = getAccessToken();
             if (token == null) {
                 log.warn("Failed to get access token");
@@ -103,30 +106,30 @@ public class KisApiService {
             // 콜옵션 (Call): B01601{행사가}, 풋옵션 (Put): C01601{행사가}
             // 행사가 560~575 (2.5pt 간격), 현재 KOSPI200 지수 567 부근
             String[] optionCodes = {
-                // 콜옵션 (B = Call)
-                "B01601560",  // 560.0
-                "B01601562",  // 562.5
-                "B01601565",  // 565.0
-                "B01601567",  // 567.0 (ATM)
-                "B01601570",  // 570.0
-                "B01601572",  // 572.5
-                "B01601575",  // 575.0
-                
-                // 풋옵션 (C = Put)
-                "C01601560",  // 560.0
-                "C01601562",  // 562.5
-                "C01601565",  // 565.0
-                "C01601567",  // 567.0 (ATM)
-                "C01601570",  // 570.0
-                "C01601572",  // 572.5
-                "C01601575"   // 575.0
+                    // 콜옵션 (B = Call)
+                    "B01601560", // 560.0
+                    "B01601562", // 562.5
+                    "B01601565", // 565.0
+                    "B01601567", // 567.0 (ATM)
+                    "B01601570", // 570.0
+                    "B01601572", // 572.5
+                    "B01601575", // 575.0
+
+                    // 풋옵션 (C = Put)
+                    "C01601560", // 560.0
+                    "C01601562", // 562.5
+                    "C01601565", // 565.0
+                    "C01601567", // 567.0 (ATM)
+                    "C01601570", // 570.0
+                    "C01601572", // 572.5
+                    "C01601575" // 575.0
             };
 
             for (String code : optionCodes) {
                 try {
                     // 옵션 타입 판별 (B = 콜, C = 풋)
                     OptionType optionType = code.startsWith("B0160") ? OptionType.CALL : OptionType.PUT;
-                    
+
                     // 행사가는 API 응답(acpr)에서 추출 (정확한 값 사용)
                     OptionData option = fetchOptionPrice(token, code, optionType, timestamp);
                     if (option != null) {
@@ -157,9 +160,9 @@ public class KisApiService {
      */
     private FuturesData fetchFuturesPrice(String token, String code, LocalDateTime timestamp) {
         try {
-            String url = config.getBaseUrl() + 
+            String url = config.getBaseUrl() +
                     "/uapi/domestic-futureoption/v1/quotations/inquire-price" +
-                    "?FID_COND_MRKT_DIV_CODE=F" +  // F: 선물
+                    "?FID_COND_MRKT_DIV_CODE=F" + // F: 선물
                     "&FID_INPUT_ISCD=" + code;
 
             HttpRequest request = HttpRequest.newBuilder()
@@ -176,42 +179,44 @@ public class KisApiService {
 
             if (response.statusCode() == 200) {
                 JsonNode root = objectMapper.readTree(response.body());
-                
+
                 // API 응답 로깅 (디버깅용)
                 log.debug("Futures {} API response: {}", code, response.body());
-                
+
                 // rt_cd 체크 (성공: "0", 실패: "1")
                 String rtCd = root.path("rt_cd").asText("");
                 if (!"0".equals(rtCd)) {
-                    log.warn("API error for futures {}: {} - {}", 
+                    log.warn("API error for futures {}: {} - {}",
                             code, root.path("msg_cd").asText(""), root.path("msg1").asText(""));
                     return null;
                 }
-                
+
                 JsonNode output1 = root.get("output1");
                 if (output1 != null && !output1.isEmpty()) {
                     FuturesData futures = new FuturesData();
                     futures.setSymbol(code);
                     futures.setName(getContractMonthName(code));
-                    
+
                     // 필드 추출
                     String prprStr = output1.path("futs_prpr").asText("0");
                     BigDecimal currentPrice = new BigDecimal(prprStr.replace(",", ""));
                     long volume = output1.path("acml_vol").asLong(0);
-                    
+
                     // 거래대금: API에서 제공하는 acml_tr_pbmn 필드 사용
                     String tradingValueStr = output1.path("acml_tr_pbmn").asText("0");
                     BigDecimal tradingValue = new BigDecimal(tradingValueStr.replace(",", ""));
-                    
+
                     futures.setCurrentPrice(currentPrice);
-                    futures.setChangeAmount(new BigDecimal(output1.path("futs_prdy_vrss").asText("0").replace(",", "")));
-                    futures.setChangePercent(new BigDecimal(output1.path("futs_prdy_ctrt").asText("0").replace(",", "")));
+                    futures.setChangeAmount(
+                            new BigDecimal(output1.path("futs_prdy_vrss").asText("0").replace(",", "")));
+                    futures.setChangePercent(
+                            new BigDecimal(output1.path("futs_prdy_ctrt").asText("0").replace(",", "")));
                     futures.setVolume(volume);
                     futures.setTradingValue(tradingValue);
-                    
+
                     // 미결제약정: hts_otst_stpl_qty 필드 사용
                     futures.setOpenInterest(output1.path("hts_otst_stpl_qty").asLong(0));
-                    
+
                     futures.setTimestamp(timestamp);
                     return futures;
                 } else {
@@ -231,9 +236,9 @@ public class KisApiService {
      */
     private OptionData fetchOptionPrice(String token, String code, OptionType type, LocalDateTime timestamp) {
         try {
-            String url = config.getBaseUrl() + 
+            String url = config.getBaseUrl() +
                     "/uapi/domestic-futureoption/v1/quotations/inquire-price" +
-                    "?FID_COND_MRKT_DIV_CODE=O" +  // O: 옵션
+                    "?FID_COND_MRKT_DIV_CODE=O" + // O: 옵션
                     "&FID_INPUT_ISCD=" + code;
 
             HttpRequest request = HttpRequest.newBuilder()
@@ -250,66 +255,66 @@ public class KisApiService {
 
             if (response.statusCode() == 200) {
                 JsonNode root = objectMapper.readTree(response.body());
-                
+
                 // API 응답 로깅 (디버깅용)
                 log.debug("Option {} API response: {}", code, response.body());
-                
+
                 // rt_cd 체크 (성공: "0", 실패: "1")
                 String rtCd = root.path("rt_cd").asText("");
                 if (!"0".equals(rtCd)) {
-                    log.warn("API error for option {}: {} - {}", 
+                    log.warn("API error for option {}: {} - {}",
                             code, root.path("msg_cd").asText(""), root.path("msg1").asText(""));
                     return null;
                 }
-                
+
                 JsonNode output1 = root.get("output1");
                 if (output1 != null && !output1.isEmpty()) {
                     OptionData option = new OptionData();
                     option.setSymbol(code);
                     option.setOptionType(type);
-                    
+
                     // 종목명: API 응답의 hts_kor_isnm 필드 사용 (예: "C 202601 567.5")
                     String korName = output1.path("hts_kor_isnm").asText("");
                     option.setName(korName);
-                    
+
                     // 행사가: API 응답의 acpr 필드 사용 (정확한 값)
                     String strikeStr = output1.path("acpr").asText("0");
                     BigDecimal strikePrice = new BigDecimal(strikeStr.replace(",", ""));
                     option.setStrikePrice(strikePrice);
-                    
+
                     // 필드 추출
                     String prprStr = output1.path("futs_prpr").asText("0");
                     BigDecimal currentPrice = new BigDecimal(prprStr.replace(",", ""));
                     long volume = output1.path("acml_vol").asLong(0);
-                    
+
                     // 거래대금: API에서 제공하는 acml_tr_pbmn 필드 사용
                     String tradingValueStr = output1.path("acml_tr_pbmn").asText("0");
                     BigDecimal tradingValue = new BigDecimal(tradingValueStr.replace(",", ""));
-                    
+
                     option.setCurrentPrice(currentPrice);
                     option.setVolume(volume);
                     option.setTradingValue(tradingValue);
-                    
+
                     // 미결제약정: hts_otst_stpl_qty 필드 사용
                     option.setOpenInterest(output1.path("hts_otst_stpl_qty").asLong(0));
-                    
+
                     // 내재변동성: hts_ints_vltl 필드 사용
                     String ivStr = output1.path("hts_ints_vltl").asText("0");
                     option.setImpliedVolatility(new BigDecimal(ivStr.replace(",", "")));
-                    
+
                     // 그릭스(Greeks) 추출
                     String deltaStr = output1.path("delta_val").asText("0");
                     option.setDelta(new BigDecimal(deltaStr.replace(",", "")));
-                    
-                    String gammaStr = output1.path("gama").asText("0");  // API 오타: gama
+
+                    String gammaStr = output1.path("gama").asText("0"); // API 오타: gama
                     option.setGamma(new BigDecimal(gammaStr.replace(",", "")));
-                    
+
                     String thetaStr = output1.path("theta").asText("0");
                     option.setTheta(new BigDecimal(thetaStr.replace(",", "")));
-                    
+
                     String vegaStr = output1.path("vega").asText("0");
                     option.setVega(new BigDecimal(vegaStr.replace(",", "")));
-                    
+
                     // 기초자산 가격 (KOSPI200 지수): output3에서 추출
                     JsonNode output3 = root.get("output3");
                     if (output3 != null && !output3.isEmpty()) {
@@ -318,14 +323,14 @@ public class KisApiService {
                     } else {
                         option.setUnderlyingPrice(null);
                     }
-                    
+
                     // 호가 정보는 별도 API 필요 (inquire-asking-price)
                     // 현재는 null로 설정
                     option.setBidPrice(null);
                     option.setAskPrice(null);
                     option.setBidVolume(null);
                     option.setAskVolume(null);
-                    
+
                     option.setTimestamp(timestamp);
                     return option;
                 } else {
@@ -345,9 +350,9 @@ public class KisApiService {
      */
     private void fetchOptionAskingPrice(String token, OptionData option) {
         try {
-            String url = config.getBaseUrl() + 
+            String url = config.getBaseUrl() +
                     "/uapi/domestic-futureoption/v1/quotations/inquire-asking-price" +
-                    "?FID_COND_MRKT_DIV_CODE=O" +  // O: 옵션
+                    "?FID_COND_MRKT_DIV_CODE=O" + // O: 옵션
                     "&FID_INPUT_ISCD=" + option.getSymbol();
 
             HttpRequest request = HttpRequest.newBuilder()
@@ -356,7 +361,7 @@ public class KisApiService {
                     .header("authorization", "Bearer " + token)
                     .header("appkey", config.getAppKey())
                     .header("appsecret", config.getAppSecret())
-                    .header("tr_id", "FHMIF10100000")  // 호가 조회 TR_ID
+                    .header("tr_id", "FHMIF10100000") // 호가 조회 TR_ID
                     .GET()
                     .build();
 
@@ -364,7 +369,7 @@ public class KisApiService {
 
             if (response.statusCode() == 200) {
                 JsonNode root = objectMapper.readTree(response.body());
-                
+
                 String rtCd = root.path("rt_cd").asText("");
                 if ("0".equals(rtCd)) {
                     JsonNode output1 = root.get("output1");
@@ -375,15 +380,15 @@ public class KisApiService {
                             option.setAskPrice(new BigDecimal(askPriceStr.replace(",", "")));
                             option.setAskVolume(output1.path("optn_lstn_askp_rsqn1").asInt(0));
                         }
-                        
+
                         // 최우선 매수호가 (1호가)
                         String bidPriceStr = output1.path("optn_lstn_bidp1").asText("0");
                         if (!bidPriceStr.isEmpty() && !"0".equals(bidPriceStr)) {
                             option.setBidPrice(new BigDecimal(bidPriceStr.replace(",", "")));
                             option.setBidVolume(output1.path("optn_lstn_bidp_rsqn1").asInt(0));
                         }
-                        
-                        log.debug("Option {} asking price: bid={}, ask={}", 
+
+                        log.debug("Option {} asking price: bid={}, ask={}",
                                 option.getSymbol(), option.getBidPrice(), option.getAskPrice());
                     }
                 }
@@ -418,8 +423,7 @@ public class KisApiService {
             String url = config.getBaseUrl() + "/oauth2/tokenP";
             String requestBody = String.format(
                     "{\"grant_type\":\"client_credentials\",\"appkey\":\"%s\",\"appsecret\":\"%s\"}",
-                    config.getAppKey(), config.getAppSecret()
-            );
+                    config.getAppKey(), config.getAppSecret());
 
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(url))
@@ -443,7 +447,7 @@ public class KisApiService {
             } else {
                 String responseBody = response.body();
                 log.error("Failed to get access token: {} - {}", response.statusCode(), responseBody);
-                
+
                 // Rate Limit 에러인 경우, 파일에서 토큰 강제 로드 시도
                 if (responseBody.contains("EGW00133")) {
                     log.warn("Rate limit exceeded. Attempting to use any cached token...");
@@ -453,8 +457,9 @@ public class KisApiService {
                         return forcedToken;
                     }
                 }
-                
-                throw new RuntimeException("Failed to get access token: " + response.statusCode() + " - " + responseBody);
+
+                throw new RuntimeException(
+                        "Failed to get access token: " + response.statusCode() + " - " + responseBody);
             }
 
         } catch (RuntimeException e) {
@@ -472,10 +477,9 @@ public class KisApiService {
         try {
             String tokenData = token + "|" + expiry.toString();
             java.nio.file.Files.writeString(
-                    java.nio.file.Path.of("kis_token.cache"), 
-                    tokenData, 
-                    java.nio.charset.StandardCharsets.UTF_8
-            );
+                    java.nio.file.Path.of("kis_token.cache"),
+                    tokenData,
+                    java.nio.charset.StandardCharsets.UTF_8);
             log.debug("Token saved to file");
         } catch (Exception e) {
             log.warn("Failed to save token to file: {}", e.getMessage());
@@ -529,10 +533,60 @@ public class KisApiService {
      * 월물 코드로 계약 월 이름 반환
      */
     private String getContractMonthName(String code) {
-        if (code.equals("A01603")) return "KOSPI200 선물 3월물";
-        if (code.equals("A01606")) return "KOSPI200 선물 6월물";
-        if (code.equals("A01609")) return "KOSPI200 선물 9월물";
-        if (code.equals("A0160C")) return "KOSPI200 선물 12월물";
+        if (code.equals("A01603"))
+            return "KOSPI200 선물 3월물";
+        if (code.equals("A01606"))
+            return "KOSPI200 선물 6월물";
+        if (code.equals("A01609"))
+            return "KOSPI200 선물 9월물";
+        if (code.equals("A01612"))
+            return "KOSPI200 선물 12월물";
         return code;
+    }
+
+    /**
+     * WebSocket 접속을 위한 Approval Key 발급
+     * 실시간 시세 조회를 위한 인증키
+     */
+    public String getApprovalKey() {
+        try {
+            log.info("WebSocket Approval Key 발급 요청...");
+
+            String url = config.getBaseUrl() + "/oauth2/Approval";
+
+            Map<String, String> body = new HashMap<>();
+            body.put("grant_type", "client_credentials");
+            body.put("appkey", config.getAppKey());
+            body.put("secretkey", config.getAppSecret());
+
+            String requestBody = objectMapper.writeValueAsString(body);
+
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(url))
+                    .header("Content-Type", "application/json; charset=utf-8")
+                    .POST(HttpRequest.BodyPublishers.ofString(requestBody))
+                    .build();
+
+            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+
+            if (response.statusCode() == 200) {
+                JsonNode root = objectMapper.readTree(response.body());
+                String approvalKey = root.path("approval_key").asText("");
+
+                if (!approvalKey.isEmpty()) {
+                    log.info("✓ Approval Key 발급 성공");
+                    return approvalKey;
+                } else {
+                    log.error("Approval Key가 응답에 없습니다: {}", response.body());
+                }
+            } else {
+                log.error("Approval Key 발급 실패: {} - {}", response.statusCode(), response.body());
+            }
+
+        } catch (Exception e) {
+            log.error("Approval Key 발급 중 오류: {}", e.getMessage(), e);
+        }
+
+        return null;
     }
 }

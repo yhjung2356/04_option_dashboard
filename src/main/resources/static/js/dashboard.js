@@ -1,5 +1,17 @@
 // WebSocket connection
 let stompClient = null;
+let autoRefreshEnabled = true;
+let lastUpdateTime = null;
+let autoUpdateInterval = null; // 1초마다 자동 업데이트
+
+// 전역 페이지 상태 초기화
+window.dashboardState = {
+    currentView: 'overview',
+    dataSource: 'KIS API',
+    isConnected: false,
+    demoMode: false,
+    lastUpdate: null
+};
 
 // 페이지 상태 관리 함수들
 const StateManager = {
@@ -377,33 +389,192 @@ document.addEventListener('keydown', function(e) {
 
 // Connect to WebSocket
 function connect() {
+    updateConnectionStatus('연결 중...', false);
+    
     const socket = new SockJS('/ws');
     stompClient = Stomp.over(socket);
     
     stompClient.connect({}, function(frame) {
-        console.log('Connected: ' + frame);
+        console.log('WebSocket 연결됨');
         StateManager.set('isConnected', true);
         StateManager.set('lastUpdate', new Date().toISOString());
+        updateConnectionStatus('연결됨', true);
         
         // Subscribe to market overview updates
         stompClient.subscribe('/topic/market-overview', function(message) {
-            const data = JSON.parse(message.body);
-            updateMarketOverview(data);
+            if (autoRefreshEnabled) {
+                const data = JSON.parse(message.body);
+                updateMarketOverview(data);
+                updateLastUpdateTime();
+            }
         });
+        
+        // ✨ 실시간 선물 체결가 구독
+        stompClient.subscribe('/topic/futures/realtime', function(message) {
+            const data = JSON.parse(message.body);
+            updateFuturesRealtimePrice(data);
+        });
+        
+        // ✨ 실시간 선물 호가 구독
+        stompClient.subscribe('/topic/futures/quote', function(message) {
+            const data = JSON.parse(message.body);
+            updateFuturesRealtimeQuote(data);
+        });
+        
+        // ✨ 실시간 옵션 체결가 구독
+        stompClient.subscribe('/topic/options/realtime', function(message) {
+            const data = JSON.parse(message.body);
+            updateOptionsRealtimePrice(data);
+        });
+        
+        // ✨ 실시간 옵션 호가 구독
+        stompClient.subscribe('/topic/options/quote', function(message) {
+            const data = JSON.parse(message.body);
+            updateOptionsRealtimeQuote(data);
+        });
+        
+        // 1초마다 자동 업데이트 시작
+        startAutoUpdate();
+    }, function(error) {
+        console.error('WebSocket 연결 실패:', error);
+        updateConnectionStatus('연결 실패', false);
+        StateManager.set('isConnected', false);
+        
+        // 자동 업데이트 중지
+        stopAutoUpdate();
+        
+        // 5초 후 재연결 시도
+        setTimeout(connect, 5000);
     });
+}
+
+// 1초마다 자동 업데이트 시작
+function startAutoUpdate() {
+    // 기존 interval 정리
+    if (autoUpdateInterval) {
+        clearInterval(autoUpdateInterval);
+    }
+    
+    // 1초(1000ms)마다 데이터 업데이트
+    autoUpdateInterval = setInterval(function() {
+        if (autoRefreshEnabled) {
+            const currentView = window.dashboardState?.currentView || 'overview';
+            
+            // 마켓 오버뷰 업데이트 (모든 뷰에서 필요)
+            fetch('/api/market/overview')
+                .then(response => response.json())
+                .then(data => {
+                    updateMarketOverview(data);
+                    updateLastUpdateTime();
+                })
+                .catch(error => console.error('자동 업데이트 실패:', error));
+            
+            // 옵션 체인 업데이트 (overview, chain 뷰에서 필요)
+            if (currentView === 'overview' || currentView === 'chain') {
+                fetch('/api/market/option-chain')
+                    .then(response => response.json())
+                    .then(data => {
+                        updateOptionChainData(data);
+                    })
+                    .catch(error => console.error('옵션 체인 업데이트 실패:', error));
+            }
+            
+            // 선물 데이터 업데이트 (futures 뷰)
+            if (currentView === 'futures') {
+                fetch('/api/market/futures')
+                    .then(response => response.json())
+                    .then(data => {
+                        const container = document.querySelector('.futures-with-orderbook');
+                        if (container) {
+                            updateFuturesTable(data);
+                        }
+                    })
+                    .catch(error => console.error('선물 업데이트 실패:', error));
+            }
+            
+            // 옵션 데이터 업데이트 (options 뷰)
+            if (currentView === 'options') {
+                fetch('/api/market/options')
+                    .then(response => response.json())
+                    .then(data => {
+                        const container = document.querySelector('.options-view-content');
+                        if (container) {
+                            updateOptionsTable(data);
+                        }
+                    })
+                    .catch(error => console.error('옵션 업데이트 실패:', error));
+            }
+        }
+    }, 1000); // 1초
+    
+    console.log('✅ 1초 자동 업데이트 시작 (모든 뷰 지원)');
+}
+
+// 자동 업데이트 중지
+function stopAutoUpdate() {
+    if (autoUpdateInterval) {
+        clearInterval(autoUpdateInterval);
+        autoUpdateInterval = null;
+        console.log('⏸️ 자동 업데이트 중지');
+    }
 }
 
 // Update market overview
 function updateMarketOverview(data) {
+    console.log('📊 updateMarketOverview 호출됨:', data);
+    
     // Update futures data
-    document.getElementById('futures-volume').textContent = formatNumber(data.totalFuturesVolume);
-    document.getElementById('futures-value').textContent = formatCurrency(data.totalFuturesTradingValue);
-    document.getElementById('futures-oi').textContent = formatNumber(data.totalFuturesOpenInterest);
+    const futuresVolume = document.getElementById('futures-volume');
+    const futuresValue = document.getElementById('futures-value');
+    const futuresOi = document.getElementById('futures-oi');
+    
+    console.log('🔍 DOM 요소 체크:');
+    console.log('  futures-volume:', futuresVolume ? '✅ 존재' : '❌ 없음');
+    console.log('  futures-value:', futuresValue ? '✅ 존재' : '❌ 없음');
+    console.log('  futures-oi:', futuresOi ? '✅ 존재' : '❌ 없음');
+    
+    if (futuresVolume) {
+        const formatted = formatNumber(data.totalFuturesVolume);
+        console.log('  선물 거래량 업데이트:', data.totalFuturesVolume, '->', formatted);
+        futuresVolume.textContent = formatted;
+    }
+    if (futuresValue) {
+        const formatted = formatCurrency(data.totalFuturesTradingValue);
+        console.log('  선물 거래대금 업데이트:', data.totalFuturesTradingValue, '->', formatted);
+        futuresValue.textContent = formatted;
+    }
+    if (futuresOi) {
+        const formatted = formatNumber(data.totalFuturesOpenInterest);
+        console.log('  선물 미결제 업데이트:', data.totalFuturesOpenInterest, '->', formatted);
+        futuresOi.textContent = formatted;
+    }
     
     // Update options data
-    document.getElementById('options-volume').textContent = formatNumber(data.totalOptionsVolume);
-    document.getElementById('options-value').textContent = formatCurrency(data.totalOptionsTradingValue);
-    document.getElementById('options-oi').textContent = formatNumber(data.totalOptionsOpenInterest);
+    const optionsVolume = document.getElementById('options-volume');
+    const optionsValue = document.getElementById('options-value');
+    const optionsOi = document.getElementById('options-oi');
+    
+    console.log('  options-volume:', optionsVolume ? '✅ 존재' : '❌ 없음');
+    console.log('  options-value:', optionsValue ? '✅ 존재' : '❌ 없음');
+    console.log('  options-oi:', optionsOi ? '✅ 존재' : '❌ 없음');
+    
+    if (optionsVolume) {
+        const formatted = formatNumber(data.totalOptionsVolume);
+        console.log('  옵션 거래량 업데이트:', data.totalOptionsVolume, '->', formatted);
+        optionsVolume.textContent = formatted;
+    }
+    if (optionsValue) {
+        const formatted = formatCurrency(data.totalOptionsTradingValue);
+        console.log('  옵션 거래대금 업데이트:', data.totalOptionsTradingValue, '->', formatted);
+        optionsValue.textContent = formatted;
+    }
+    if (optionsOi) {
+        const formatted = formatNumber(data.totalOptionsOpenInterest);
+        console.log('  옵션 미결제 업데이트:', data.totalOptionsOpenInterest, '->', formatted);
+        optionsOi.textContent = formatted;
+    }
+    
+    console.log('✅ 데이터 업데이트 완료 - 선물:', data.totalFuturesVolume, '옵션:', data.totalOptionsVolume);
     
     // Update Put/Call Ratio
     if (data.putCallRatio) {
@@ -819,11 +990,836 @@ function updateDataSourceIndicator(dataSource) {
     }
 }
 
+// 사이드바 뷰 전환
+function switchView(event, view) {
+    event.preventDefault();
+    console.log('🔄 뷰 전환 시도:', view);
+    
+    // 현재 활성 링크 제거
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    
+    // 클릭한 링크 활성화
+    event.currentTarget.classList.add('active');
+    
+    // 상태 업데이트
+    window.dashboardState.currentView = view;
+    
+    // main content 영역 가져오기
+    const mainContent = document.querySelector('.dashboard-content');
+    if (!mainContent) {
+        console.error('🚨 .dashboard-content 요소를 찾을 수 없습니다!');
+        return;
+    }
+    
+    // 뷰에 따라 컨텐츠 표시
+    switch(view) {
+        case 'overview':
+            showOverviewView(mainContent);
+            break;
+        case 'futures':
+            showFuturesView(mainContent);
+            break;
+        case 'options':
+            showOptionsView(mainContent);
+            break;
+        case 'greeks':
+            showGreeksView(mainContent);
+            break;
+        case 'chain':
+            showChainView(mainContent);
+            break;
+        default:
+            console.warn('알 수 없는 뷰:', view);
+    }
+    
+    console.log('✅ 뷰 전환 완료:', view);
+}
+
+// 대시보드 뷰 표시
+function showOverviewView(container) {
+    console.log('🏠 Overview 뷰로 복귀');
+    
+    // 동적으로 추가된 컨텐츠 제거
+    const dynamicContent = container.querySelector('.dynamic-view-content');
+    if (dynamicContent) {
+        dynamicContent.remove();
+        console.log('  ✓ 동적 컨텐츠 제거됨');
+    }
+    
+    // 모든 원래 섹션 표시
+    container.querySelectorAll('section').forEach(section => {
+        section.style.display = '';
+    });
+    
+    // 시장 데이터 다시 로드
+    fetch('/api/market/overview')
+        .then(response => response.json())
+        .then(data => {
+            updateMarketOverview(data);
+            console.log('  ✓ 마켓 오버뷰 갱신됨');
+        })
+        .catch(error => console.error('마켓 오버뷰 로드 실패:', error));
+    
+    // 옵션 체인 데이터도 다시 로드
+    fetch('/api/market/option-chain')
+        .then(response => response.json())
+        .then(data => {
+            updateOptionChainData(data);
+            console.log('  ✓ 옵션 체인 갱신됨');
+        })
+        .catch(error => console.error('옵션 체인 로드 실패:', error));
+    
+    console.log('✅ Overview 뷰 표시 완료');
+}
+
+// 선물 뷰 표시 (호가창 통합)
+function showFuturesView(container) {
+    // 모든 섹션 숨기기
+    container.querySelectorAll('section').forEach(section => {
+        section.style.display = 'none';
+    });
+    
+    // 선물 데이터 로드 및 표시
+    $.ajax({
+        url: '/api/market/futures',
+        method: 'GET',
+        success: function(data) {
+            console.log('✅ 선물 데이터 로드:', data);
+            renderFuturesDataWithOrderbook(container, data);
+        },
+        error: function(error) {
+            console.error('❌ 선물 데이터 로드 실패:', error);
+            container.innerHTML = '<div style="padding: 40px; text-align: center; color: white;"><h2>선물 데이터를 불러올 수 없습니다.</h2></div>';
+        }
+    });
+}
+
+// 옵션 뷰 표시
+function showOptionsView(container) {
+    // 모든 섹션 숨기기
+    container.querySelectorAll('section').forEach(section => {
+        section.style.display = 'none';
+    });
+    
+    // 옵션 데이터 로드 및 표시
+    $.ajax({
+        url: '/api/market/options',
+        method: 'GET',
+        success: function(data) {
+            console.log('✅ 옵션 데이터 로드:', data);
+            renderOptionsData(container, data);
+        },
+        error: function(error) {
+            console.error('❌ 옵션 데이터 로드 실패:', error);
+            container.innerHTML = '<div style="padding: 40px; text-align: center; color: white;"><h2>옵션 데이터를 불러올 수 없습니다.</h2></div>';
+        }
+    });
+}
+
+// Greeks 뷰 표시
+function showGreeksView(container) {
+    // 모든 섹션 숨기기
+    container.querySelectorAll('section').forEach(section => {
+        section.style.display = 'none';
+    });
+    
+    // Greeks 섹션을 동적으로 생성하여 전체 화면 표시
+    let html = `
+        <section class="greeks-section dynamic-view-content" style="display: block; margin: 0; flex: 1;">
+            <div class="card greeks-card" style="height: 100%;">
+                <div class="card-header-compact">
+                    <i class="fas fa-calculator"></i> Greeks 요약 (ATM 기준)
+                </div>
+                <div class="greeks-body">
+                    <div class="greek-item">
+                        <span class="greek-label">
+                            Delta
+                            <i class="fas fa-info-circle greek-info" data-tooltip="기초자산 가격이 1원 변할 때 옵션 가격의 변화량. Call은 0~1, Put은 -1~0 범위"></i>
+                        </span>
+                        <span class="greek-value" id="greek-delta">
+                            <span class="greek-call" id="delta-call">--</span> / 
+                            <span class="greek-put" id="delta-put">--</span>
+                        </span>
+                    </div>
+                    <div class="greek-item">
+                        <span class="greek-label">
+                            Gamma
+                            <i class="fas fa-info-circle greek-info" data-tooltip="기초자산 가격 변화에 따른 Delta의 변화율. 높을수록 Delta 변동성이 큼"></i>
+                        </span>
+                        <span class="greek-value" id="greek-gamma">--</span>
+                    </div>
+                    <div class="greek-item">
+                        <span class="greek-label">
+                            Theta
+                            <i class="fas fa-info-circle greek-info" data-tooltip="시간 경과에 따른 옵션 가격의 하락률. 보통 음수 값으로 시간 가치 소멸을 의미"></i>
+                        </span>
+                        <span class="greek-value" id="greek-theta">--</span>
+                    </div>
+                    <div class="greek-item">
+                        <span class="greek-label">
+                            Vega
+                            <i class="fas fa-info-circle greek-info" data-tooltip="변동성이 1% 변할 때 옵션 가격의 변화량. 높을수록 변동성에 민감"></i>
+                        </span>
+                        <span class="greek-value" id="greek-vega">--</span>
+                    </div>
+                    <div class="greek-item">
+                        <span class="greek-label">
+                            IV (내재변동성)
+                            <i class="fas fa-info-circle greek-info" data-tooltip="시장에서 거래되는 옵션 가격에 내포된 향후 변동성 예상치. 높을수록 시장 불확실성이 큼"></i>
+                        </span>
+                        <span class="greek-value" id="greek-iv">--</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    `;
+    
+    // 기존 동적 컨텐츠 제거 후 추가
+    const existingDynamic = container.querySelector('.dynamic-view-content');
+    if (existingDynamic) existingDynamic.remove();
+    
+    container.insertAdjacentHTML('afterbegin', html);
+    
+    // Greeks 데이터 업데이트
+    fetch('/api/market/option-chain')
+        .then(response => response.json())
+        .then(data => {
+            updateGreeksDisplay(data.strikeChain, data.atmStrike);
+        })
+        .catch(error => console.error('Greeks 데이터 로드 실패:', error));
+}
+
+// 옵션체인 뷰 표시
+function showChainView(container) {
+    // 모든 섹션 숨기기
+    container.querySelectorAll('section').forEach(section => {
+        section.style.display = 'none';
+    });
+    
+    // 옵션체인 데이터 로드 및 표시
+    fetch('/api/market/option-chain')
+        .then(response => response.json())
+        .then(data => {
+            let html = `
+                <section class="option-chain-section-compact dynamic-view-content" style="display: flex; flex-direction: column; flex: 1; margin: 0;">
+                    <div class="card option-chain-card-compact" style="flex: 1; display: flex; flex-direction: column;">
+                        <div class="card-header-compact">
+                            <div class="option-header-left">
+                                <i class="fas fa-table"></i> 옵션 체인 분석
+                            </div>
+                            <div class="option-chain-info">
+                                <span class="info-item-compact">기초: <strong id="underlying-price">${formatPrice(data.underlyingPrice)}</strong></span>
+                                <span class="info-item-compact">ATM: <strong id="atm-strike">${formatPrice(data.atmStrike)}</strong></span>
+                                <span class="info-item-compact max-pain-compact">
+                                    <i class="fas fa-bullseye"></i> Max Pain: <strong id="max-pain">${formatPrice(data.maxPainPrice)}</strong>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-body-compact" style="flex: 1; overflow: auto; padding: 0;">
+                            <div class="option-chain-table-wrapper">
+                                <table class="option-chain-table-compact">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="5" class="call-header">CALL</th>
+                                            <th class="strike-header">행사가</th>
+                                            <th colspan="5" class="put-header">PUT</th>
+                                        </tr>
+                                        <tr>
+                                            <th>호가</th>
+                                            <th>델타</th>
+                                            <th>거래량</th>
+                                            <th>미결제</th>
+                                            <th>현재가</th>
+                                            <th>Strike</th>
+                                            <th>현재가</th>
+                                            <th>미결제</th>
+                                            <th>거래량</th>
+                                            <th>델타</th>
+                                            <th>호가</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="option-chain-body">
+            `;
+            
+            if (data.strikeChain && data.strikeChain.length > 0) {
+                const maxVolume = Math.max(...data.strikeChain.map(s => s.totalVolume));
+                const maxOI = Math.max(...data.strikeChain.map(s => s.totalOpenInterest));
+                
+                data.strikeChain.forEach(strike => {
+                    const isATM = strike.strikePrice == data.atmStrike;
+                    const rowClass = isATM ? 'atm-row' : '';
+                    
+                    const callVolumeClass = strike.callVolume >= maxVolume * 0.7 ? 'high-volume' : '';
+                    const putVolumeClass = strike.putVolume >= maxVolume * 0.7 ? 'high-volume' : '';
+                    const callOIClass = strike.callOpenInterest >= maxOI * 0.7 ? 'high-oi' : '';
+                    const putOIClass = strike.putOpenInterest >= maxOI * 0.7 ? 'high-oi' : '';
+                    
+                    html += `
+                        <tr class="${rowClass}">
+                            <td class="call-cell">${formatBidAsk(strike.callBidPrice, strike.callAskPrice)}</td>
+                            <td class="call-cell">${strike.callDelta ? strike.callDelta.toFixed(3) : '-'}</td>
+                            <td class="call-cell ${callVolumeClass}">${formatNumber(strike.callVolume)}</td>
+                            <td class="call-cell ${callOIClass}">${formatNumber(strike.callOpenInterest)}</td>
+                            <td class="call-cell formatted-number">${formatPrice(strike.callPrice)}</td>
+                            <td class="strike-cell">${formatPrice(strike.strikePrice)}</td>
+                            <td class="put-cell formatted-number">${formatPrice(strike.putPrice)}</td>
+                            <td class="put-cell ${putOIClass}">${formatNumber(strike.putOpenInterest)}</td>
+                            <td class="put-cell ${putVolumeClass}">${formatNumber(strike.putVolume)}</td>
+                            <td class="put-cell">${strike.putDelta ? strike.putDelta.toFixed(3) : '-'}</td>
+                            <td class="put-cell">${formatBidAsk(strike.putBidPrice, strike.putAskPrice)}</td>
+                        </tr>
+                    `;
+                });
+            } else {
+                html += '<tr><td colspan="11" class="loading">데이터 없음</td></tr>';
+            }
+            
+            html += `
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+            
+            // 기존 동적 컨텐츠 제거 후 추가
+            const existingDynamic = container.querySelector('.dynamic-view-content');
+            if (existingDynamic) existingDynamic.remove();
+            
+            container.insertAdjacentHTML('afterbegin', html);
+        })
+        .catch(error => {
+            console.error('옵션 체인 데이터 로드 실패:', error);
+            container.innerHTML = '<div style="padding: 40px; text-align: center; color: white;"><h2>옵션 체인 데이터를 불러올 수 없습니다.</h2></div>';
+        });
+}
+
+// 선물 테이블만 업데이트 (1초마다)
+function updateFuturesTable(data) {
+    const tbody = document.querySelector('.futures-view-content tbody');
+    if (!tbody || !data || data.length === 0) return;
+    
+    let html = '';
+    data.forEach((item, index) => {
+        const changeClass = item.changePercent > 0 ? 'price-up' : item.changePercent < 0 ? 'price-down' : '';
+        const changeSign = item.changePercent > 0 ? '+' : '';
+        html += `
+            <tr>
+                <td><strong>${index + 1}</strong></td>
+                <td>${item.symbol}</td>
+                <td>${item.name}</td>
+                <td class="formatted-number ${changeClass}"><strong>${formatPrice(item.currentPrice)}</strong></td>
+                <td class="${changeClass}"><strong>${changeSign}${item.changePercent.toFixed(2)}%</strong></td>
+                <td class="formatted-number">${formatNumber(item.volume)}</td>
+                <td class="formatted-number">${formatCurrency(item.tradingValue)}</td>
+                <td class="formatted-number">${formatNumber(item.openInterest)}</td>
+            </tr>
+        `;
+    });
+    tbody.innerHTML = html;
+}
+
+// 옵션 테이블만 업데이트 (1초마다)
+function updateOptionsTable(data) {
+    const tbody = document.querySelector('.options-view-content tbody');
+    if (!tbody || !data || data.length === 0) return;
+    
+    let html = '';
+    data.forEach((item, index) => {
+        const changeClass = item.changePercent > 0 ? 'price-up' : item.changePercent < 0 ? 'price-down' : '';
+        const typeClass = item.optionType === 'CALL' ? 'price-up' : 'price-down';
+        const typeIcon = item.optionType === 'CALL' ? '▲' : '▼';
+        const changeSign = item.changePercent > 0 ? '+' : '';
+        html += `
+            <tr>
+                <td><strong>${index + 1}</strong></td>
+                <td class="${typeClass}"><strong>${typeIcon} ${item.optionType}</strong></td>
+                <td class="formatted-number"><strong>${formatPrice(item.strikePrice)}</strong></td>
+                <td class="options-type">${item.symbol}</td>
+                <td>${item.name}</td>
+                <td class="formatted-number ${changeClass}"><strong>${formatPrice(item.currentPrice)}</strong></td>
+                <td class="${changeClass}"><strong>${changeSign}${item.changePercent.toFixed(2)}%</strong></td>
+                <td class="formatted-number">${formatNumber(item.volume)}</td>
+                <td class="formatted-number">${formatCurrency(item.tradingValue)}</td>
+                <td class="formatted-number">${formatNumber(item.openInterest)}</td>
+            </tr>
+        `;
+    });
+    tbody.innerHTML = html;
+}
+
+// 선물 데이터 + 호가창 렌더링
+function renderFuturesDataWithOrderbook(container, data) {
+    let html = `
+        <div class="futures-with-orderbook" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+            <!-- 선물 시세표 -->
+            <section class="top-traded-section-compact dynamic-view-content futures-view-content" style="display: block;">
+                <div class="card top-card-compact">
+                    <div class="card-header-compact">
+                        <i class="fas fa-rocket"></i> KOSPI200 선물 실시간 시세
+                        <span style="margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.8);">총 ${data ? data.length : 0}개 종목</span>
+                    </div>
+                    <div class="card-body-compact">
+                        <table class="data-table-compact">
+                            <thead>
+                                <tr>
+                                    <th>순위</th>
+                                    <th>종목코드</th>
+                                    <th>종목명</th>
+                                    <th>현재가</th>
+                                    <th>전일대비</th>
+                                    <th>거래량</th>
+                                    <th>거래대금</th>
+                                    <th>미결제약정</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+    `;
+    
+    if (data && data.length > 0) {
+        data.forEach((item, index) => {
+            const changeClass = item.changePercent > 0 ? 'price-up' : item.changePercent < 0 ? 'price-down' : '';
+            const changeSign = item.changePercent > 0 ? '+' : '';
+            html += `
+                <tr>
+                    <td><strong>${index + 1}</strong></td>
+                    <td class="futures-type"><strong>${item.symbol}</strong></td>
+                    <td>${item.name}</td>
+                    <td class="formatted-number ${changeClass}"><strong>${formatPrice(item.currentPrice)}</strong></td>
+                    <td class="${changeClass}"><strong>${changeSign}${item.changePercent.toFixed(2)}%</strong></td>
+                    <td class="formatted-number">${formatNumber(item.volume)}</td>
+                    <td class="formatted-number">${formatCurrency(item.tradingValue)}</td>
+                    <td class="formatted-number">${formatNumber(item.openInterest)}</td>
+                </tr>
+            `;
+        });
+    } else {
+        html += '<tr><td colspan="8" class="loading">데이터 없음</td></tr>';
+    }
+    
+    html += `
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 호가창 (작은 크기) -->
+            <section class="orderbook-compact" style="display: block;">
+                <div id="orderbook-container-compact"></div>
+            </section>
+        </div>
+    `;
+    
+    // 기존 동적 컨텐츠 제거 후 추가
+    const existingDynamic = container.querySelector('.dynamic-view-content');
+    if (existingDynamic) existingDynamic.remove();
+    const existingFutures = container.querySelector('.futures-with-orderbook');
+    if (existingFutures) existingFutures.remove();
+    
+    container.insertAdjacentHTML('afterbegin', html);
+    
+    // 호가창 초기화
+    if (typeof OrderBook !== 'undefined') {
+        OrderBook.init('101W9000', 'orderbook-container-compact');
+        setTimeout(() => {
+            OrderBook.loadSampleData();
+        }, 300);
+    }
+}
+
+// 선물 데이터 렌더링
+function renderFuturesData(container, data) {
+    let html = `
+        <section class="top-traded-section-compact dynamic-view-content" style="display: block;">
+            <div class="card top-card-compact">
+                <div class="card-header-compact">
+                    <i class="fas fa-rocket"></i> KOSPI200 선물 실시간 시세
+                    <span style="margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.8);">총 ${data ? data.length : 0}개 종목</span>
+                </div>
+                <div class="card-body-compact">
+                    <table class="data-table-compact">
+                        <thead>
+                            <tr>
+                                <th>순위</th>
+                                <th>종목코드</th>
+                                <th>종목명</th>
+                                <th>현재가</th>
+                                <th>전일대비</th>
+                                <th>거래량</th>
+                                <th>거래대금</th>
+                                <th>미결제약정</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+    `;
+    
+    if (data && data.length > 0) {
+        data.forEach((item, index) => {
+            const changeClass = item.changePercent > 0 ? 'price-up' : item.changePercent < 0 ? 'price-down' : '';
+            const changeSign = item.changePercent > 0 ? '+' : '';
+            html += `
+                <tr>
+                    <td><strong>${index + 1}</strong></td>
+                    <td class="futures-type"><strong>${item.symbol}</strong></td>
+                    <td>${item.name}</td>
+                    <td class="formatted-number ${changeClass}"><strong>${formatPrice(item.currentPrice)}</strong></td>
+                    <td class="${changeClass}"><strong>${changeSign}${item.changePercent.toFixed(2)}%</strong></td>
+                    <td class="formatted-number">${formatNumber(item.volume)}</td>
+                    <td class="formatted-number">${formatCurrency(item.tradingValue)}</td>
+                    <td class="formatted-number">${formatNumber(item.openInterest)}</td>
+                </tr>
+            `;
+        });
+    } else {
+        html += '<tr><td colspan="8" class="loading">데이터 없음</td></tr>';
+    }
+    
+    html += `
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    `;
+    
+    // 기존 동적 컨텐츠 제거 후 추가
+    const existingDynamic = container.querySelector('.dynamic-view-content');
+    if (existingDynamic) existingDynamic.remove();
+    
+    container.insertAdjacentHTML('afterbegin', html);
+}
+
+// 옵션 데이터 렌더링
+function renderOptionsData(container, data) {
+    let html = `
+        <section class="top-traded-section-compact dynamic-view-content" style="display: block;">
+            <div class="card top-card-compact">
+                <div class="card-header-compact">
+                    <i class="fas fa-layer-group"></i> KOSPI200 옵션 실시간 시세
+                    <span style="margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.8);">총 ${data ? data.length : 0}개 종목</span>
+                </div>
+                <div class="card-body-compact">
+                    <table class="data-table-compact">
+                        <thead>
+                            <tr>
+                                <th>순위</th>
+                                <th>타입</th>
+                                <th>행사가</th>
+                                <th>종목코드</th>
+                                <th>종목명</th>
+                                <th>현재가</th>
+                                <th>전일대비</th>
+                                <th>거래량</th>
+                                <th>거래대금</th>
+                                <th>미결제약정</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+    `;
+    
+    if (data && data.length > 0) {
+        data.forEach((item, index) => {
+            const changeClass = item.changePercent > 0 ? 'price-up' : item.changePercent < 0 ? 'price-down' : '';
+            const typeClass = item.optionType === 'CALL' ? 'price-up' : 'price-down';
+            const typeIcon = item.optionType === 'CALL' ? '▲' : '▼';
+            const changeSign = item.changePercent > 0 ? '+' : '';
+            html += `
+                <tr>
+                    <td><strong>${index + 1}</strong></td>
+                    <td class="${typeClass}"><strong>${typeIcon} ${item.optionType}</strong></td>
+                    <td class="formatted-number"><strong>${formatPrice(item.strikePrice)}</strong></td>
+                    <td class="options-type">${item.symbol}</td>
+                    <td>${item.name}</td>
+                    <td class="formatted-number ${changeClass}"><strong>${formatPrice(item.currentPrice)}</strong></td>
+                    <td class="${changeClass}"><strong>${changeSign}${item.changePercent.toFixed(2)}%</strong></td>
+                    <td class="formatted-number">${formatNumber(item.volume)}</td>
+                    <td class="formatted-number">${formatCurrency(item.tradingValue)}</td>
+                    <td class="formatted-number">${formatNumber(item.openInterest)}</td>
+                </tr>
+            `;
+        });
+    } else {
+        html += '<tr><td colspan="10" class="loading">데이터 없음</td></tr>';
+    }
+    
+    html += `
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    `;
+    
+    // 기존 동적 컨텐츠 제거 후 추가
+    const existingDynamic = container.querySelector('.dynamic-view-content');
+    if (existingDynamic) existingDynamic.remove();
+    
+    container.insertAdjacentHTML('afterbegin', html);
+}
+
+// 수동 데이터 새로고침
+function refreshData() {
+    const btn = document.querySelector('.refresh-btn-compact i');
+    btn.classList.add('fa-spin');
+    
+    // WebSocket으로 최신 데이터 요청
+    if (stompClient && stompClient.connected) {
+        console.log('데이터 새로고침 요청...');
+        
+        // 마켓 오버뷰 다시 가져오기
+        fetch('/api/market/overview')
+            .then(response => response.json())
+            .then(data => {
+                updateMarketOverview(data);
+                updateLastUpdateTime();
+            })
+            .catch(error => console.error('새로고침 실패:', error))
+            .finally(() => {
+                setTimeout(() => btn.classList.remove('fa-spin'), 500);
+            });
+    } else {
+        alert('WebSocket 연결이 끊어졌습니다. 페이지를 새로고침해주세요.');
+        btn.classList.remove('fa-spin');
+    }
+}
+
+// 자동 새로고침 토글
+function toggleAutoRefresh() {
+    autoRefreshEnabled = document.getElementById('auto-refresh').checked;
+    console.log('자동 새로고침:', autoRefreshEnabled ? 'ON' : 'OFF');
+    
+    if (!autoRefreshEnabled) {
+        // 자동 새로고침 비활성화 시 WebSocket 일시 정지 표시
+        updateConnectionStatus('일시정지', false);
+    } else {
+        // 재활성화 시 연결 상태 복원
+        updateConnectionStatus(stompClient && stompClient.connected ? '연결됨' : '연결 중...', stompClient && stompClient.connected);
+    }
+}
+
+// 연결 상태 업데이트
+function updateConnectionStatus(status, isConnected) {
+    const statusEl = document.getElementById('connection-status');
+    if (statusEl) {
+        const icon = statusEl.querySelector('i');
+        const text = statusEl.querySelector('span');
+        
+        text.textContent = status;
+        
+        if (isConnected) {
+            icon.className = 'fas fa-check-circle';
+            statusEl.style.color = '#4caf50';
+        } else {
+            icon.className = 'fas fa-exclamation-circle';
+            statusEl.style.color = '#ff9800';
+        }
+    }
+}
+
+// 마지막 업데이트 시간 표시
+function updateLastUpdateTime() {
+    lastUpdateTime = new Date();
+    const updateEl = document.getElementById('last-update');
+    if (updateEl) {
+        const timeStr = lastUpdateTime.toLocaleTimeString('ko-KR', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+        updateEl.querySelector('span').textContent = timeStr;
+    }
+}
+
 // 투자자 안내문 모달 열기
 function showInvestorNotice() {
     const modal = document.getElementById('investorNoticeModal');
     if (modal) {
         modal.style.display = 'flex';
+    }
+}
+
+// ========================================
+// 실시간 데이터 업데이트 함수들
+// ========================================
+
+/**
+ * 실시간 선물 체결가 업데이트
+ */
+function updateFuturesRealtimePrice(data) {
+    try {
+        const symbol = data.symbol;
+        const currentPrice = parseFloat(data.currentPrice);
+        const volume = parseInt(data.volume);
+        
+        // 선물 테이블 업데이트
+        const row = document.querySelector(`tr[data-symbol="${symbol}"]`);
+        if (row) {
+            // 현재가 업데이트
+            const priceCell = row.querySelector('.current-price');
+            if (priceCell) {
+                priceCell.textContent = formatPrice(currentPrice);
+                
+                // 가격 변동 시 깜빡임 효과
+                priceCell.classList.add('price-flash');
+                setTimeout(() => priceCell.classList.remove('price-flash'), 500);
+            }
+            
+            // 거래량 업데이트
+            const volumeCell = row.querySelector('.volume');
+            if (volumeCell) {
+                volumeCell.textContent = formatNumber(volume);
+            }
+        }
+        
+        console.log(`🔄 선물 실시간: ${symbol} = ${currentPrice}`);
+        
+    } catch (error) {
+        console.error('선물 실시간 가격 업데이트 오류:', error);
+    }
+}
+
+/**
+ * 실시간 선물 호가 업데이트
+ */
+function updateFuturesRealtimeQuote(data) {
+    try {
+        const symbol = data.symbol;
+        const bidPrice = parseFloat(data.bidPrice1);
+        const askPrice = parseFloat(data.askPrice1);
+        
+        // 호가 위젯 업데이트 (orderbook)
+        updateOrderbookForSymbol(symbol, {
+            bidPrice: bidPrice,
+            askPrice: askPrice,
+            bidVolume: data.bidVolume1,
+            askVolume: data.askVolume1
+        });
+        
+        console.log(`📊 선물 호가: ${symbol} = ${bidPrice}/${askPrice}`);
+        
+    } catch (error) {
+        console.error('선물 호가 업데이트 오류:', error);
+    }
+}
+
+/**
+ * 실시간 옵션 체결가 업데이트
+ */
+function updateOptionsRealtimePrice(data) {
+    try {
+        const symbol = data.symbol;
+        const currentPrice = parseFloat(data.currentPrice);
+        const volume = parseInt(data.volume);
+        
+        // 옵션 테이블 업데이트
+        const row = document.querySelector(`tr[data-symbol="${symbol}"]`);
+        if (row) {
+            // 현재가 업데이트
+            const priceCell = row.querySelector('.current-price');
+            if (priceCell) {
+                priceCell.textContent = formatPrice(currentPrice);
+                
+                // 가격 변동 시 깜빡임 효과
+                priceCell.classList.add('price-flash');
+                setTimeout(() => priceCell.classList.remove('price-flash'), 500);
+            }
+            
+            // 거래량 업데이트
+            const volumeCell = row.querySelector('.volume');
+            if (volumeCell) {
+                volumeCell.textContent = formatNumber(volume);
+            }
+        }
+        
+        // 옵션 체인에서도 업데이트
+        updateOptionChainPrice(symbol, currentPrice);
+        
+        console.log(`🔄 옵션 실시간: ${symbol} = ${currentPrice}`);
+        
+    } catch (error) {
+        console.error('옵션 실시간 가격 업데이트 오류:', error);
+    }
+}
+
+/**
+ * 실시간 옵션 호가 업데이트
+ */
+function updateOptionsRealtimeQuote(data) {
+    try {
+        const symbol = data.symbol;
+        const bidPrice = parseFloat(data.bidPrice1);
+        const askPrice = parseFloat(data.askPrice1);
+        
+        // 옵션 체인에서 매도/매수 호가 업데이트
+        updateOptionChainQuote(symbol, {
+            bidPrice: bidPrice,
+            askPrice: askPrice,
+            bidVolume: data.bidVolume1,
+            askVolume: data.askVolume1
+        });
+        
+        console.log(`📊 옵션 호가: ${symbol} = ${bidPrice}/${askPrice}`);
+        
+    } catch (error) {
+        console.error('옵션 호가 업데이트 오류:', error);
+    }
+}
+
+/**
+ * 호가 위젯 업데이트 (선물)
+ */
+function updateOrderbookForSymbol(symbol, quoteData) {
+    const orderbookWidget = document.querySelector('.orderbook-widget');
+    if (!orderbookWidget) return;
+    
+    const currentSymbol = orderbookWidget.dataset.symbol;
+    if (currentSymbol !== symbol) return;  // 다른 종목이면 무시
+    
+    // 매도호가 업데이트
+    const askPriceEl = orderbookWidget.querySelector('.ask-price');
+    if (askPriceEl) {
+        askPriceEl.textContent = formatPrice(quoteData.askPrice);
+    }
+    
+    // 매수호가 업데이트
+    const bidPriceEl = orderbookWidget.querySelector('.bid-price');
+    if (bidPriceEl) {
+        bidPriceEl.textContent = formatPrice(quoteData.bidPrice);
+    }
+}
+
+/**
+ * 옵션 체인에서 가격 업데이트
+ */
+function updateOptionChainPrice(symbol, price) {
+    const priceCell = document.querySelector(`.option-chain-row [data-symbol="${symbol}"] .option-price`);
+    if (priceCell) {
+        priceCell.textContent = formatPrice(price);
+        
+        // 깜빡임 효과
+        priceCell.classList.add('price-flash');
+        setTimeout(() => priceCell.classList.remove('price-flash'), 500);
+    }
+}
+
+/**
+ * 옵션 체인에서 호가 업데이트
+ */
+function updateOptionChainQuote(symbol, quoteData) {
+    // 매도호가
+    const askCell = document.querySelector(`.option-chain-row [data-symbol="${symbol}"] .ask-price`);
+    if (askCell) {
+        askCell.textContent = formatPrice(quoteData.askPrice);
+    }
+    
+    // 매수호가
+    const bidCell = document.querySelector(`.option-chain-row [data-symbol="${symbol}"] .bid-price`);
+    if (bidCell) {
+        bidCell.textContent = formatPrice(quoteData.bidPrice);
     }
 }
 

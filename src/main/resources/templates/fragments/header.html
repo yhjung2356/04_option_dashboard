@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header-compact" th:fragment="header">
+        <div class="header-content-compact">
+            <div class="header-left">
+                <h1><i class="fas fa-chart-line"></i> KOSPI 선물/옵션 대시보드</h1>
+                <div id="market-closed-banner" class="inline-market-status" style="display: none;">
+                    <i class="fas fa-moon"></i> 장 마감
+                </div>
+            </div>
+            <div class="header-right">
+                <button onclick="refreshData()" class="refresh-btn-compact" title="데이터 새로고침">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+                <div class="auto-refresh-toggle" title="자동 새로고침 ON/OFF">
+                    <input type="checkbox" id="auto-refresh" checked onchange="toggleAutoRefresh()">
+                    <label for="auto-refresh">
+                        <i class="fas fa-clock"></i>
+                    </label>
+                </div>
+                <button onclick="showInvestorNotice()" class="notice-btn-compact" title="투자자 안내문">
+                    <i class="fas fa-exclamation-circle"></i>
+                </button>
+                <span id="current-time" class="time-display-compact"></span>
+                <span id="market-status" class="status-indicator-compact">
+                    <i class="fas fa-circle status-live"></i> <span id="status-text">확인중</span>
+                </span>
+            </div>
+        </div>
+    </header>
+</body>
+</html>

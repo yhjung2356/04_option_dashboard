@@ -15,12 +15,128 @@ body {
 }
 
 /* ========================================
+   사이드바
+   ======================================== */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 240px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 2px 0 12px rgba(0,0,0,0.1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 20px 0;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    color: #555;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link:hover {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    border-left-color: #667eea;
+}
+
+.sidebar-link.active {
+    background: rgba(102, 126, 234, 0.15);
+    color: #667eea;
+    border-left-color: #667eea;
+    font-weight: 600;
+}
+
+.sidebar-link i {
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar-footer {
+    padding: 15px 20px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.data-source-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #666;
+    background: rgba(102, 126, 234, 0.1);
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.data-source-indicator i {
+    color: #667eea;
+}
+
+.connection-status, .last-update {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #666;
+    padding: 6px 12px;
+    margin-top: 8px;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 4px;
+}
+
+.connection-status i, .last-update i {
+    font-size: 10px;
+}
+
+.last-update span {
+    display: inline-block;
+    min-width: 65px;
+    text-align: left;
+}
+
+/* ========================================
    대시보드 컨테이너
    ======================================== */
 .dashboard-container {
     max-width: 1600px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
+    margin-left: 240px; /* 사이드바 너비만큼 여백 */
+    height: 100vh;
+    overflow: hidden; /* 스크롤 제거 */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 메인 콘텐츠 영역 */
+.dashboard-content {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 70px); /* 헤더 높이 제외 */
+    overflow: hidden;
 }
 
 /* ========================================
@@ -37,10 +153,11 @@ body {
 /* 컴팩트 헤더 */
 .dashboard-header-compact {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 12px 24px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    margin-bottom: 15px;
+    padding: 8px 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    margin-bottom: 8px;
+    flex-shrink: 0; /* 헤더 크기 고정 */
 }
 
 .header-content-compact {
@@ -79,7 +196,63 @@ body {
 .header-right {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
+}
+
+/* 새로고침 버튼 */
+.refresh-btn-compact {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.refresh-btn-compact:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.refresh-btn-compact i.fa-spin {
+    animation: fa-spin 1s infinite linear;
+}
+
+/* 자동 새로고침 토글 */
+.auto-refresh-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.auto-refresh-toggle input[type="checkbox"] {
+    display: none;
+}
+
+.auto-refresh-toggle label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 14px;
+}
+
+.auto-refresh-toggle input:checked + label {
+    background: rgba(76, 175, 80, 0.3);
+    border-color: rgba(76, 175, 80, 0.5);
+}
+
+.auto-refresh-toggle label:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
 
 .snapshot-btn-compact {
@@ -448,8 +621,9 @@ body {
 .overview-section-compact {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin-bottom: 15px;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-shrink: 0; /* 크기 고정 */
 }
 
 .overview-card-compact {
@@ -468,19 +642,19 @@ body {
 .card-header-compact {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    padding: 8px 12px;
-    font-size: 13px;
+    padding: 6px 10px;
+    font-size: 12px;
     font-weight: 600;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
 }
 
 .card-body-compact {
-    padding: 12px;
+    padding: 8px 10px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
 .stat-compact {
@@ -615,8 +789,10 @@ body {
 .top-traded-section-compact {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    margin-bottom: 15px;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+    max-height: 220px; /* TOP 5 테이블 높이 제한 */
 }
 
 .top-card-compact {
@@ -678,7 +854,7 @@ body {
 }
 
 .data-table-compact th {
-    padding: 10px 8px;
+    padding: 6px 6px;
     text-align: left;
     font-weight: 600;
     color: #555;
@@ -687,9 +863,9 @@ body {
 }
 
 .data-table-compact td {
-    padding: 8px 8px;
+    padding: 5px 6px;
     border-bottom: 1px solid #f0f0f0;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .data-table-compact tbody tr:hover {
@@ -823,7 +999,11 @@ body {
    옵션 체인 섹션 (컴팩트)
    ======================================== */
 .option-chain-section-compact {
-    margin-bottom: 15px;
+    margin-bottom: 0;
+    flex: 1; /* 남은 공간 모두 사용 */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .option-chain-card-compact {
@@ -831,13 +1011,23 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* 남은 공간 모두 사용 */
 }
 
 .option-chain-card-compact .card-header-compact {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 12px;
+    padding: 6px 10px;
+    flex-shrink: 0; /* 헤더 크기 고정 */
+}
+
+.option-chain-card-compact .card-body-compact {
+    flex: 1; /* 남은 공간 모두 사용 */
+    overflow: auto; /* 스크롤 가능 */
+    padding: 0;
 }
 
 .option-chain-info-compact {
@@ -882,7 +1072,7 @@ body {
 .option-chain-table-compact {
     width: 100%;
     border-collapse: collapse;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .option-chain-table-compact thead {
@@ -894,44 +1084,44 @@ body {
 .option-chain-table-compact .call-header {
     background: #4CAF50;
     color: white;
-    padding: 10px 8px;
+    padding: 6px 5px;
     text-align: center;
     font-weight: 700;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .option-chain-table-compact .strike-header {
     background: #FF9800;
     color: white;
-    padding: 10px 8px;
+    padding: 6px 5px;
     text-align: center;
     font-weight: 700;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .option-chain-table-compact .put-header {
     background: #f44336;
     color: white;
-    padding: 10px 8px;
+    padding: 6px 5px;
     text-align: center;
     font-weight: 700;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .option-chain-table-compact th {
-    padding: 8px 6px;
+    padding: 5px 4px;
     text-align: center;
     font-weight: 600;
     background: #f5f5f5;
     border: 1px solid #ddd;
-    font-size: 11px;
+    font-size: 10px;
 }
 
 .option-chain-table-compact td {
-    padding: 7px 6px;
+    padding: 4px 4px;
     text-align: center;
     border: 1px solid #f0f0f0;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .option-chain-table-compact tbody tr:hover {
@@ -961,7 +1151,8 @@ body {
    Greeks 섹션
    ======================================== */
 .greeks-section {
-    margin-bottom: 15px;
+    margin-bottom: 8px;
+    flex-shrink: 0; /* 크기 고정 */
 }
 
 .greeks-card {
@@ -972,11 +1163,11 @@ body {
 }
 
 .greeks-body {
-    padding: 12px 16px;
+    padding: 8px 12px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .greek-item {
@@ -1073,6 +1264,49 @@ body {
 }
 
 /* ========================================
+   컴팩트 호가창 (선물 페이지 옆)
+   ======================================== */
+.futures-with-orderbook {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+    height: 100%;
+}
+
+.orderbook-compact {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.orderbook-compact .card-header-compact {
+    padding: 6px 10px;
+}
+
+#orderbook-container-compact {
+    flex: 1;
+    overflow: auto;
+    padding: 5px;
+}
+
+#orderbook-container-compact .orderbook-table {
+    font-size: 11px;
+}
+
+#orderbook-container-compact .orderbook-table th {
+    padding: 4px;
+    font-size: 10px;
+}
+
+#orderbook-container-compact .orderbook-table td {
+    padding: 3px;
+    font-size: 10px;
+}
+
+/* ========================================
    반응형
    ======================================== */
 @media (max-width: 1200px) {
@@ -1122,4 +1356,49 @@ body {
 
 .text-muted {
     color: #999;
+}
+
+/* ========================================
+   실시간 데이터 애니메이션
+   ======================================== */
+@keyframes priceFlash {
+    0% {
+        background-color: rgba(255, 235, 59, 0.5);
+        transform: scale(1);
+    }
+    50% {
+        background-color: rgba(255, 235, 59, 0.8);
+        transform: scale(1.05);
+    }
+    100% {
+        background-color: transparent;
+        transform: scale(1);
+    }
+}
+
+.price-flash {
+    animation: priceFlash 0.5s ease-in-out;
+}
+
+/* 실시간 데이터 표시 */
+.realtime-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #4caf50;
+    border-radius: 50%;
+    margin-left: 8px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(76, 175, 80, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
 }

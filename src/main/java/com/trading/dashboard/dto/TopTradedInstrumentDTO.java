@@ -1,6 +1,7 @@
 package com.trading.dashboard.dto;
 
 import com.trading.dashboard.model.InstrumentType;
+import com.trading.dashboard.model.OptionType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +17,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Builder
 public class TopTradedInstrumentDTO {
-    
+
     private String symbol;
     private String name;
     private InstrumentType type;
@@ -25,4 +26,8 @@ public class TopTradedInstrumentDTO {
     private BigDecimal tradingValue;
     private Long openInterest;
     private BigDecimal changePercent;
+
+    // 옵션 전용 필드
+    private OptionType optionType; // CALL or PUT
+    private BigDecimal strikePrice;
 }

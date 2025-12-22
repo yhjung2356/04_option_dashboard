@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" th:fragment="nav">
+        <div class="sidebar-header">
+            <i class="fas fa-chart-line"></i>
+            <span>메뉴</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#overview" class="sidebar-link active" onclick="switchView(event, 'overview')">
+                <i class="fas fa-home"></i>
+                <span>대시보드</span>
+            </a>
+            <a href="#futures" class="sidebar-link" onclick="switchView(event, 'futures')">
+                <i class="fas fa-rocket"></i>
+                <span>선물</span>
+            </a>
+            <a href="#options" class="sidebar-link" onclick="switchView(event, 'options')">
+                <i class="fas fa-layer-group"></i>
+                <span>옵션</span>
+            </a>
+            <a href="#greeks" class="sidebar-link" onclick="switchView(event, 'greeks')">
+                <i class="fas fa-calculator"></i>
+                <span>Greeks</span>
+            </a>
+            <a href="#chain" class="sidebar-link" onclick="switchView(event, 'chain')">
+                <i class="fas fa-table"></i>
+                <span>옵션체인</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="data-source-indicator">
+                <i class="fas fa-database"></i>
+                <span th:text="${dataSource}">KIS</span>
+            </div>
+            <div class="connection-status" id="connection-status">
+                <i class="fas fa-plug"></i>
+                <span>연결 중...</span>
+            </div>
+            <div class="last-update" id="last-update">
+                <i class="fas fa-clock"></i>
+                <span>-</span>
+            </div>
+        </div>
+    </aside>
+</body>
+</html>

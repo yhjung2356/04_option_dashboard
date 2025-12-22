@@ -1,0 +1,269 @@
+/* ========================================
+   호가창 (Market Depth / Order Book)
+   ======================================== */
+
+.orderbook-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.orderbook-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.orderbook-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.orderbook-symbol {
+    font-size: 14px;
+    color: #666;
+    background: rgba(102, 126, 234, 0.1);
+    padding: 4px 12px;
+    border-radius: 6px;
+}
+
+.orderbook-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Courier New', monospace;
+}
+
+.orderbook-table thead tr {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.orderbook-table th {
+    padding: 12px 8px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.orderbook-table tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+    transition: all 0.2s ease;
+}
+
+.orderbook-table tbody tr:hover {
+    background: rgba(102, 126, 234, 0.05);
+}
+
+.orderbook-table td {
+    padding: 10px 8px;
+    text-align: center;
+    font-size: 13px;
+}
+
+/* 매도 호가 (빨간색) */
+.orderbook-ask-price {
+    color: #f44336;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.orderbook-ask-volume {
+    color: #f44336;
+    background: rgba(244, 67, 54, 0.05);
+}
+
+.orderbook-ask-bar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(to left, rgba(244, 67, 54, 0.15), transparent);
+    z-index: 0;
+    transition: width 0.3s ease;
+}
+
+/* 매수 호가 (파란색) */
+.orderbook-bid-price {
+    color: #2196F3;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.orderbook-bid-volume {
+    color: #2196F3;
+    background: rgba(33, 150, 243, 0.05);
+}
+
+.orderbook-bid-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(33, 150, 243, 0.15), transparent);
+    z-index: 0;
+    transition: width 0.3s ease;
+}
+
+/* 현재가 표시 */
+.orderbook-current-row {
+    background: rgba(255, 193, 7, 0.1) !important;
+    border-top: 2px solid #FFC107;
+    border-bottom: 2px solid #FFC107;
+}
+
+.orderbook-current-price {
+    font-weight: bold;
+    font-size: 16px;
+    color: #FFC107;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.orderbook-current-price i {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* 거래량 바 */
+.orderbook-volume-cell {
+    position: relative;
+    overflow: hidden;
+}
+
+.orderbook-volume-text {
+    position: relative;
+    z-index: 1;
+}
+
+/* 호가 잔량 퍼센트 */
+.orderbook-percent {
+    font-size: 11px;
+    color: #999;
+}
+
+/* 총 잔량 요약 */
+.orderbook-summary {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    margin-top: 15px;
+    border-top: 2px solid #e0e0e0;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 8px;
+}
+
+.orderbook-summary-item {
+    text-align: center;
+}
+
+.orderbook-summary-label {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.orderbook-summary-value {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.orderbook-summary-value.ask {
+    color: #f44336;
+}
+
+.orderbook-summary-value.bid {
+    color: #2196F3;
+}
+
+/* 스프레드 정보 */
+.orderbook-spread {
+    text-align: center;
+    padding: 10px;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 6px;
+    margin: 10px 0;
+}
+
+.orderbook-spread-label {
+    font-size: 11px;
+    color: #666;
+}
+
+.orderbook-spread-value {
+    font-size: 14px;
+    font-weight: bold;
+    color: #667eea;
+}
+
+/* 로딩 상태 */
+.orderbook-loading {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+}
+
+.orderbook-loading i {
+    font-size: 32px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 에러 상태 */
+.orderbook-error {
+    text-align: center;
+    padding: 40px;
+    color: #f44336;
+}
+
+/* 컴팩트 모드 */
+.orderbook-compact .orderbook-table td,
+.orderbook-compact .orderbook-table th {
+    padding: 6px 4px;
+    font-size: 11px;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .orderbook-container {
+        padding: 15px;
+    }
+    
+    .orderbook-table th,
+    .orderbook-table td {
+        padding: 8px 4px;
+        font-size: 11px;
+    }
+    
+    .orderbook-summary {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
