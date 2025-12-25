@@ -26,12 +26,16 @@ public class InitialDataLoader implements CommandLineRunner {
     private final OptionDataRepository optionDataRepository;
     private final KisApiService kisApiService;
     private final KrxDataService krxDataService;
+    private final MarketDataService marketDataService;
     private final Random random = new Random();
 
     @Override
     public void run(String... args) throws Exception {
         // 시작 시 전거래일 데이터를 로드
         loadInitialData();
+
+        // 장중이면 WebSocket 연결 시작
+        marketDataService.startWebSocketIfNeeded();
     }
 
     private void loadInitialData() {
@@ -50,55 +54,55 @@ public class InitialDataLoader implements CommandLineRunner {
             log.info("Attempting to load KIS API data (Korea Investment & Securities)...");
             kisApiService.loadKospi200Futures();
             kisApiService.loadKospi200Options();
-            
+
             // 데이터가 성공적으로 로드되었는지 확인
             if (futuresDataRepository.count() > 0 || optionDataRepository.count() > 0) {
                 log.info("✓ KIS API data loaded successfully!");
-                log.info("Total: {} futures, {} options", 
-                    futuresDataRepository.count(), 
-                    optionDataRepository.count());
+                log.info("Total: {} futures, {} options",
+                        futuresDataRepository.count(),
+                        optionDataRepository.count());
                 return;
             }
         } catch (Exception e) {
             log.warn("Could not load KIS API data: {}", e.getMessage());
         }
-        
+
         // 2단계: 실패 시 KRX 데이터 시도
         try {
             log.info("Attempting to load real KRX data...");
             krxDataService.loadPreviousTradingDayData();
-            
+
             // 데이터가 성공적으로 로드되었는지 확인
             if (futuresDataRepository.count() > 0 || optionDataRepository.count() > 0) {
                 log.info("✓ Real KRX data loaded successfully!");
-                log.info("Total: {} futures, {} options", 
-                    futuresDataRepository.count(), 
-                    optionDataRepository.count());
+                log.info("Total: {} futures, {} options",
+                        futuresDataRepository.count(),
+                        optionDataRepository.count());
                 return;
             }
         } catch (Exception e) {
             log.warn("Could not load real KRX data: {}", e.getMessage());
         }
-        
+
         // 3단계: 모두 실패 시 샘플 데이터 생성
         log.info("Loading sample data as fallback...");
         loadSampleData();
     }
-    
+
     /**
      * 샘플 데이터 생성 (KRX 데이터를 가져올 수 없을 때)
      */
     private void loadSampleData() {
         LocalDateTime timestamp = LocalDateTime.now();
         List<FuturesData> futuresList = new ArrayList<>();
-        String[] months = {"01", "02", "03", "06", "09", "12"};
-        double basePrice = 400.0;
-        
+        String[] months = { "01", "02", "03", "06", "09", "12" };
+        double basePrice = 300.0; // KOSPI200 선물 기준가
+
         for (int i = 0; i < 6; i++) {
             double price = basePrice + (i * 0.5) + (random.nextDouble() - 0.5);
             double change = (random.nextDouble() * 2 - 1);
             double changePercent = (random.nextDouble() * 2 - 1);
-            
+
             FuturesData futures = FuturesData.builder()
                     .symbol("F2025" + months[i])
                     .name("KOSPI200 선물 25" + months[i])
@@ -119,40 +123,40 @@ public class InitialDataLoader implements CommandLineRunner {
                     .build();
             futuresList.add(futures);
         }
-        
+
         futuresDataRepository.saveAll(futuresList);
         log.info("✓ Loaded {} futures contracts", futuresList.size());
 
         // 옵션 데이터 생성 (KOSPI200 옵션)
         List<OptionData> optionsList = new ArrayList<>();
-        double underlyingPrice = 400.0;
-        
-        // 행사가: 380 ~ 420 (5pt 간격)
-        for (double strike = 380.0; strike <= 420.0; strike += 5.0) {
+        double underlyingPrice = 300.0; // KOSPI200 기준가 (2025-12-24 종가 기준)
+
+        // 행사가: 272.5 ~ 327.5 (2.5pt 간격, 총 23개 행사가) - 실제 KOSPI200 옵션 행사가 간격
+        // 각 행사가마다 CALL/PUT 2개씩 = 총 46개 옵션 계약
+        for (double strike = 272.5; strike <= 327.5; strike += 2.5) {
             // CALL 옵션
             OptionData call = createOption(
-                    strike, 
-                    OptionType.CALL, 
-                    underlyingPrice, 
+                    strike,
+                    OptionType.CALL,
+                    underlyingPrice,
                     timestamp,
-                    "12"  // 당월물
+                    "12" // 당월물
             );
             optionsList.add(call);
-            
+
             // PUT 옵션
             OptionData put = createOption(
-                    strike, 
-                    OptionType.PUT, 
-                    underlyingPrice, 
+                    strike,
+                    OptionType.PUT,
+                    underlyingPrice,
                     timestamp,
-                    "12"
-            );
+                    "12");
             optionsList.add(put);
         }
-        
+
         optionDataRepository.saveAll(optionsList);
         log.info("✓ Loaded {} option contracts", optionsList.size());
-        
+
         log.info("========================================");
         log.info("Initial data load completed!");
         log.info("Total: {} futures, {} options", futuresList.size(), optionsList.size());
@@ -160,9 +164,9 @@ public class InitialDataLoader implements CommandLineRunner {
         log.info("========================================");
     }
 
-    private OptionData createOption(double strikePrice, OptionType optionType, 
-                                    double underlyingPrice, LocalDateTime timestamp,
-                                    String month) {
+    private OptionData createOption(double strikePrice, OptionType optionType,
+            double underlyingPrice, LocalDateTime timestamp,
+            String month) {
         // ATM 기준 내재가치 계산
         double intrinsicValue = 0;
         if (optionType == OptionType.CALL) {
@@ -170,36 +174,36 @@ public class InitialDataLoader implements CommandLineRunner {
         } else {
             intrinsicValue = Math.max(0, strikePrice - underlyingPrice);
         }
-        
+
         // 시간가치 (ATM 근처가 높음)
         double distanceFromATM = Math.abs(strikePrice - underlyingPrice);
         double timeValue = Math.max(0.5, 5.0 - (distanceFromATM * 0.3));
-        
+
         double price = intrinsicValue + timeValue + (random.nextDouble() * 0.5);
-        
+
         // 거래량 (ATM 근처가 많음)
         long baseVolume = (long) (10000 / (1 + distanceFromATM * 0.1));
         long volume = baseVolume + random.nextInt(5000);
-        
+
         // 미결제약정
         long openInterest = (long) (baseVolume * (1.5 + random.nextDouble()));
-        
+
         // IV (변동성)
         double iv = 15.0 + random.nextDouble() * 10;
-        
+
         // Greeks 계산 (단순화된 버전)
         double delta = calculateDelta(optionType, strikePrice, underlyingPrice);
         double gamma = calculateGamma(strikePrice, underlyingPrice);
         double theta = -0.05 - random.nextDouble() * 0.05;
         double vega = 0.1 + random.nextDouble() * 0.1;
-        
-        String symbol = String.format("O2025%s%s%03d", 
+
+        String symbol = String.format("O2025%s%s%03d",
                 month,
-                optionType == OptionType.CALL ? "C" : "P", 
+                optionType == OptionType.CALL ? "C" : "P",
                 (int) strikePrice);
-        
+
         String expiryDate = "2025-12-" + month;
-        
+
         return OptionData.builder()
                 .symbol(symbol)
                 .optionType(optionType)
@@ -224,12 +228,16 @@ public class InitialDataLoader implements CommandLineRunner {
 
     private double calculateDelta(OptionType type, double strike, double underlying) {
         if (type == OptionType.CALL) {
-            if (underlying > strike + 10) return 0.9 + random.nextDouble() * 0.1;
-            if (underlying < strike - 10) return 0.0 + random.nextDouble() * 0.1;
+            if (underlying > strike + 10)
+                return 0.9 + random.nextDouble() * 0.1;
+            if (underlying < strike - 10)
+                return 0.0 + random.nextDouble() * 0.1;
             return 0.4 + ((underlying - strike + 10) / 20) * 0.5;
         } else {
-            if (underlying < strike - 10) return -0.9 - random.nextDouble() * 0.1;
-            if (underlying > strike + 10) return -0.0 - random.nextDouble() * 0.1;
+            if (underlying < strike - 10)
+                return -0.9 - random.nextDouble() * 0.1;
+            if (underlying > strike + 10)
+                return -0.0 - random.nextDouble() * 0.1;
             return -0.4 - ((strike - underlying + 10) / 20) * 0.5;
         }
     }

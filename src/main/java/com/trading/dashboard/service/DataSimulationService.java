@@ -38,6 +38,9 @@ public class DataSimulationService {
     @Value("${trading.market-hours.enabled:true}")
     private boolean marketHoursEnabled;
 
+    @Value("${trading.simulation.enabled:true}")
+    private boolean simulationEnabled;
+
     /**
      * 장 시간인지 체크
      * KOSPI200 선물옵션 거래시간: 평일 09:00 ~ 15:45 (주간), 18:00 ~ 05:00 (야간)
@@ -79,6 +82,11 @@ public class DataSimulationService {
     @Scheduled(fixedRate = 1000)
     @Transactional
     public void generateSimulatedData() {
+        // 시뮬레이션 비활성화 시 실행 안 함
+        if (!simulationEnabled) {
+            return;
+        }
+
         // 장 시간 체크
         if (!isMarketOpen()) {
             if (demoMode) {

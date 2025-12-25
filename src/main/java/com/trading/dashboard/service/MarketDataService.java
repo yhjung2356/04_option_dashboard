@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -24,6 +25,45 @@ public class MarketDataService {
 
     private final OptionDataRepository optionDataRepository;
     private final FuturesDataRepository futuresDataRepository;
+    private final KisWebSocketService kisWebSocketService;
+
+    /**
+     * 장 시작 시 WebSocket 연결 (멀티 연결)
+     */
+    public void startWebSocketIfNeeded() {
+        LocalTime now = LocalTime.now();
+
+        // 주간장: 09:00 - 15:45
+        boolean isDaySession = now.isAfter(LocalTime.of(9, 0)) && now.isBefore(LocalTime.of(15, 45));
+
+        // 야간장: 18:00 - 05:00
+        boolean isNightSession = now.isAfter(LocalTime.of(18, 0)) || now.isBefore(LocalTime.of(5, 0));
+
+        if (isDaySession || isNightSession) {
+            log.info("Market is open - Starting WebSocket subscriptions");
+
+            // 모든 구독 종목 리스트 생성
+            List<String> symbols = new ArrayList<>();
+
+            // 1. 선물 추가
+            symbols.add("A0163000"); // 3월물
+
+            // 2. 전체 옵션 코드 생성 (540~600 행사가)
+            for (int i = 540; i <= 600; i++) {
+                String strikeCode = String.format("%03d", i);
+                symbols.add("B01601" + strikeCode); // 콜옵션
+                symbols.add("C01601" + strikeCode); // 풋옵션
+            }
+
+            log.info("Total symbols to subscribe: {} (1 future + 122 options)", symbols.size());
+
+            // 멀티 연결 시작 (40개씩 분할)
+            kisWebSocketService.connectAll(symbols);
+
+        } else {
+            log.info("Market is closed - WebSocket connection skipped");
+        }
+    }
 
     /**
      * OptionData를 TopTradedInstrumentDTO로 변환 (코드 중복 제거)
@@ -173,8 +213,25 @@ public class MarketDataService {
     public OptionChainAnalysisDTO getOptionChainAnalysis() {
         List<OptionData> allOptions = optionDataRepository.findAllOrderByStrikePrice();
 
+        // 기초자산 가격 추정 (필터링 전에 먼저 계산)
+        BigDecimal underlyingPrice = estimateUnderlyingPrice(allOptions);
+
+        // 기초자산 가격 주변 ±17.5pt 범위의 옵션만 필터링 (약 14개 행사가)
+        BigDecimal lowerBound = underlyingPrice.subtract(new BigDecimal("17.5"));
+        BigDecimal upperBound = underlyingPrice.add(new BigDecimal("17.5"));
+
+        List<OptionData> filteredOptions = allOptions.stream()
+                .filter(opt -> {
+                    BigDecimal strike = opt.getStrikePrice();
+                    return strike.compareTo(lowerBound) >= 0 && strike.compareTo(upperBound) <= 0;
+                })
+                .collect(Collectors.toList());
+
+        log.debug("Filtered {} options (strikes {}-{}) from {} total options around underlying price {}",
+                filteredOptions.size(), lowerBound, upperBound, allOptions.size(), underlyingPrice);
+
         // 행사가별로 그룹핑
-        Map<BigDecimal, Map<OptionType, OptionData>> strikeMap = allOptions.stream()
+        Map<BigDecimal, Map<OptionType, OptionData>> strikeMap = filteredOptions.stream()
                 .collect(Collectors.groupingBy(
                         OptionData::getStrikePrice,
                         Collectors.toMap(
@@ -221,7 +278,7 @@ public class MarketDataService {
                             .totalOpenInterest(callOI + putOI)
                             .build();
                 })
-                .sorted(Comparator.comparing(StrikePriceDataDTO::getStrikePrice))
+                .sorted(Comparator.comparing(StrikePriceDataDTO::getStrikePrice).reversed())
                 .collect(Collectors.toList());
 
         // 거래량 최대 행사가
@@ -237,8 +294,7 @@ public class MarketDataService {
         // Max Pain 계산 (간단한 버전)
         BigDecimal maxPainPrice = calculateMaxPain(strikeChain);
 
-        // 기초자산 가격 추정 (ATM 찾기)
-        BigDecimal underlyingPrice = estimateUnderlyingPrice(allOptions);
+        // ATM 행사가 찾기 (이미 계산된 underlyingPrice 사용)
         BigDecimal atmStrike = findNearestStrike(strikeChain, underlyingPrice);
 
         return OptionChainAnalysisDTO.builder()

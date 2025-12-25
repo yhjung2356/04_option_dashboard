@@ -1,0 +1,32 @@
+{
+  "name": "futures-options-dashboard",
+  "version": "2.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "type-check": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "vue": "^3.4.21",
+    "@vueuse/core": "^10.9.0",
+    "pinia": "^2.1.7",
+    "vue-router": "^4.3.0",
+    "@stomp/stompjs": "^7.0.0",
+    "chart.js": "^4.4.2",
+    "vue-chartjs": "^5.3.0",
+    "date-fns": "^3.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "typescript": "^5.4.2",
+    "vue-tsc": "^2.0.6",
+    "vite": "^5.2.0",
+    "vite-plugin-pwa": "^0.19.8",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3"
+  }
+}

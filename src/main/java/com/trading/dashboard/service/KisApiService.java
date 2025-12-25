@@ -95,26 +95,19 @@ public class KisApiService {
 
             // 실제 KOSPI200 옵션 종목코드 (2026년 1월물)
             // 콜옵션 (Call): B01601{행사가}, 풋옵션 (Put): C01601{행사가}
-            // 행사가 560~575 (2.5pt 간격), 현재 KOSPI200 지수 567 부근
-            String[] optionCodes = {
-                    // 콜옵션 (B = Call)
-                    "B01601560", // 560.0
-                    "B01601562", // 562.5
-                    "B01601565", // 565.0
-                    "B01601567", // 567.0 (ATM)
-                    "B01601570", // 570.0
-                    "B01601572", // 572.5
-                    "B01601575", // 575.0
+            // 행사가 540~600 (2.5pt 간격) - 넓은 범위로 조회, 프론트엔드에서 ATM 주변만 표시
+            List<String> optionCodes = new ArrayList<>();
 
-                    // 풋옵션 (C = Put)
-                    "C01601560", // 560.0
-                    "C01601562", // 562.5
-                    "C01601565", // 565.0
-                    "C01601567", // 567.0 (ATM)
-                    "C01601570", // 570.0
-                    "C01601572", // 572.5
-                    "C01601575" // 575.0
-            };
+            // 행사가 540부터 600까지 2.5pt 간격으로 생성
+            // KIS 종목코드 형식: 560.0 -> "560", 562.5 -> "562", 565.0 -> "565"
+            for (int i = 540; i <= 600; i++) {
+                // 정수 행사가 (540, 542, 545, 547, 550...)
+                String strikeCode = String.format("%03d", i);
+                optionCodes.add("B01601" + strikeCode); // 콜옵션
+                optionCodes.add("C01601" + strikeCode); // 풋옵션
+            }
+
+            log.info("Querying {} option contracts from KIS API (strikes 540~600)", optionCodes.size());
 
             for (String code : optionCodes) {
                 try {
@@ -518,6 +511,46 @@ public class KisApiService {
         } catch (Exception e) {
             log.debug("Failed to load token from file: {}", e.getMessage());
             return null;
+        }
+    }
+
+    /**
+     * WebSocket approval_key 발급
+     * REST API의 access_token과 다른 WebSocket 전용 키
+     */
+    public String getWebSocketApprovalKey() {
+        try {
+            log.debug("Requesting WebSocket approval key...");
+
+            String url = config.getBaseUrl() + "/oauth2/Approval";
+            String requestBody = String.format(
+                    "{\"grant_type\":\"client_credentials\",\"appkey\":\"%s\",\"secretkey\":\"%s\"}",
+                    config.getAppKey(), config.getAppSecret());
+
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(url))
+                    .header("Content-Type", "application/json; charset=utf-8")
+                    .POST(HttpRequest.BodyPublishers.ofString(requestBody))
+                    .build();
+
+            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+
+            if (response.statusCode() == 200) {
+                JsonNode root = objectMapper.readTree(response.body());
+                String approvalKey = root.get("approval_key").asText();
+                log.info("✓ WebSocket approval key obtained successfully");
+                return approvalKey;
+            } else {
+                log.error("Failed to get WebSocket approval key: {} - {}",
+                        response.statusCode(), response.body());
+                throw new TokenExpiredException("Failed to get WebSocket approval key: " + response.statusCode());
+            }
+
+        } catch (TokenExpiredException e) {
+            throw e;
+        } catch (Exception e) {
+            log.error("Error getting WebSocket approval key: {}", e.getMessage(), e);
+            throw new TokenExpiredException("Failed to get WebSocket approval key: " + e.getMessage());
         }
     }
 
