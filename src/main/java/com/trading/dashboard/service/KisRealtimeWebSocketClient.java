@@ -22,9 +22,10 @@ import java.util.concurrent.TimeUnit;
 /**
  * 한국투자증권 실시간 WebSocket 클라이언트
  * 선물/옵션 실시간 체결가 및 호가 데이터 수신
+ * 
+ * 주의: @Component 제거 - 각 TR_ID마다 인스턴스를 직접 생성해야 함
  */
 @Slf4j
-@Component
 public class KisRealtimeWebSocketClient extends WebSocketClient {
 
     private final ObjectMapper objectMapper;
@@ -32,6 +33,8 @@ public class KisRealtimeWebSocketClient extends WebSocketClient {
     private final KisApiService kisApiService;
     private final FuturesDataRepository futuresDataRepository;
     private final OptionDataRepository optionDataRepository;
+    private final SymbolMasterService symbolMasterService;
+    private final String trId; // 이 WebSocket이 처리할 TR_ID
 
     private String approvalKey;
     private CountDownLatch connectLatch;
@@ -45,13 +48,17 @@ public class KisRealtimeWebSocketClient extends WebSocketClient {
             KisApiService kisApiService,
             ObjectMapper objectMapper,
             FuturesDataRepository futuresDataRepository,
-            OptionDataRepository optionDataRepository) {
+            OptionDataRepository optionDataRepository,
+            SymbolMasterService symbolMasterService,
+            String trId) {
         super(URI.create("ws://ops.koreainvestment.com:21000")); // 임시 URI (initialize에서 재연결)
         this.messagingTemplate = messagingTemplate;
         this.kisApiService = kisApiService;
         this.objectMapper = objectMapper;
         this.futuresDataRepository = futuresDataRepository;
         this.optionDataRepository = optionDataRepository;
+        this.symbolMasterService = symbolMasterService;
+        this.trId = trId;
         this.connectLatch = new CountDownLatch(1);
     }
 
@@ -98,17 +105,17 @@ public class KisRealtimeWebSocketClient extends WebSocketClient {
     /**
      * WebSocket 연결 초기화 및 인증
      */
-    public boolean initialize() {
+    public boolean initialize(String approvalKey) {
         try {
-            log.info("KIS 실시간 WebSocket 초기화 중...");
+            log.info("[{}] KIS 실시간 WebSocket 초기화 중...", trId);
 
-            // 1. Approval Key 획득
-            this.approvalKey = kisApiService.getApprovalKey();
+            // 1. Approval Key 설정
+            this.approvalKey = approvalKey;
             if (approvalKey == null || approvalKey.isEmpty()) {
-                log.error("Approval Key 획득 실패");
+                log.error("[{}] Approval Key 획득 실패", trId);
                 return false;
             }
-            log.info("✓ Approval Key 획득 완료");
+            log.info("[{}] ✓ Approval Key 획득 완료", trId);
 
             // 2. approval_key를 포함한 URL로 재연결
             String wsUrl = String.format(
@@ -119,7 +126,7 @@ public class KisRealtimeWebSocketClient extends WebSocketClient {
             this.uri = URI.create(wsUrl);
             this.connectLatch = new CountDownLatch(1);
 
-            log.info("WebSocket 연결 시도: ws://ops.koreainvestment.com:21000?approval_key=***&custtype=P");
+            log.info("[{}] WebSocket 연결 시도: ws://ops.koreainvestment.com:21000?approval_key=***&custtype=P", trId);
             connect();
 
             // 3. 연결 대기 (최대 10초)
@@ -140,15 +147,26 @@ public class KisRealtimeWebSocketClient extends WebSocketClient {
 
     /**
      * 실시간 선물 체결가 구독
-     * TR_ID: H0MFCNT0 (KRX야간선물 실시간종목체결)
+     * TR_ID: this.trId (생성자에서 주입된 TR_ID 사용)
      */
     public void subscribeFuturesPrice(String futuresCode) {
         try {
-            String trId = "H0MFCNT0"; // KRX야간선물 실시간체결가 [실시간-064]
-            String subscribeMessage = buildSubscribeMessage(trId, futuresCode);
+            // 연결 상태 확인 및 대기
+            if (!isOpen()) {
+                log.warn("⚠️ WebSocket 연결 대기 중... ({})", futuresCode);
+                Thread.sleep(1000); // 1초 대기
+
+                if (!isOpen()) {
+                    log.error("❌ WebSocket 미연결 상태 - 구독 실패: {}", futuresCode);
+                    return;
+                }
+            }
+
+            // FIXED: 생성자에서 주입된 this.trId 사용
+            String subscribeMessage = buildSubscribeMessage(this.trId, futuresCode);
 
             send(subscribeMessage);
-            subscribedSymbols.put(futuresCode, trId);
+            subscribedSymbols.put(futuresCode, this.trId);
 
             log.info("✓ 선물 실시간 체결가 구독: {}", futuresCode);
         } catch (Exception e) {
@@ -158,15 +176,26 @@ public class KisRealtimeWebSocketClient extends WebSocketClient {
 
     /**
      * 실시간 선물 호가 구독
-     * TR_ID: H0MFASP0 (KRX야간선물 실시간호가)
+     * TR_ID: this.trId (생성자에서 주입된 TR_ID 사용)
      */
     public void subscribeFuturesQuote(String futuresCode) {
         try {
-            String trId = "H0MFASP0"; // KRX야간선물 실시간호가 [실시간-065]
-            String subscribeMessage = buildSubscribeMessage(trId, futuresCode);
+            // 연결 상태 확인 및 대기
+            if (!isOpen()) {
+                log.warn("⚠️ WebSocket 연결 대기 중... ({})", futuresCode);
+                Thread.sleep(1000); // 1초 대기
+
+                if (!isOpen()) {
+                    log.error("❌ WebSocket 미연결 상태 - 구독 실패: {}", futuresCode);
+                    return;
+                }
+            }
+
+            // FIXED: 생성자에서 주입된 this.trId 사용
+            String subscribeMessage = buildSubscribeMessage(this.trId, futuresCode);
 
             send(subscribeMessage);
-            subscribedSymbols.put(futuresCode + "_QUOTE", trId);
+            subscribedSymbols.put(futuresCode + "_QUOTE", this.trId);
 
             log.info("✓ 선물 실시간 호가 구독: {}", futuresCode);
         } catch (Exception e) {
@@ -176,15 +205,26 @@ public class KisRealtimeWebSocketClient extends WebSocketClient {
 
     /**
      * 실시간 옵션 체결가 구독
-     * TR_ID: H0EUCNT0 (KRX야간옵션 실시간체결가)
+     * TR_ID: this.trId (생성자에서 주입된 TR_ID 사용)
      */
     public void subscribeOptionsPrice(String optionCode) {
         try {
-            String trId = "H0EUCNT0"; // KRX야간옵션 실시간체결가 [실시간-032]
-            String subscribeMessage = buildSubscribeMessage(trId, optionCode);
+            // 연결 상태 확인 및 대기
+            if (!isOpen()) {
+                log.warn("⚠️ WebSocket 연결 대기 중... ({})", optionCode);
+                Thread.sleep(1000); // 1초 대기
+
+                if (!isOpen()) {
+                    log.error("❌ WebSocket 미연결 상태 - 구독 실패: {}", optionCode);
+                    return;
+                }
+            }
+
+            // FIXED: 생성자에서 주입된 this.trId 사용 (H0IOCNT0 주간장 / H0EUCNT0 야간장)
+            String subscribeMessage = buildSubscribeMessage(this.trId, optionCode);
 
             send(subscribeMessage);
-            subscribedSymbols.put(optionCode, trId);
+            subscribedSymbols.put(optionCode, this.trId);
 
             log.info("✓ 옵션 실시간 체결가 구독: {}", optionCode);
         } catch (Exception e) {
@@ -194,15 +234,26 @@ public class KisRealtimeWebSocketClient extends WebSocketClient {
 
     /**
      * 실시간 옵션 호가 구독
-     * TR_ID: H0EUASP0 (KRX야간옵션 실시간호가)
+     * TR_ID: this.trId (생성자에서 주입된 TR_ID 사용)
      */
     public void subscribeOptionsQuote(String optionCode) {
         try {
-            String trId = "H0EUASP0"; // KRX야간옵션 실시간호가 [실시간-033]
-            String subscribeMessage = buildSubscribeMessage(trId, optionCode);
+            // 연결 상태 확인 및 대기
+            if (!isOpen()) {
+                log.warn("⚠️ WebSocket 연결 대기 중... ({})", optionCode);
+                Thread.sleep(1000); // 1초 대기
+
+                if (!isOpen()) {
+                    log.error("❌ WebSocket 미연결 상태 - 구독 실패: {}", optionCode);
+                    return;
+                }
+            }
+
+            // FIXED: 생성자에서 주입된 this.trId 사용
+            String subscribeMessage = buildSubscribeMessage(this.trId, optionCode);
 
             send(subscribeMessage);
-            subscribedSymbols.put(optionCode + "_QUOTE", trId);
+            subscribedSymbols.put(optionCode + "_QUOTE", this.trId);
 
             log.info("✓ 옵션 실시간 호가 구독: {}", optionCode);
         } catch (Exception e) {
@@ -289,6 +340,7 @@ public class KisRealtimeWebSocketClient extends WebSocketClient {
                 case "H0MFASP0": // 선물 호가 (야간장)
                     processFuturesQuote(symbol, data);
                     break;
+                case "H0IOCNT0": // 지수옵션 체결가 (주간장) ✅ 추가!
                 case "H0OPCNT0": // 옵션 체결가 (정규장)
                 case "H0EUCNT0": // 옵션 체결가 (야간장)
                     processOptionsPrice(symbol, data);
@@ -317,14 +369,36 @@ public class KisRealtimeWebSocketClient extends WebSocketClient {
             // 데이터 파싱 (구분자: ^)
             String[] fields = data.split("\\^");
 
-            // KIS API 선물 체결 필드 매핑 (주간/야간 동일):
-            // fields[1] = 영업시간 (bsop_hour), fields[5] = 현재가 (futs_prpr)
-            // fields[10] = 누적 거래량 (acml_vol) ✅ 주간/야간 순수 거래량!
-            // fields[11] = 누적 거래대금 (acml_tr_pbmn) ✅ 주간/야간 순수 거래대금!
+            // 원본 데이터 로깅 (디버깅용)
+            log.info("📥 선물 원본 데이터 [{}]: fields.length={} | [5]={} [10]={} [11]={} [18]={}",
+                    symbol, fields.length,
+                    fields.length > 5 ? fields[5] : "N/A",
+                    fields.length > 10 ? fields[10] : "N/A",
+                    fields.length > 11 ? fields[11] : "N/A",
+                    fields.length > 18 ? fields[18] : "N/A");
+
+            // H0IFCNT0 선물 실시간 체결가 필드 매핑 (API 가이드 기준):
+            // fields[5] = FUTS_PRPR (선물 현재가)
+            // fields[10] = ACML_VOL (누적 거래량)
+            // fields[11] = ACML_TR_PBMN (누적 거래대금, 천원 단위)
+            // fields[18] = HTS_OTST_STPL_QTY (HTS 미결제 약정 수량)
+            // fields[19] = OTST_STPL_QTY_ICDC (미결제 약정 수량 증감)
+            // fields[35] = FUTS_ASKP1 (선물 매도호가1)
+            // fields[36] = FUTS_BIDP1 (선물 매수호가1)
+            // fields[37] = ASKP_RSQN1 (매도호가 잔량1)
+            // fields[38] = BIDP_RSQN1 (매수호가 잔량1)
             String currentPriceStr = fields.length > 5 ? fields[5] : "0";
             String changeStr = fields.length > 2 ? fields[2] : "0";
             String volumeStr = fields.length > 10 ? fields[10] : "0";
             String tradingValueStr = fields.length > 11 ? fields[11] : "0";
+            String openInterestStr = fields.length > 18 ? fields[18] : "0";
+            String openInterestChangeStr = fields.length > 19 ? fields[19] : "0";
+
+            // 호가 데이터
+            String askPriceStr = fields.length > 35 ? fields[35] : "0";
+            String bidPriceStr = fields.length > 36 ? fields[36] : "0";
+            String askVolumeStr = fields.length > 37 ? fields[37] : "0";
+            String bidVolumeStr = fields.length > 38 ? fields[38] : "0";
 
             // DB 업데이트 (KIS API가 이미 야간장 순수 거래량을 보내주므로 그대로 사용)
             FuturesData futures = futuresDataRepository.findBySymbol(symbol);
@@ -345,7 +419,7 @@ public class KisRealtimeWebSocketClient extends WebSocketClient {
                     futures.setTradingValue(tradingValueInEokWon);
 
                     futuresDataRepository.save(futures);
-                    log.debug("💾 선물 DB 업데이트: {} | 가격={} 거래량={} 거래대금={}(억)",
+                    log.info("💾 선물 DB 업데이트: {} | 가격={} 거래량={} 거래대금={}(억)",
                             symbol, currentPrice, volume, tradingValueInEokWon);
                 } catch (NumberFormatException e) {
                     log.warn("⚠️ 데이터 변환 실패: {} | 가격={} 거래량={} 거래대금={}",
@@ -362,13 +436,19 @@ public class KisRealtimeWebSocketClient extends WebSocketClient {
             priceData.put("change", changeStr);
             priceData.put("volume", volumeStr);
             priceData.put("tradingValue", tradingValueStr);
+            priceData.put("openInterest", openInterestStr);
+            priceData.put("openInterestChange", openInterestChangeStr);
+            priceData.put("askPrice", askPriceStr);
+            priceData.put("bidPrice", bidPriceStr);
+            priceData.put("askVolume", askVolumeStr);
+            priceData.put("bidVolume", bidVolumeStr);
             priceData.put("timestamp", System.currentTimeMillis());
 
             // STOMP로 전송
             messagingTemplate.convertAndSend("/topic/futures/realtime", priceData);
 
-            log.debug("✅ 선물 체결가 전송: {} | 가격={} 거래량={} 거래대금={}",
-                    symbol, priceData.get("currentPrice"), volumeStr, tradingValueStr);
+            log.debug("✅ 선물 체결가 전송: {} | 가격={} 매도={} 매수={} 거래량={} 미결제={}",
+                    symbol, currentPriceStr, askPriceStr, bidPriceStr, volumeStr, openInterestStr);
 
         } catch (Exception e) {
             log.error("선물 체결가 처리 오류: {}", e.getMessage(), e);
@@ -413,42 +493,160 @@ public class KisRealtimeWebSocketClient extends WebSocketClient {
         try {
             String[] fields = data.split("\\^");
 
-            // KIS API 옵션 체결 필드 매핑 (주간/야간 동일):
-            // fields[2] = 현재가 (optn_prpr), fields[4] = 전일대비 (optn_prdy_vrss)
-            // fields[10] = 누적 거래량 (acml_vol) ✅ 주간/야간 순수 거래량!
-            // fields[11] = 누적 거래대금 (acml_tr_pbmn) ✅ 주간/야간 순수 거래대금!
+            // 원본 데이터 로깅 (디버깅용 - 처음 5개만)
+            if (Math.random() < 0.05) { // 5% 확률로 로깅 (너무 많은 로그 방지)
+                log.info("📥 옵션 원본 데이터 [{}]: fields.length={} | [2]={} [10]={} [11]={} [13]={} [28]={} [29]={}",
+                        symbol, fields.length,
+                        fields.length > 2 ? fields[2] : "N/A",
+                        fields.length > 10 ? fields[10] : "N/A",
+                        fields.length > 11 ? fields[11] : "N/A",
+                        fields.length > 13 ? fields[13] : "N/A",
+                        fields.length > 28 ? fields[28] : "N/A",
+                        fields.length > 29 ? fields[29] : "N/A");
+            }
+
+            // H0IOCNT0 옵션 실시간 체결가 필드 매핑 (API 가이드 기준):
+            // fields[2] = OPTN_PRPR (옵션 현재가)
+            // fields[4] = OPTN_PRDY_VRSS (옵션 전일 대비)
+            // fields[10] = ACML_VOL (누적 거래량)
+            // fields[11] = ACML_TR_PBMN (누적 거래대금, 천원 단위)
+            // fields[12] = HTS_THPR (HTS 이론가)
+            // fields[13] = HTS_OTST_STPL_QTY (HTS 미결제 약정 수량)
+            // fields[14] = OTST_STPL_QTY_ICDC (미결제 약정 수량 증감)
+            // fields[26] = INVL_VAL (내재가치 값)
+            // fields[27] = TMVL_VAL (시간가치 값)
+            // fields[28] = DELTA (델타)
+            // fields[29] = GAMA (감마)
+            // fields[30] = VEGA (베가)
+            // fields[31] = THETA (세타)
+            // fields[32] = RHO (로우)
+            // fields[33] = HTS_INTS_VLTL (HTS 내재 변동성)
+            // fields[41] = OPTN_ASKP1 (옵션 매도호가1)
+            // fields[42] = OPTN_BIDP1 (옵션 매수호가1)
+            // fields[43] = ASKP_RSQN1 (매도호가 잔량1)
+            // fields[44] = BIDP_RSQN1 (매수호가 잔량1)
             String currentPriceStr = fields.length > 2 ? fields[2] : "0";
             String changeStr = fields.length > 4 ? fields[4] : "0";
+
+            // 거래량/거래대금/미결제
             String volumeStr = fields.length > 10 ? fields[10] : "0";
             String tradingValueStr = fields.length > 11 ? fields[11] : "0";
+            String openInterestStr = fields.length > 13 ? fields[13] : "0";
+            String openInterestChangeStr = fields.length > 14 ? fields[14] : "0";
+
+            // 이론가/내재가치/시간가치
+            String theoreticalPriceStr = fields.length > 12 ? fields[12] : null;
+            String intrinsicValueStr = fields.length > 26 ? fields[26] : null;
+            String timeValueStr = fields.length > 27 ? fields[27] : null;
+
+            // Greeks 데이터
+            String deltaStr = fields.length > 28 ? fields[28] : null;
+            String gammaStr = fields.length > 29 ? fields[29] : null;
+            String vegaStr = fields.length > 30 ? fields[30] : null;
+            String thetaStr = fields.length > 31 ? fields[31] : null;
+            String rhoStr = fields.length > 32 ? fields[32] : null;
+            String impliedVolatilityStr = fields.length > 33 ? fields[33] : null;
+
+            // 호가 데이터
+            String askPriceStr = fields.length > 41 ? fields[41] : "0";
+            String bidPriceStr = fields.length > 42 ? fields[42] : "0";
+            String askVolumeStr = fields.length > 43 ? fields[43] : "0";
+            String bidVolumeStr = fields.length > 44 ? fields[44] : "0";
 
             // DB 업데이트
-            OptionData option = optionDataRepository.findBySymbol(symbol);
-            if (option != null) {
-                try {
-                    BigDecimal currentPrice = new BigDecimal(currentPriceStr);
-                    option.setCurrentPrice(currentPrice);
+            try {
+                OptionData option = optionDataRepository.findBySymbol(symbol);
+                if (option != null) {
+                    try {
+                        BigDecimal currentPrice = new BigDecimal(currentPriceStr);
+                        option.setCurrentPrice(currentPrice);
 
-                    // KIS API가 이미 주간/야간 순수 거래량/거래대금을 전송하므로 그대로 사용
-                    Long volume = Long.parseLong(volumeStr);
-                    option.setVolume(volume);
+                        // 호가 데이터 설정
+                        if (!"0".equals(askPriceStr) && !askPriceStr.isEmpty()) {
+                            option.setAskPrice(new BigDecimal(askPriceStr));
+                        }
+                        if (!"0".equals(bidPriceStr) && !bidPriceStr.isEmpty()) {
+                            option.setBidPrice(new BigDecimal(bidPriceStr));
+                        }
 
-                    // 거래대금 변환: 천원 -> 억원 (100,000으로 나누기)
-                    // KIS API는 거래대금을 천원 단위로 전송
-                    BigDecimal tradingValueInThousandWon = new BigDecimal(tradingValueStr);
-                    BigDecimal tradingValueInEokWon = tradingValueInThousandWon.divide(new BigDecimal("100000"), 2,
-                            RoundingMode.HALF_UP);
-                    option.setTradingValue(tradingValueInEokWon);
+                        // 호가 잔량 설정
+                        if (!"0".equals(askVolumeStr) && !askVolumeStr.isEmpty()) {
+                            option.setAskVolume(Integer.parseInt(askVolumeStr));
+                        }
+                        if (!"0".equals(bidVolumeStr) && !bidVolumeStr.isEmpty()) {
+                            option.setBidVolume(Integer.parseInt(bidVolumeStr));
+                        }
 
-                    optionDataRepository.save(option);
-                    log.debug("💾 옵션 DB 업데이트: {} | 가격={} 거래량={} 거래대금={}(억)",
-                            symbol, currentPrice, volume, tradingValueInEokWon);
-                } catch (NumberFormatException e) {
-                    log.warn("데이터 변환 실패: {} | 가격={} 거래량={} 거래대금={}",
-                            symbol, currentPriceStr, volumeStr, tradingValueStr);
+                        // 이론가/내재가치/시간가치 설정
+                        if (theoreticalPriceStr != null && !theoreticalPriceStr.isEmpty()
+                                && !"0".equals(theoreticalPriceStr)) {
+                            option.setTheoreticalPrice(new BigDecimal(theoreticalPriceStr));
+                        }
+                        if (intrinsicValueStr != null && !intrinsicValueStr.isEmpty()
+                                && !"0".equals(intrinsicValueStr)) {
+                            option.setIntrinsicValue(new BigDecimal(intrinsicValueStr));
+                        }
+                        if (timeValueStr != null && !timeValueStr.isEmpty() && !"0".equals(timeValueStr)) {
+                            option.setTimeValue(new BigDecimal(timeValueStr));
+                        }
+
+                        // Greeks 데이터 설정 (실시간 업데이트)
+                        if (deltaStr != null && !deltaStr.isEmpty() && !"0".equals(deltaStr)) {
+                            option.setDelta(new BigDecimal(deltaStr));
+                        }
+                        if (gammaStr != null && !gammaStr.isEmpty() && !"0".equals(gammaStr)) {
+                            option.setGamma(new BigDecimal(gammaStr));
+                        }
+                        if (vegaStr != null && !vegaStr.isEmpty() && !"0".equals(vegaStr)) {
+                            option.setVega(new BigDecimal(vegaStr));
+                        }
+                        if (thetaStr != null && !thetaStr.isEmpty() && !"0".equals(thetaStr)) {
+                            option.setTheta(new BigDecimal(thetaStr));
+                        }
+                        if (rhoStr != null && !rhoStr.isEmpty() && !"0".equals(rhoStr)) {
+                            option.setRho(new BigDecimal(rhoStr));
+                        }
+                        if (impliedVolatilityStr != null && !impliedVolatilityStr.isEmpty()
+                                && !"0".equals(impliedVolatilityStr)) {
+                            option.setImpliedVolatility(new BigDecimal(impliedVolatilityStr));
+                        }
+
+                        // 미결제 증감 설정
+                        if (openInterestChangeStr != null && !openInterestChangeStr.isEmpty()
+                                && !"0".equals(openInterestChangeStr)) {
+                            option.setOpenInterestChange(Long.parseLong(openInterestChangeStr));
+                        }
+
+                        // 미결제약정 설정
+                        if (!"0".equals(openInterestStr) && !openInterestStr.isEmpty()) {
+                            option.setOpenInterest(Long.parseLong(openInterestStr));
+                        }
+
+                        // KIS API가 이미 주간/야간 순수 거래량/거래대금을 전송하므로 그대로 사용
+                        Long volume = Long.parseLong(volumeStr);
+                        option.setVolume(volume);
+
+                        // 거래대금 변환: 천원 -> 억원 (100,000으로 나누기)
+                        // KIS API는 거래대금을 천원 단위로 전송
+                        BigDecimal tradingValueInThousandWon = new BigDecimal(tradingValueStr);
+                        BigDecimal tradingValueInEokWon = tradingValueInThousandWon.divide(new BigDecimal("100000"), 2,
+                                RoundingMode.HALF_UP);
+                        option.setTradingValue(tradingValueInEokWon);
+
+                        optionDataRepository.save(option);
+                        log.info("💾 옵션 DB 업데이트: {} | 가격={} 거래량={} 거래대금={}(억)",
+                                symbol, currentPrice, volume, tradingValueInEokWon);
+                    } catch (NumberFormatException e) {
+                        log.warn("데이터 변환 실패: {} | 가격={} 거래량={} 거래대금={}",
+                                symbol, currentPriceStr, volumeStr, tradingValueStr);
+                    }
+                } else {
+                    log.warn("⚠️ DB에 종목 없음: {} - 거래량={}", symbol, volumeStr);
                 }
-            } else {
-                log.warn("⚠️ DB에 종목 없음: {} - 거래량={}", symbol, volumeStr);
+            } catch (IllegalStateException e) {
+                // ApplicationContext가 종료된 경우 - 정상적인 종료 과정
+                log.debug("⚠️ ApplicationContext 종료됨 - DB 업데이트 스킵: {}", symbol);
+                return; // DB 업데이트 실패시 STOMP 전송도 스킵
             }
 
             // STOMP로 전송
@@ -458,12 +656,21 @@ public class KisRealtimeWebSocketClient extends WebSocketClient {
             priceData.put("change", changeStr);
             priceData.put("volume", volumeStr);
             priceData.put("tradingValue", tradingValueStr);
+            priceData.put("openInterest", openInterestStr);
+            priceData.put("openInterestChange", openInterestChangeStr);
+            priceData.put("askPrice", askPriceStr);
+            priceData.put("bidPrice", bidPriceStr);
+            priceData.put("askVolume", askVolumeStr);
+            priceData.put("bidVolume", bidVolumeStr);
+            priceData.put("theoreticalPrice", theoreticalPriceStr);
+            priceData.put("intrinsicValue", intrinsicValueStr);
+            priceData.put("timeValue", timeValueStr);
             priceData.put("timestamp", System.currentTimeMillis());
 
             messagingTemplate.convertAndSend("/topic/options/realtime", priceData);
 
-            log.debug("✅ 옵션 실시간 체결가: {} | 가격={} 거래량={} 거래대금={}",
-                    symbol, currentPriceStr, volumeStr, tradingValueStr);
+            log.debug("✅ 옵션 실시간 체결가: {} | 가격={} 매도={} 매수={} 거래량={} 미결제={}",
+                    symbol, currentPriceStr, askPriceStr, bidPriceStr, volumeStr, openInterestStr);
 
         } catch (Exception e) {
             log.error("옵션 체결가 처리 오류: {}", e.getMessage(), e);

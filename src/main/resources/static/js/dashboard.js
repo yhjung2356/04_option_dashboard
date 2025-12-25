@@ -691,10 +691,33 @@ function updateOptionChain() {
         .catch(error => console.error('Error fetching option chain:', error));
 }
 
-// Format bid/ask
+// Format bid/ask with volume
 function formatBidAsk(bid, ask) {
     if (!bid || !ask) return '-';
     return `${formatPrice(bid)}/${formatPrice(ask)}`;
+}
+
+// Format bid/ask with volume in parentheses
+function formatBidAskWithVolume(price, volume) {
+    if (!price) return '-';
+    const priceStr = formatPrice(price);
+    const volStr = volume ? `<span class="quote-volume">(${formatNumber(volume)})</span>` : '';
+    return `${priceStr}${volStr}`;
+}
+
+// Format OI with change
+function formatOIWithChange(oi, change) {
+    const oiStr = formatNumber(oi);
+    if (!change || change === 0) return oiStr;
+    const changeClass = change > 0 ? 'positive' : 'negative';
+    const changeStr = change > 0 ? `+${formatNumber(change)}` : formatNumber(change);
+    return `${oiStr}<br><span class="oi-change ${changeClass}">${changeStr}</span>`;
+}
+
+// Format Greeks value
+function formatGreeks(value) {
+    if (!value && value !== 0) return '-';
+    return parseFloat(value).toFixed(2);
 }
 
 // Update current time
@@ -716,7 +739,7 @@ function updateTime() {
 }
 
 // 장 시간 체크 함수
-function updateMarketStatus(now) {
+async function updateMarketStatus(now) {
     const day = now.getDay(); // 0=일요일, 6=토요일
     const hours = now.getHours();
     const minutes = now.getMinutes();
@@ -726,6 +749,17 @@ function updateMarketStatus(now) {
     const statusText = document.getElementById('status-text');
     const statusIcon = statusElement.querySelector('i');
     const closedBanner = document.getElementById('market-closed-banner');
+    
+    // 서버에서 거래일 여부 확인
+    const state = StateManager.getState();
+    const isTradingDay = state.isTradingDay;
+    const isHoliday = state.isHoliday;
+    
+    // 휴장일(공휴일) 체크 - 최우선
+    if (isHoliday === true || isTradingDay === false) {
+        setMarketClosed(statusElement, statusIcon, statusText, '휴장', closedBanner);
+        return;
+    }
     
     // 주말 체크 - "장 마감"으로 통일
     if (day === 0 || day === 6) {
@@ -809,6 +843,7 @@ async function loadInitialData() {
         if (optionChainResponse.ok) {
             const optionChainData = await optionChainResponse.json();
             console.log('Option chain data loaded:', optionChainData);
+            console.log('🔍 atmGreeks in response:', optionChainData.atmGreeks);
             updateOptionChainData(optionChainData);
         } else {
             console.error('Failed to load option chain:', optionChainResponse.status);
@@ -848,7 +883,16 @@ function updateOptionChainData(data) {
     const maxVolume = Math.max(...data.strikeChain.map(s => s.totalVolume));
     const maxOI = Math.max(...data.strikeChain.map(s => s.totalOpenInterest));
     
-    data.strikeChain.forEach(strike => {
+    // ATM 기준 위아래 5개씩만 표시 (총 10개)
+    const atmIndex = data.strikeChain.findIndex(s => s.strikePrice == data.atmStrike);
+    const displayRange = 5; // ATM 위아래로 각각 5개
+    const startIndex = Math.max(0, atmIndex - displayRange);
+    const endIndex = Math.min(data.strikeChain.length, atmIndex + displayRange + 1);
+    const filteredStrikes = data.strikeChain.slice(startIndex, endIndex);
+    
+    console.log(`Displaying ${filteredStrikes.length} strikes (ATM index: ${atmIndex}, range: ${startIndex}-${endIndex})`);
+    
+    filteredStrikes.forEach(strike => {
         const isATM = strike.strikePrice == data.atmStrike;
         const rowClass = isATM ? 'atm-row' : '';
         
@@ -859,17 +903,23 @@ function updateOptionChainData(data) {
         
         html += `
             <tr class="${rowClass}">
-                <td class="call-cell">${formatBidAsk(strike.callBidPrice, strike.callAskPrice)}</td>
-                <td class="call-cell">${strike.callDelta ? strike.callDelta.toFixed(3) : '-'}</td>
+                <td class="call-cell">${formatBidAskWithVolume(strike.callAskPrice, strike.callAskVolume)}</td>
+                <td class="call-cell">${formatBidAskWithVolume(strike.callBidPrice, strike.callBidVolume)}</td>
                 <td class="call-cell ${callVolumeClass}">${formatNumber(strike.callVolume)}</td>
-                <td class="call-cell ${callOIClass}">${formatNumber(strike.callOpenInterest)}</td>
+                <td class="call-cell ${callOIClass}">${formatOIWithChange(strike.callOpenInterest, strike.callOIChange)}</td>
                 <td class="call-cell formatted-number">${formatPrice(strike.callPrice)}</td>
+                <td class="call-cell greeks-cell">${formatGreeks(strike.callTheoretical)}</td>
+                <td class="call-cell greeks-cell">${formatGreeks(strike.callIntrinsic)}</td>
+                <td class="call-cell greeks-cell">${formatGreeks(strike.callTimeValue)}</td>
                 <td class="strike-cell">${formatPrice(strike.strikePrice)}</td>
+                <td class="put-cell greeks-cell">${formatGreeks(strike.putTimeValue)}</td>
+                <td class="put-cell greeks-cell">${formatGreeks(strike.putIntrinsic)}</td>
+                <td class="put-cell greeks-cell">${formatGreeks(strike.putTheoretical)}</td>
                 <td class="put-cell formatted-number">${formatPrice(strike.putPrice)}</td>
-                <td class="put-cell ${putOIClass}">${formatNumber(strike.putOpenInterest)}</td>
+                <td class="put-cell ${putOIClass}">${formatOIWithChange(strike.putOpenInterest, strike.putOIChange)}</td>
                 <td class="put-cell ${putVolumeClass}">${formatNumber(strike.putVolume)}</td>
-                <td class="put-cell">${strike.putDelta ? strike.putDelta.toFixed(3) : '-'}</td>
-                <td class="put-cell">${formatBidAsk(strike.putBidPrice, strike.putAskPrice)}</td>
+                <td class="put-cell">${formatBidAskWithVolume(strike.putAskPrice, strike.putAskVolume)}</td>
+                <td class="put-cell">${formatBidAskWithVolume(strike.putBidPrice, strike.putBidVolume)}</td>
             </tr>
         `;
     });
@@ -880,18 +930,26 @@ function updateOptionChainData(data) {
 // Update Greeks display
 function updateGreeksDisplay(strikeChain, atmStrike) {
     if (!strikeChain || strikeChain.length === 0) {
-        console.log('No strike chain data available for Greeks');
+        console.log('❌ No strike chain data available for Greeks');
         return;
     }
     
     // Find ATM strike
     const atmData = strikeChain.find(s => s.strikePrice == atmStrike);
     if (!atmData) {
-        console.log('ATM strike not found:', atmStrike);
+        console.log('❌ ATM strike not found:', atmStrike);
         return;
     }
     
-    console.log('ATM Data for Greeks:', atmData);
+    console.log('✅ ATM Data for Greeks:', atmData);
+    console.log('📊 Greeks Values:', {
+        callDelta: atmData.callDelta,
+        putDelta: atmData.putDelta,
+        callGamma: atmData.callGamma,
+        callTheta: atmData.callTheta,
+        callVega: atmData.callVega,
+        callIV: atmData.callImpliedVolatility
+    });
     
     // Update Delta
     const deltaCall = document.getElementById('delta-call');
@@ -922,14 +980,15 @@ function updateGreeksDisplay(strikeChain, atmStrike) {
     if (ivElement) {
         const iv = atmData.callImpliedVolatility;
         if (iv) {
-            const ivPercent = (iv * 100).toFixed(2) + '%';
+            // IV는 이미 백분율 값 (예: 23.88)
+            const ivPercent = iv.toFixed(2) + '%';
             ivElement.textContent = ivPercent;
             console.log('IV Updated:', ivPercent);
             
             // Update IV index in sentiment card
             const ivIndexElement = document.getElementById('iv-index');
             if (ivIndexElement) {
-                const ivValue = (iv * 100).toFixed(1);
+                const ivValue = iv.toFixed(1);
                 ivIndexElement.textContent = ivValue;
                 console.log('IV Index Updated:', ivValue);
             }

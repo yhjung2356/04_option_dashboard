@@ -29,6 +29,9 @@ public class StrikePriceDataDTO {
     private BigDecimal callVega;
     private BigDecimal callBidPrice;
     private BigDecimal callAskPrice;
+    private BigDecimal callIntrinsic; // 내재가치
+    private BigDecimal callTimeValue; // 시간가치
+    private BigDecimal callTheoretical; // 이론가
 
     // 풋 옵션 데이터
     private BigDecimal putPrice;
@@ -41,6 +44,9 @@ public class StrikePriceDataDTO {
     private BigDecimal putVega;
     private BigDecimal putBidPrice;
     private BigDecimal putAskPrice;
+    private BigDecimal putIntrinsic; // 내재가치
+    private BigDecimal putTimeValue; // 시간가치
+    private BigDecimal putTheoretical; // 이론가
 
     // 총합
     private Long totalVolume;

@@ -6,6 +6,7 @@ import com.trading.dashboard.dto.OptionChainAnalysisDTO;
 import com.trading.dashboard.dto.PutCallRatioDTO;
 import com.trading.dashboard.service.InitialDataLoader;
 import com.trading.dashboard.service.MarketDataService;
+import com.trading.dashboard.service.TradingCalendarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +25,7 @@ public class MarketDataController {
     private final MarketDataService marketDataService;
     private final TradingProperties tradingProperties;
     private final InitialDataLoader initialDataLoader;
+    private final TradingCalendarService tradingCalendarService;
 
     /**
      * 전체 시장 현황
@@ -58,9 +60,22 @@ public class MarketDataController {
         state.put("dataSource", tradingProperties.getDataSource());
         state.put("demoMode", tradingProperties.isDemoMode());
         state.put("marketHoursEnabled", tradingProperties.getMarketHours().isEnabled());
+        state.put("isTradingDay", tradingCalendarService.isTradingDay());
+        state.put("isHoliday", tradingCalendarService.isHoliday());
         state.put("timestamp", System.currentTimeMillis());
         state.put("serverTime", new java.util.Date());
         return ResponseEntity.ok(state);
+    }
+
+    /**
+     * 거래일 여부 확인
+     */
+    @GetMapping("/is-trading-day")
+    public ResponseEntity<Map<String, Boolean>> isTradingDay() {
+        Map<String, Boolean> result = new HashMap<>();
+        result.put("isTradingDay", tradingCalendarService.isTradingDay());
+        result.put("isHoliday", tradingCalendarService.isHoliday());
+        return ResponseEntity.ok(result);
     }
 
     /**

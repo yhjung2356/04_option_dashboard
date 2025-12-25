@@ -38,14 +38,14 @@ public class CsvDataLoaderService {
 
         try {
             List<OptionData> optionsList = parseCsvFile(filePath);
-            
+
             if (!optionsList.isEmpty()) {
                 optionDataRepository.saveAll(optionsList);
                 log.info("✓ Loaded {} options from CSV file", optionsList.size());
             } else {
                 log.warn("No valid data found in CSV file");
             }
-            
+
         } catch (Exception e) {
             log.error("Failed to load CSV data: {}", e.getMessage(), e);
         }
@@ -63,16 +63,17 @@ public class CsvDataLoaderService {
         LocalDateTime timestamp = LocalDateTime.now();
 
         // CSV 파일 읽기 (여러 인코딩 시도)
-        String[] encodings = {"UTF-8", "EUC-KR", "MS949"};
+        String[] encodings = { "UTF-8", "EUC-KR", "MS949" };
         BufferedReader reader = null;
-        
+
         for (String encoding : encodings) {
             try {
-                ClassPathResource resource = new ClassPathResource(filePath);
-                reader = new BufferedReader(
-                    new InputStreamReader(resource.getInputStream(), Charset.forName(encoding))
-                );
-                break;
+                if (filePath != null) {
+                    ClassPathResource resource = new ClassPathResource(filePath);
+                    reader = new BufferedReader(
+                            new InputStreamReader(resource.getInputStream(), Charset.forName(encoding)));
+                    break;
+                }
             } catch (Exception e) {
                 log.debug("Failed to read with encoding {}: {}", encoding, e.getMessage());
             }
@@ -88,7 +89,7 @@ public class CsvDataLoaderService {
 
         while ((line = reader.readLine()) != null) {
             lineNumber++;
-            
+
             // 헤더 건너뛰기
             if (lineNumber <= skipHeader) {
                 continue;
@@ -130,7 +131,7 @@ public class CsvDataLoaderService {
      */
     private OptionData parseCallOption(String line, LocalDateTime timestamp) {
         String[] columns = line.split(",");
-        
+
         if (columns.length < 9) {
             return null;
         }
@@ -194,7 +195,7 @@ public class CsvDataLoaderService {
      */
     private OptionData parsePutOption(String line, LocalDateTime timestamp) {
         String[] columns = line.split(",");
-        
+
         if (columns.length < 14) {
             return null;
         }
@@ -249,8 +250,8 @@ public class CsvDataLoaderService {
             return "";
         }
         return value.replace("\"", "")
-                    .replace(",", "")
-                    .replace("+", "")
-                    .trim();
+                .replace(",", "")
+                .replace("+", "")
+                .trim();
     }
 }

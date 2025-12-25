@@ -14,7 +14,9 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * 애플리케이션 시작 시 전거래일 데이터를 자동으로 로드
+ * 애플리케이션 시작 시 초기 데이터 로드
+ * - 거래일: KIS API (실시간 데이터)
+ * - 휴장일: KRX API (전거래일 데이터)
  */
 @Slf4j
 @Component
@@ -25,7 +27,8 @@ public class InitialDataLoader implements CommandLineRunner {
     private final OptionDataRepository optionDataRepository;
     private final KisApiService kisApiService;
     private final KrxDataService krxDataService;
-    private final KisRealtimeWebSocketClient kisRealtimeWebSocketClient;
+    private final SymbolMasterService symbolMasterService;
+    private final TradingCalendarService tradingCalendarService;
     private final Random random = new Random();
 
     @Override
@@ -36,7 +39,7 @@ public class InitialDataLoader implements CommandLineRunner {
 
     private void loadInitialData() {
         log.info("========================================");
-        log.info("Loading initial market data (Previous Trading Day)...");
+        log.info("Loading initial market data...");
         log.info("========================================");
 
         // 기존 데이터가 있으면 skip (재시작 시에만 로드)
@@ -45,6 +48,21 @@ public class InitialDataLoader implements CommandLineRunner {
             return;
         }
 
+        // 📅 휴장일 체크: 휴장일이면 KIS API로 전거래일 데이터 조회
+        if (!tradingCalendarService.isTradingDay()) {
+            log.info("=".repeat(60));
+            log.info("📅 오늘은 휴장일입니다.");
+            log.info("📊 전거래일({}) 데이터를 KIS API에서 조회합니다...",
+                    tradingCalendarService.getPreviousTradingDay());
+            log.info("=".repeat(60));
+
+            loadPreviousTradingDayData();
+            return;
+        }
+
+        // 거래일: KIS API 실시간 데이터 로드
+        log.info("📈 거래일입니다. 실시간 데이터를 로드합니다...");
+
         // 1단계: 한국투자증권 KIS API 시도 (실시간 데이터)
         try {
             log.info("Attempting to load KIS API data (Korea Investment & Securities)...");
@@ -52,14 +70,15 @@ public class InitialDataLoader implements CommandLineRunner {
             kisApiService.loadKospi200Options();
 
             // 데이터가 성공적으로 로드되었는지 확인
-            if (futuresDataRepository.count() > 0 || optionDataRepository.count() > 0) {
+            if (futuresDataRepository.count() > 0) {
                 log.info("✓ KIS API data loaded successfully!");
                 log.info("Total: {} futures, {} options",
-                        futuresDataRepository.count(),
-                        optionDataRepository.count());
+                        futuresDataRepository.count(), optionDataRepository.count());
 
-                // 야간 장이므로 거래량/거래대금 초기화 (전일 데이터는 유지)
-                resetVolumeAndTradingValue();
+                log.info("========================================");
+                log.info("Initial data from REST API - Current market status");
+                log.info("WebSocket will update real-time changes");
+                log.info("========================================");
 
                 return;
             }
@@ -67,25 +86,36 @@ public class InitialDataLoader implements CommandLineRunner {
             log.warn("Could not load KIS API data: {}", e.getMessage());
         }
 
-        // 2단계: 실패 시 KRX 데이터 시도
+        // 2단계: KIS API 실패 시 전거래일 데이터로 fallback
+        log.warn("KIS API failed. Loading previous trading day data as fallback...");
+        loadPreviousTradingDayData();
+    }
+
+    /**
+     * 전거래일 데이터 로드 (KIS API 기간별시세 사용)
+     */
+    private void loadPreviousTradingDayData() {
         try {
-            log.info("Attempting to load real KRX data...");
-            krxDataService.loadPreviousTradingDayData();
+            log.info("Attempting to load KIS previous trading day data...");
+
+            // KIS API의 기간별시세 API를 사용하여 전거래일 데이터 조회
+            String previousDate = tradingCalendarService.getPreviousTradingDay();
+            kisApiService.loadHistoricalData(previousDate);
 
             // 데이터가 성공적으로 로드되었는지 확인
             if (futuresDataRepository.count() > 0 || optionDataRepository.count() > 0) {
-                log.info("✓ Real KRX data loaded successfully!");
+                log.info("✓ KIS previous trading day data loaded successfully!");
                 log.info("Total: {} futures, {} options",
                         futuresDataRepository.count(),
                         optionDataRepository.count());
 
-                // 야간 장이므로 거래량/거래대금 초기화 (전일 데이터는 유지)
-                resetVolumeAndTradingValue();
+                // 전일 데이터이므로 거래량/거래대금 초기화 불필요
+                // (전일 마감 기준 데이터 유지)
 
                 return;
             }
         } catch (Exception e) {
-            log.warn("Could not load real KRX data: {}", e.getMessage());
+            log.warn("Could not load KRX data: {}", e.getMessage());
         }
 
         // 3단계: 모두 실패 시 샘플 데이터 생성
@@ -118,18 +148,18 @@ public class InitialDataLoader implements CommandLineRunner {
         LocalDateTime timestamp = LocalDateTime.now();
         List<FuturesData> futuresList = new ArrayList<>();
 
-        // 실제 KIS API 선물 종목 코드 사용
-        String[] futureCodes = { "A01603", "A01606", "A01609", "A01612" };
-        String[] months = { "3월", "6월", "9월", "12월" };
+        // SymbolMasterService로 동적 종목코드 생성
+        List<String> futureCodes = symbolMasterService.getActiveFuturesCodes();
+        String[] months = { "3월물", "6월물", "9월물", "12월물" };
         double basePrice = 582.0;
 
-        for (int i = 0; i < futureCodes.length; i++) {
+        for (int i = 0; i < Math.min(futureCodes.size(), 4); i++) {
             double price = basePrice + (i * 0.5) + (random.nextDouble() - 0.5);
             double change = (random.nextDouble() * 2 - 1);
             double changePercent = (random.nextDouble() * 2 - 1);
 
             FuturesData futures = FuturesData.builder()
-                    .symbol(futureCodes[i])
+                    .symbol(futureCodes.get(i))
                     .name("KOSPI200 선물 " + months[i])
                     .currentPrice(java.math.BigDecimal.valueOf(price))
                     .changeAmount(java.math.BigDecimal.valueOf(change))
@@ -152,44 +182,22 @@ public class InitialDataLoader implements CommandLineRunner {
         futuresDataRepository.saveAll(futuresList);
         log.info("✓ Loaded {} futures contracts", futuresList.size());
 
-        // 옵션 데이터 생성 (실제 KIS API 종목 코드 사용)
+        // 옵션 데이터 생성 (SymbolMasterService로 동적 생성)
         List<OptionData> optionsList = new ArrayList<>();
         double underlyingPrice = 567.0;
 
-        // 실제 KIS API 종목 코드 직접 사용
-        String[][] optionCodes = {
-                // [콜 코드, 풋 코드, 행사가]
-                { "B01601560", "C01601560", "560.0" },
-                { "B01601562", "C01601562", "562.5" },
-                { "B01601565", "C01601565", "565.0" },
-                { "B01601567", "C01601567", "567.5" },
-                { "B01601570", "C01601570", "570.0" },
-                { "B01601572", "C01601572", "572.5" },
-                { "B01601575", "C01601575", "575.0" }
-        };
+        // 현재 KOSPI200 지수 기준으로 동적 옵션 종목 생성
+        java.math.BigDecimal currentIndex = symbolMasterService.getCurrentKospi200Index();
+        List<SymbolMasterService.OptionCodeInfo> optionCodes = symbolMasterService.getActiveOptionCodes(currentIndex);
 
-        for (String[] codes : optionCodes) {
-            String callSymbol = codes[0];
-            String putSymbol = codes[1];
-            double strike = Double.parseDouble(codes[2]);
-
-            // CALL 옵션
-            OptionData call = createOptionWithSymbol(
-                    callSymbol,
-                    strike,
-                    OptionType.CALL,
+        for (SymbolMasterService.OptionCodeInfo optionInfo : optionCodes) {
+            OptionData option = createOptionWithSymbol(
+                    optionInfo.code,
+                    optionInfo.strikePrice.doubleValue(),
+                    optionInfo.type,
                     underlyingPrice,
                     timestamp);
-            optionsList.add(call);
-
-            // PUT 옵션
-            OptionData put = createOptionWithSymbol(
-                    putSymbol,
-                    strike,
-                    OptionType.PUT,
-                    underlyingPrice,
-                    timestamp);
-            optionsList.add(put);
+            optionsList.add(option);
         }
 
         optionDataRepository.saveAll(optionsList);
@@ -258,68 +266,6 @@ public class InitialDataLoader implements CommandLineRunner {
                 .build();
     }
 
-    private OptionData createOption(double strikePrice, OptionType optionType,
-            double underlyingPrice, LocalDateTime timestamp,
-            String month) {
-        // ATM 기준 내재가치 계산
-        double intrinsicValue = 0;
-        if (optionType == OptionType.CALL) {
-            intrinsicValue = Math.max(0, underlyingPrice - strikePrice);
-        } else {
-            intrinsicValue = Math.max(0, strikePrice - underlyingPrice);
-        }
-
-        // 시간가치 (ATM 근처가 높음)
-        double distanceFromATM = Math.abs(strikePrice - underlyingPrice);
-        double timeValue = Math.max(0.5, 5.0 - (distanceFromATM * 0.3));
-
-        double price = intrinsicValue + timeValue + (random.nextDouble() * 0.5);
-
-        // 거래량 (ATM 근처가 많음)
-        long baseVolume = (long) (10000 / (1 + distanceFromATM * 0.1));
-        long volume = baseVolume + random.nextInt(5000);
-
-        // 미결제약정
-        long openInterest = (long) (baseVolume * (1.5 + random.nextDouble()));
-
-        // IV (변동성)
-        double iv = 15.0 + random.nextDouble() * 10;
-
-        // Greeks 계산 (단순화된 버전)
-        double delta = calculateDelta(optionType, strikePrice, underlyingPrice);
-        double gamma = calculateGamma(strikePrice, underlyingPrice);
-        double theta = -0.05 - random.nextDouble() * 0.05;
-        double vega = 0.1 + random.nextDouble() * 0.1;
-
-        String symbol = "O2025%s%s%03d".formatted(
-                month,
-                optionType == OptionType.CALL ? "C" : "P",
-                (int) strikePrice);
-
-        String expiryDate = "2025-12-" + month;
-
-        return OptionData.builder()
-                .symbol(symbol)
-                .optionType(optionType)
-                .strikePrice(java.math.BigDecimal.valueOf(strikePrice))
-                .currentPrice(java.math.BigDecimal.valueOf(price))
-                .volume(volume)
-                .tradingValue(java.math.BigDecimal.valueOf(price * volume * 100000))
-                .openInterest(openInterest)
-                .bidPrice(java.math.BigDecimal.valueOf(price - 0.05))
-                .askPrice(java.math.BigDecimal.valueOf(price + 0.05))
-                .bidVolume(random.nextInt(500) + 50)
-                .askVolume(random.nextInt(500) + 50)
-                .impliedVolatility(java.math.BigDecimal.valueOf(iv))
-                .delta(java.math.BigDecimal.valueOf(delta))
-                .gamma(java.math.BigDecimal.valueOf(gamma))
-                .theta(java.math.BigDecimal.valueOf(theta))
-                .vega(java.math.BigDecimal.valueOf(vega))
-                .timestamp(timestamp)
-                .expiryDate(expiryDate)
-                .build();
-    }
-
     private double calculateDelta(OptionType type, double strike, double underlying) {
         if (type == OptionType.CALL) {
             if (underlying > strike + 10)
@@ -355,6 +301,18 @@ public class InitialDataLoader implements CommandLineRunner {
      * 야간장 시작 시 거래량/거래대금 초기화
      * 주의: KIS API가 이미 야간장 순수 거래량/거래대금을 전송하므로 DB만 0으로 초기화
      */
+    /**
+     * 현재 야간장 시간대인지 확인 (15:50 ~ 익일 09:00)
+     */
+    private boolean isNightSession() {
+        LocalDateTime now = LocalDateTime.now();
+        int hour = now.getHour();
+        int minute = now.getMinute();
+
+        // 15:50 ~ 23:59 또는 00:00 ~ 08:59
+        return (hour == 15 && minute >= 50) || (hour >= 16) || (hour < 9);
+    }
+
     private void resetVolumeAndTradingValue() {
         log.info("========================================");
         log.info("Resetting volume and trading value for night session...");

@@ -32,7 +32,9 @@ public class KrxDataService {
     private final OptionDataRepository optionDataRepository;
     private final TradingCalendarService tradingCalendarService;
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private final HttpClient httpClient = HttpClient.newHttpClient();
+    private final HttpClient httpClient = HttpClient.newBuilder()
+            .followRedirects(HttpClient.Redirect.NORMAL)
+            .build();
 
     // KRX 정보데이터시스템 API
     private static final String KRX_API_BASE = "http://data.krx.co.kr/comm/bldAttendant/getJsonData.cmd";
@@ -43,7 +45,7 @@ public class KrxDataService {
     public void loadPreviousTradingDayData() {
         // TradingCalendarService를 통해 실제 전거래일 계산 (휴장일 고려)
         String tradingDate = tradingCalendarService.getPreviousTradingDay();
-        
+
         log.info("========================================");
         log.info("Loading KRX data for date: {}", tradingDate);
         log.info("========================================");
@@ -51,14 +53,14 @@ public class KrxDataService {
         try {
             // KOSPI200 선물 데이터 로드
             loadFuturesData(tradingDate);
-            
+
             // KOSPI200 옵션 데이터 로드
             loadOptionsData(tradingDate);
-            
+
             log.info("========================================");
             log.info("KRX data load completed successfully!");
             log.info("========================================");
-            
+
         } catch (Exception e) {
             log.error("Failed to load KRX data: {}", e.getMessage(), e);
             log.warn("Falling back to sample data generation...");
@@ -71,35 +73,42 @@ public class KrxDataService {
      */
     private void loadFuturesData(String tradingDate) throws IOException, InterruptedException {
         log.info("Loading KOSPI200 Futures data...");
-        
+
         // KRX API 요청 (선물 시세)
-        String requestBody = (
-                "bld=dbms/MDC/STAT/standard/MDCSTAT30301" +
-                        "&locale=ko_KR" +
-                        "&trdDd=%s" +
-                        "&prodId=1" +  // KOSPI200 선물
-                        "&share=1" +
-                        "&money=1").formatted(
-                tradingDate
-        );
+        String requestBody = ("bld=dbms/MDC/STAT/standard/MDCSTAT30301" +
+                "&locale=ko_KR" +
+                "&trdDd=%s" +
+                "&prodId=1" + // KOSPI200 선물
+                "&share=1" +
+                "&money=1").formatted(
+                        tradingDate);
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(KRX_API_BASE))
                 .header("Content-Type", "application/x-www-form-urlencoded")
-                .header("User-Agent", "Mozilla/5.0")
+                .header("User-Agent",
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+                .header("Referer", "http://data.krx.co.kr/")
+                .header("Accept", "application/json, text/javascript, */*; q=0.01")
+                .header("Accept-Language", "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7")
+                .header("X-Requested-With", "XMLHttpRequest")
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody))
                 .build();
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-        
+
+        log.info("Futures API status: {}", response.statusCode());
+        String responseBody = response.body();
+        log.info("Response body preview: {}", responseBody.substring(0, Math.min(500, responseBody.length())));
+
         if (response.statusCode() == 200) {
-            JsonNode root = objectMapper.readTree(response.body());
+            JsonNode root = objectMapper.readTree(responseBody);
             JsonNode dataArray = root.get("OutBlock_1");
-            
+
             if (dataArray != null && dataArray.isArray()) {
                 List<FuturesData> futuresList = new ArrayList<>();
                 LocalDateTime timestamp = LocalDateTime.now();
-                
+
                 for (JsonNode item : dataArray) {
                     try {
                         FuturesData futures = parseFuturesData(item, timestamp);
@@ -110,7 +119,7 @@ public class KrxDataService {
                         log.warn("Failed to parse futures data item: {}", e.getMessage());
                     }
                 }
-                
+
                 if (!futuresList.isEmpty()) {
                     futuresDataRepository.saveAll(futuresList);
                     log.info("✓ Loaded {} KOSPI200 futures contracts", futuresList.size());
@@ -128,35 +137,42 @@ public class KrxDataService {
      */
     private void loadOptionsData(String tradingDate) throws IOException, InterruptedException {
         log.info("Loading KOSPI200 Options data...");
-        
+
         // KRX API 요청 (옵션 시세)
-        String requestBody = (
-                "bld=dbms/MDC/STAT/standard/MDCSTAT30401" +
-                        "&locale=ko_KR" +
-                        "&trdDd=%s" +
-                        "&prodId=1" +  // KOSPI200 옵션
-                        "&share=1" +
-                        "&money=1").formatted(
-                tradingDate
-        );
+        String requestBody = ("bld=dbms/MDC/STAT/standard/MDCSTAT30401" +
+                "&locale=ko_KR" +
+                "&trdDd=%s" +
+                "&prodId=1" + // KOSPI200 옵션
+                "&share=1" +
+                "&money=1").formatted(
+                        tradingDate);
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(KRX_API_BASE))
                 .header("Content-Type", "application/x-www-form-urlencoded")
-                .header("User-Agent", "Mozilla/5.0")
+                .header("User-Agent",
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+                .header("Referer", "http://data.krx.co.kr/")
+                .header("Accept", "application/json, text/javascript, */*; q=0.01")
+                .header("Accept-Language", "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7")
+                .header("X-Requested-With", "XMLHttpRequest")
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody))
                 .build();
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-        
+
+        log.info("Options API status: {}", response.statusCode());
+        String responseBody = response.body();
+        log.info("Response body preview: {}", responseBody.substring(0, Math.min(500, responseBody.length())));
+
         if (response.statusCode() == 200) {
-            JsonNode root = objectMapper.readTree(response.body());
+            JsonNode root = objectMapper.readTree(responseBody);
             JsonNode dataArray = root.get("OutBlock_1");
-            
+
             if (dataArray != null && dataArray.isArray()) {
                 List<OptionData> optionsList = new ArrayList<>();
                 LocalDateTime timestamp = LocalDateTime.now();
-                
+
                 for (JsonNode item : dataArray) {
                     try {
                         OptionData option = parseOptionData(item, timestamp);
@@ -167,7 +183,7 @@ public class KrxDataService {
                         log.warn("Failed to parse option data item: {}", e.getMessage());
                     }
                 }
-                
+
                 if (!optionsList.isEmpty()) {
                     optionDataRepository.saveAll(optionsList);
                     log.info("✓ Loaded {} KOSPI200 option contracts", optionsList.size());
@@ -185,24 +201,24 @@ public class KrxDataService {
      */
     private FuturesData parseFuturesData(JsonNode item, LocalDateTime timestamp) {
         try {
-            String symbol = item.get("ISU_SRT_CD").asText();  // 종목코드
-            String name = item.get("ISU_ABBRV").asText();     // 종목명
-            
+            String symbol = item.get("ISU_SRT_CD").asText(); // 종목코드
+            String name = item.get("ISU_ABBRV").asText(); // 종목명
+
             // 가격 정보
             BigDecimal currentPrice = new BigDecimal(item.get("TDD_CLSPRC").asText().replace(",", ""));
             BigDecimal changeAmount = new BigDecimal(item.get("CMPPREVDD_PRC").asText().replace(",", ""));
             BigDecimal changePercent = new BigDecimal(item.get("FLUC_RT").asText().replace(",", ""));
-            
+
             // 거래 정보
             Long volume = Long.parseLong(item.get("ACC_TRDVOL").asText().replace(",", ""));
             BigDecimal tradingValue = new BigDecimal(item.get("ACC_TRDVAL").asText().replace(",", ""));
             Long openInterest = Long.parseLong(item.get("OPNINT_QTY").asText().replace(",", ""));
-            
+
             // 가격 범위
             BigDecimal openPrice = new BigDecimal(item.get("TDD_OPNPRC").asText().replace(",", ""));
             BigDecimal highPrice = new BigDecimal(item.get("TDD_HGPRC").asText().replace(",", ""));
             BigDecimal lowPrice = new BigDecimal(item.get("TDD_LWPRC").asText().replace(",", ""));
-            
+
             return FuturesData.builder()
                     .symbol(symbol)
                     .name(name)
@@ -230,25 +246,25 @@ public class KrxDataService {
         try {
             String symbol = item.get("ISU_SRT_CD").asText();
             String optionTypeStr = item.get("ISU_CD").asText();
-            
+
             // 콜/풋 구분
             OptionType optionType = optionTypeStr.contains("2") ? OptionType.CALL : OptionType.PUT;
-            
+
             // 행사가
             BigDecimal strikePrice = new BigDecimal(item.get("X_PRC").asText().replace(",", ""));
-            
+
             // 가격 정보
             BigDecimal currentPrice = new BigDecimal(item.get("TDD_CLSPRC").asText().replace(",", ""));
-            
+
             // 거래 정보
             Long volume = Long.parseLong(item.get("ACC_TRDVOL").asText().replace(",", ""));
             BigDecimal tradingValue = new BigDecimal(item.get("ACC_TRDVAL").asText().replace(",", ""));
             Long openInterest = Long.parseLong(item.get("OPNINT_QTY").asText().replace(",", ""));
-            
+
             // IV (내재변동성)
-            BigDecimal iv = item.has("IMP_VLAT") ? 
-                new BigDecimal(item.get("IMP_VLAT").asText().replace(",", "")) : BigDecimal.ZERO;
-            
+            BigDecimal iv = item.has("IMP_VLAT") ? new BigDecimal(item.get("IMP_VLAT").asText().replace(",", ""))
+                    : BigDecimal.ZERO;
+
             return OptionData.builder()
                     .symbol(symbol)
                     .optionType(optionType)

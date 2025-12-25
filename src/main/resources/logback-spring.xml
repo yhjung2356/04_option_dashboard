@@ -40,7 +40,7 @@
     </logger>
 
     <!-- WebSocket Logger -->
-    <logger name="com.trading.dashboard.service.KisRealtimeWebSocketClient" level="INFO" additivity="false">
+    <logger name="com.trading.dashboard.service.KisRealtimeWebSocketClient" level="DEBUG" additivity="false">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="FILE" />
     </logger>

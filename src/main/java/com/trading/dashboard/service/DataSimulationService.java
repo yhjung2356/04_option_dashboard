@@ -123,7 +123,9 @@ public class DataSimulationService {
                 .timestamp(LocalDateTime.now())
                 .build();
 
-        futuresDataRepository.save(kospi200);
+        if (kospi200 != null) {
+            futuresDataRepository.save(kospi200);
+        }
 
         // 미니 KOSPI200 선물
         FuturesData miniKospi = FuturesData.builder()
@@ -145,7 +147,9 @@ public class DataSimulationService {
                 .timestamp(LocalDateTime.now())
                 .build();
 
-        futuresDataRepository.save(miniKospi);
+        if (miniKospi != null) {
+            futuresDataRepository.save(miniKospi);
+        }
     }
 
     private void generateOptionsData() {
@@ -163,7 +167,9 @@ public class DataSimulationService {
                     strikePrice,
                     expiryDate,
                     now);
-            optionDataRepository.save(call);
+            if (call != null) {
+                optionDataRepository.save(call);
+            }
 
             // 풋 옵션
             OptionData put = createOptionData(
@@ -172,7 +178,9 @@ public class DataSimulationService {
                     strikePrice,
                     expiryDate,
                     now);
-            optionDataRepository.save(put);
+            if (put != null) {
+                optionDataRepository.save(put);
+            }
         }
     }
 

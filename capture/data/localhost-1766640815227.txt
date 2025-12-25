@@ -1,0 +1,1936 @@
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640614652:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640620578:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640627324:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640634240:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640641010:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640646422:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640653340:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640660077:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640665509:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640672426:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640679156:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640685159:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640692153:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640699157:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640705158:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640712158:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640719159:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640726152:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640732148:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640738151:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640744152:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640752155:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640760147:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+:8080/ws/info?t=1766640768156:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+option-chain:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-8
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-9
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-10
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-11
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-12
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-13
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-14
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-15
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-16
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-17
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-18
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-19
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-20
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-21
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-22
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-23
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-24
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-25
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-26
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-27
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-28
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-29
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ 텍스트 리포트 다운로드 완료
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-30
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: Object
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: Object
+ 📊 Greeks Values: Object
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: Object
+dashboard.js:531 🔍 DOM 요소 체크:
+dashboard.js:532   futures-volume: ✅ 존재
+dashboard.js:533   futures-value: ✅ 존재
+dashboard.js:534   futures-oi: ✅ 존재
+dashboard.js:538   선물 거래량 업데이트: 109869 -> 109,869
+dashboard.js:543   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+dashboard.js:548   선물 미결제 업데이트: 208407 -> 208,407
+dashboard.js:557   options-volume: ✅ 존재
+dashboard.js:558   options-value: ✅ 존재
+dashboard.js:559   options-oi: ✅ 존재
+dashboard.js:563   옵션 거래량 업데이트: 51401 -> 51,401
+dashboard.js:568   옵션 거래대금 업데이트: 95521804 -> 9552만원
+dashboard.js:573   옵션 미결제 업데이트: 74892 -> 74,892
+dashboard.js:577 ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+stomp.min.js:8 <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-31
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+dashboard.js:524 📊 updateMarketOverview 호출됨: Object
+dashboard.js:531 🔍 DOM 요소 체크:
+dashboard.js:532   futures-volume: ✅ 존재
+dashboard.js:533   futures-value: ✅ 존재
+dashboard.js:534   futures-oi: ✅ 존재
+dashboard.js:538   선물 거래량 업데이트: 109869 -> 109,869
+dashboard.js:543   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+dashboard.js:548   선물 미결제 업데이트: 208407 -> 208,407
+dashboard.js:557   options-volume: ✅ 존재
+dashboard.js:558   options-value: ✅ 존재
+dashboard.js:559   options-oi: ✅ 존재
+dashboard.js:563   옵션 거래량 업데이트: 51401 -> 51,401
+dashboard.js:568   옵션 거래대금 업데이트: 95521804 -> 9552만원
+dashboard.js:573   옵션 미결제 업데이트: 74892 -> 74,892
+dashboard.js:577 ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+dashboard.js:944 ✅ ATM Data for Greeks: Object
+dashboard.js:945 📊 Greeks Values: Object
+dashboard.js:997 IV data not available
+updateGreeksDisplay @ dashboard.js:997
+dashboard.js:893 Displaying 11 strikes (ATM index: 6, range: 1-12)
+dashboard.js:944 ✅ ATM Data for Greeks: Object
+dashboard.js:945 📊 Greeks Values: Object
+dashboard.js:997 IV data not available
+updateGreeksDisplay @ dashboard.js:997
+dashboard.js:893 Displaying 11 strikes (ATM index: 6, range: 1-12)
+dashboard.js:524 📊 updateMarketOverview 호출됨: Object
+dashboard.js:531 🔍 DOM 요소 체크:
+dashboard.js:532   futures-volume: ✅ 존재
+dashboard.js:533   futures-value: ✅ 존재
+dashboard.js:534   futures-oi: ✅ 존재
+dashboard.js:538   선물 거래량 업데이트: 109869 -> 109,869
+dashboard.js:543   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+dashboard.js:548   선물 미결제 업데이트: 208407 -> 208,407
+dashboard.js:557   options-volume: ✅ 존재
+dashboard.js:558   options-value: ✅ 존재
+dashboard.js:559   options-oi: ✅ 존재
+dashboard.js:563   옵션 거래량 업데이트: 51401 -> 51,401
+dashboard.js:568   옵션 거래대금 업데이트: 95521804 -> 9552만원
+dashboard.js:573   옵션 미결제 업데이트: 74892 -> 74,892
+dashboard.js:577 ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+stomp.min.js:8 <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-32
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+dashboard.js:524 📊 updateMarketOverview 호출됨: Object
+dashboard.js:531 🔍 DOM 요소 체크:
+dashboard.js:532   futures-volume: ✅ 존재
+dashboard.js:533   futures-value: ✅ 존재
+dashboard.js:534   futures-oi: ✅ 존재
+dashboard.js:538   선물 거래량 업데이트: 109869 -> 109,869
+dashboard.js:543   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+dashboard.js:548   선물 미결제 업데이트: 208407 -> 208,407
+dashboard.js:557   options-volume: ✅ 존재
+dashboard.js:558   options-value: ✅ 존재
+dashboard.js:559   options-oi: ✅ 존재
+dashboard.js:563   옵션 거래량 업데이트: 51401 -> 51,401
+dashboard.js:568   옵션 거래대금 업데이트: 95521804 -> 9552만원
+dashboard.js:573   옵션 미결제 업데이트: 74892 -> 74,892
+dashboard.js:577 ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+dashboard.js:944 ✅ ATM Data for Greeks: Object
+dashboard.js:945 📊 Greeks Values: Object
+dashboard.js:997 IV data not available
+updateGreeksDisplay @ dashboard.js:997
+dashboard.js:893 Displaying 11 strikes (ATM index: 6, range: 1-12)
+dashboard.js:944 ✅ ATM Data for Greeks: Object
+dashboard.js:945 📊 Greeks Values: Object
+dashboard.js:997 IV data not available
+updateGreeksDisplay @ dashboard.js:997
+dashboard.js:893 Displaying 11 strikes (ATM index: 6, range: 1-12)
+dashboard.js:524 📊 updateMarketOverview 호출됨: Object
+dashboard.js:531 🔍 DOM 요소 체크:
+dashboard.js:532   futures-volume: ✅ 존재
+dashboard.js:533   futures-value: ✅ 존재
+dashboard.js:534   futures-oi: ✅ 존재
+dashboard.js:538   선물 거래량 업데이트: 109869 -> 109,869
+dashboard.js:543   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+dashboard.js:548   선물 미결제 업데이트: 208407 -> 208,407
+dashboard.js:557   options-volume: ✅ 존재
+dashboard.js:558   options-value: ✅ 존재
+dashboard.js:559   options-oi: ✅ 존재
+dashboard.js:563   옵션 거래량 업데이트: 51401 -> 51,401
+dashboard.js:568   옵션 거래대금 업데이트: 95521804 -> 9552만원
+dashboard.js:573   옵션 미결제 업데이트: 74892 -> 74,892
+dashboard.js:577 ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+stomp.min.js:8 <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-33
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+dashboard.js:524 📊 updateMarketOverview 호출됨: Object
+dashboard.js:531 🔍 DOM 요소 체크:
+dashboard.js:532   futures-volume: ✅ 존재
+dashboard.js:533   futures-value: ✅ 존재
+dashboard.js:534   futures-oi: ✅ 존재
+dashboard.js:538   선물 거래량 업데이트: 109869 -> 109,869
+dashboard.js:543   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+dashboard.js:548   선물 미결제 업데이트: 208407 -> 208,407
+dashboard.js:557   options-volume: ✅ 존재
+dashboard.js:558   options-value: ✅ 존재
+dashboard.js:559   options-oi: ✅ 존재
+dashboard.js:563   옵션 거래량 업데이트: 51401 -> 51,401
+dashboard.js:568   옵션 거래대금 업데이트: 95521804 -> 9552만원
+dashboard.js:573   옵션 미결제 업데이트: 74892 -> 74,892
+dashboard.js:577 ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+dashboard.js:944 ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+dashboard.js:945 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+dashboard.js:997 IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:689
+Promise.then
+updateOptionChain @ dashboard.js:688
+dashboard.js:893 Displaying 11 strikes (ATM index: 6, range: 1-12)
+dashboard.js:944 ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+dashboard.js:945 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+dashboard.js:997 IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:477
+Promise.then
+(익명) @ dashboard.js:476
+dashboard.js:893 Displaying 11 strikes (ATM index: 6, range: 1-12)
+dashboard.js:524 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+dashboard.js:531 🔍 DOM 요소 체크:
+dashboard.js:532   futures-volume: ✅ 존재
+dashboard.js:533   futures-value: ✅ 존재
+dashboard.js:534   futures-oi: ✅ 존재
+dashboard.js:538   선물 거래량 업데이트: 109869 -> 109,869
+dashboard.js:543   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+dashboard.js:548   선물 미결제 업데이트: 208407 -> 208,407
+dashboard.js:557   options-volume: ✅ 존재
+dashboard.js:558   options-value: ✅ 존재
+dashboard.js:559   options-oi: ✅ 존재
+dashboard.js:563   옵션 거래량 업데이트: 51401 -> 51,401
+dashboard.js:568   옵션 거래대금 업데이트: 95521804 -> 9552만원
+dashboard.js:573   옵션 미결제 업데이트: 74892 -> 74,892
+dashboard.js:577 ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+stomp.min.js:8 <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-34
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+dashboard.js:524 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+dashboard.js:531 🔍 DOM 요소 체크:
+dashboard.js:532   futures-volume: ✅ 존재
+dashboard.js:533   futures-value: ✅ 존재
+dashboard.js:534   futures-oi: ✅ 존재
+dashboard.js:538   선물 거래량 업데이트: 109869 -> 109,869
+dashboard.js:543   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+dashboard.js:548   선물 미결제 업데이트: 208407 -> 208,407
+dashboard.js:557   options-volume: ✅ 존재
+dashboard.js:558   options-value: ✅ 존재
+dashboard.js:559   options-oi: ✅ 존재
+dashboard.js:563   옵션 거래량 업데이트: 51401 -> 51,401
+dashboard.js:568   옵션 거래대금 업데이트: 95521804 -> 9552만원
+dashboard.js:573   옵션 미결제 업데이트: 74892 -> 74,892
+dashboard.js:577 ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+dashboard.js:944 ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+dashboard.js:945 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+dashboard.js:997 IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:689
+Promise.then
+updateOptionChain @ dashboard.js:688
+dashboard.js:893 Displaying 11 strikes (ATM index: 6, range: 1-12)
+dashboard.js:944 ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+dashboard.js:945 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+dashboard.js:997 IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:477
+Promise.then
+(익명) @ dashboard.js:476
+dashboard.js:893 Displaying 11 strikes (ATM index: 6, range: 1-12)
+dashboard.js:524 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+dashboard.js:531 🔍 DOM 요소 체크:
+dashboard.js:532   futures-volume: ✅ 존재
+dashboard.js:533   futures-value: ✅ 존재
+dashboard.js:534   futures-oi: ✅ 존재
+dashboard.js:538   선물 거래량 업데이트: 109869 -> 109,869
+dashboard.js:543   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+dashboard.js:548   선물 미결제 업데이트: 208407 -> 208,407
+dashboard.js:557   options-volume: ✅ 존재
+dashboard.js:558   options-value: ✅ 존재
+dashboard.js:559   options-oi: ✅ 존재
+dashboard.js:563   옵션 거래량 업데이트: 51401 -> 51,401
+dashboard.js:568   옵션 거래대금 업데이트: 95521804 -> 9552만원
+dashboard.js:573   옵션 미결제 업데이트: 74892 -> 74,892
+dashboard.js:577 ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+stomp.min.js:8 <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-35
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+dashboard.js:524 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+dashboard.js:531 🔍 DOM 요소 체크:
+dashboard.js:532   futures-volume: ✅ 존재
+dashboard.js:533   futures-value: ✅ 존재
+dashboard.js:534   futures-oi: ✅ 존재
+dashboard.js:538   선물 거래량 업데이트: 109869 -> 109,869
+dashboard.js:543   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+dashboard.js:548   선물 미결제 업데이트: 208407 -> 208,407
+dashboard.js:557   options-volume: ✅ 존재
+dashboard.js:558   options-value: ✅ 존재
+dashboard.js:559   options-oi: ✅ 존재
+dashboard.js:563   옵션 거래량 업데이트: 51401 -> 51,401
+dashboard.js:568   옵션 거래대금 업데이트: 95521804 -> 9552만원
+dashboard.js:573   옵션 미결제 업데이트: 74892 -> 74,892
+dashboard.js:577 ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+dashboard.js:944 ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+dashboard.js:945 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+dashboard.js:997 IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:689
+Promise.then
+updateOptionChain @ dashboard.js:688
+dashboard.js:893 Displaying 11 strikes (ATM index: 6, range: 1-12)
+dashboard.js:524 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+dashboard.js:531 🔍 DOM 요소 체크:
+dashboard.js:532   futures-volume: ✅ 존재
+dashboard.js:533   futures-value: ✅ 존재
+dashboard.js:534   futures-oi: ✅ 존재
+dashboard.js:538   선물 거래량 업데이트: 109869 -> 109,869
+dashboard.js:543   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+dashboard.js:548   선물 미결제 업데이트: 208407 -> 208,407
+dashboard.js:557   options-volume: ✅ 존재
+dashboard.js:558   options-value: ✅ 존재
+dashboard.js:559   options-oi: ✅ 존재
+dashboard.js:563   옵션 거래량 업데이트: 51401 -> 51,401
+dashboard.js:568   옵션 거래대금 업데이트: 95521804 -> 9552만원
+dashboard.js:573   옵션 미결제 업데이트: 74892 -> 74,892
+dashboard.js:577 ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+dashboard.js:944 ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+dashboard.js:945 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+dashboard.js:997 IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:477
+Promise.then
+(익명) @ dashboard.js:476
+dashboard.js:893 Displaying 11 strikes (ATM index: 6, range: 1-12)
+stomp.min.js:8 <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-36
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+dashboard.js:524 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+dashboard.js:531 🔍 DOM 요소 체크:
+dashboard.js:532   futures-volume: ✅ 존재
+dashboard.js:533   futures-value: ✅ 존재
+dashboard.js:534   futures-oi: ✅ 존재
+dashboard.js:538   선물 거래량 업데이트: 109869 -> 109,869
+dashboard.js:543   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+dashboard.js:548   선물 미결제 업데이트: 208407 -> 208,407
+dashboard.js:557   options-volume: ✅ 존재
+dashboard.js:558   options-value: ✅ 존재
+dashboard.js:559   options-oi: ✅ 존재
+dashboard.js:563   옵션 거래량 업데이트: 51401 -> 51,401
+dashboard.js:568   옵션 거래대금 업데이트: 95521804 -> 9552만원
+dashboard.js:573   옵션 미결제 업데이트: 74892 -> 74,892
+dashboard.js:577 ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+dashboard.js:944 ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+dashboard.js:945 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+dashboard.js:997 IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:689
+Promise.then
+updateOptionChain @ dashboard.js:688
+dashboard.js:893 Displaying 11 strikes (ATM index: 6, range: 1-12)
+dashboard.js:524 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+dashboard.js:531 🔍 DOM 요소 체크:
+dashboard.js:532   futures-volume: ✅ 존재
+dashboard.js:533   futures-value: ✅ 존재
+dashboard.js:534   futures-oi: ✅ 존재
+dashboard.js:538   선물 거래량 업데이트: 109869 -> 109,869
+dashboard.js:543   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+dashboard.js:548   선물 미결제 업데이트: 208407 -> 208,407
+dashboard.js:557   options-volume: ✅ 존재
+dashboard.js:558   options-value: ✅ 존재
+dashboard.js:559   options-oi: ✅ 존재
+dashboard.js:563   옵션 거래량 업데이트: 51401 -> 51,401
+dashboard.js:568   옵션 거래대금 업데이트: 95521804 -> 9552만원
+dashboard.js:573   옵션 미결제 업데이트: 74892 -> 74,892
+dashboard.js:577 ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+dashboard.js:944 ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+dashboard.js:945 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:477
+Promise.then
+(익명) @ dashboard.js:476
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-37
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+ 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:689
+Promise.then
+updateOptionChain @ dashboard.js:688
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+ 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:477
+Promise.then
+(익명) @ dashboard.js:476
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-38
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+ 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:689
+Promise.then
+updateOptionChain @ dashboard.js:688
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+ 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:477
+Promise.then
+(익명) @ dashboard.js:476
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-39
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+ 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:689
+Promise.then
+updateOptionChain @ dashboard.js:688
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+ 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:477
+Promise.then
+(익명) @ dashboard.js:476
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-40
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+ 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:689
+Promise.then
+updateOptionChain @ dashboard.js:688
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+ 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:477
+Promise.then
+(익명) @ dashboard.js:476
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-41
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+ 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:689
+Promise.then
+updateOptionChain @ dashboard.js:688
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+ 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:477
+Promise.then
+(익명) @ dashboard.js:476
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-42
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+ 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:689
+Promise.then
+updateOptionChain @ dashboard.js:688
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ ✅ ATM Data for Greeks: {strikePrice: 585, callPrice: 9.61, callVolume: 1798, callOpenInterest: 4043, callImpliedVolatility: null, …}
+ 📊 Greeks Values: {callDelta: null, putDelta: null, callGamma: null, callTheta: null, callVega: null, …}
+ IV data not available
+updateGreeksDisplay @ dashboard.js:997
+updateOptionChainData @ dashboard.js:872
+(익명) @ dashboard.js:477
+Promise.then
+(익명) @ dashboard.js:476
+ Displaying 11 strikes (ATM index: 6, range: 1-12)
+ 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
+ <<< MESSAGE
+destination:/topic/market-overview
+content-type:application/json
+subscription:sub-0
+message-id:ko1ne3vl-43
+content-length:2611
+
+{"totalFuturesVolume":109869,"totalFuturesTradingValue":16114552138.00,"totalFuturesOpenInterest":208407,"totalOptionsVolume":51401,"totalOptionsTradingValue":95521804.00,"totalOptionsOpenInterest":74892,"putCallRatio":{"callVolume":27572,"putVolume":23829,"volumeRatio":0.8642,"callOpenInterest":55126,"putOpenInterest":19766,"openInterestRatio":0.3586,"callTradingValue":52655188.00,"putTradingValue":42866616.00,"tradingValueRatio":0.8141},"topByVolume":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"C01601570","name":"C01601570 570.00 PUT","type":"OPTIONS","currentPrice":4.79,"volume":4290,"tradingValue":4728668.00,"openInterest":3842,"changePercent":null,"optionType":"PUT","strikePrice":570.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601587","name":"B01601587 587.00 CALL","type":"OPTIONS","currentPrice":8.43,"volume":3263,"tradingValue":7748705.00,"openInterest":1420,"changePercent":null,"optionType":"CALL","strikePrice":587.00}],"topByOpenInterest":[{"symbol":"B01601600","name":"B01601600 600.00 CALL","type":"OPTIONS","currentPrice":4.14,"volume":6544,"tradingValue":7948828.00,"openInterest":16290,"changePercent":null,"optionType":"CALL","strikePrice":600.00},{"symbol":"B01601590","name":"B01601590 590.00 CALL","type":"OPTIONS","currentPrice":7.38,"volume":3651,"tradingValue":7682125.00,"openInterest":9731,"changePercent":null,"optionType":"CALL","strikePrice":590.00},{"symbol":"B01601580","name":"B01601580 580.00 CALL","type":"OPTIONS","currentPrice":12.45,"volume":1209,"tradingValue":3944013.00,"openInterest":5102,"changePercent":null,"optionType":"CALL","strikePrice":580.00},{"symbol":"B01601595","name":"B01601595 595.00 CALL","type":"OPTIONS","currentPrice":5.56,"volume":3915,"tradingValue":6354223.00,"openInterest":4683,"changePercent":null,"optionType":"CALL","strikePrice":595.00},{"symbol":"C01601585","name":"C01601585 585.00 PUT","type":"OPTIONS","currentPrice":10.30,"volume":3086,"tradingValue":7282635.00,"openInterest":4184,"changePercent":null,"optionType":"PUT","strikePrice":585.00}]} 
+ 📊 updateMarketOverview 호출됨: {totalFuturesVolume: 109869, totalFuturesTradingValue: 16114552138, totalFuturesOpenInterest: 208407, totalOptionsVolume: 51401, totalOptionsTradingValue: 95521804, …}
+ 🔍 DOM 요소 체크:
+   futures-volume: ✅ 존재
+   futures-value: ✅ 존재
+   futures-oi: ✅ 존재
+   선물 거래량 업데이트: 109869 -> 109,869
+   선물 거래대금 업데이트: 16114552138 -> 161.1억원
+   선물 미결제 업데이트: 208407 -> 208,407
+   options-volume: ✅ 존재
+   options-value: ✅ 존재
+   options-oi: ✅ 존재
+   옵션 거래량 업데이트: 51401 -> 51,401
+   옵션 거래대금 업데이트: 95521804 -> 9552만원
+   옵션 미결제 업데이트: 74892 -> 74,892
+ ✅ 데이터 업데이트 완료 - 선물: 109869 옵션: 51401
