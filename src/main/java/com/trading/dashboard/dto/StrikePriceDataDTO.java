@@ -1,6 +1,5 @@
 package com.trading.dashboard.dto;
 
-import com.trading.dashboard.model.OptionType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,9 +15,9 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Builder
 public class StrikePriceDataDTO {
-    
+
     private BigDecimal strikePrice;
-    
+
     // 콜 옵션 데이터
     private BigDecimal callPrice;
     private Long callVolume;
@@ -30,7 +29,7 @@ public class StrikePriceDataDTO {
     private BigDecimal callVega;
     private BigDecimal callBidPrice;
     private BigDecimal callAskPrice;
-    
+
     // 풋 옵션 데이터
     private BigDecimal putPrice;
     private Long putVolume;
@@ -42,7 +41,7 @@ public class StrikePriceDataDTO {
     private BigDecimal putVega;
     private BigDecimal putBidPrice;
     private BigDecimal putAskPrice;
-    
+
     // 총합
     private Long totalVolume;
     private Long totalOpenInterest;
