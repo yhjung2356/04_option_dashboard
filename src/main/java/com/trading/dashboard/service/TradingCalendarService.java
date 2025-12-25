@@ -21,7 +21,10 @@ public class TradingCalendarService {
     private final Set<LocalDate> holidays = new HashSet<>();
 
     public TradingCalendarService() {
-        loadHolidays();
+        // 현재 연도와 다음 연도 공휴일 로드
+        int currentYear = LocalDate.now().getYear();
+        loadHolidaysForYear(currentYear);
+        loadHolidaysForYear(currentYear + 1);
     }
 
     /**
@@ -52,35 +55,48 @@ public class TradingCalendarService {
      */
     private boolean isNonTradingDay(LocalDate date) {
         DayOfWeek dayOfWeek = date.getDayOfWeek();
-        return dayOfWeek == DayOfWeek.SATURDAY 
-            || dayOfWeek == DayOfWeek.SUNDAY 
-            || holidays.contains(date);
+        return dayOfWeek == DayOfWeek.SATURDAY
+                || dayOfWeek == DayOfWeek.SUNDAY
+                || holidays.contains(date);
     }
 
     /**
-     * 2025년 대한민국 공휴일 로드
+     * 특정 연도의 대한민국 공휴일 로드
      */
-    private void loadHolidays() {
-        log.info("Loading market holidays for year 2025...");
-        
-        // 2025년 공휴일
-        holidays.add(LocalDate.of(2025, 1, 1));   // 신정
-        holidays.add(LocalDate.of(2025, 1, 28));  // 설날 연휴
-        holidays.add(LocalDate.of(2025, 1, 29));  // 설날
-        holidays.add(LocalDate.of(2025, 1, 30));  // 설날 연휴
-        holidays.add(LocalDate.of(2025, 3, 1));   // 삼일절
-        holidays.add(LocalDate.of(2025, 3, 3));   // 대체휴일
-        holidays.add(LocalDate.of(2025, 5, 5));   // 어린이날
-        holidays.add(LocalDate.of(2025, 5, 6));   // 대체휴일
-        holidays.add(LocalDate.of(2025, 6, 6));   // 현충일
-        holidays.add(LocalDate.of(2025, 8, 15));  // 광복절
-        holidays.add(LocalDate.of(2025, 10, 3));  // 개천절
-        holidays.add(LocalDate.of(2025, 10, 6));  // 추석 연휴
-        holidays.add(LocalDate.of(2025, 10, 7));  // 추석
-        holidays.add(LocalDate.of(2025, 10, 8));  // 추석 연휴
-        holidays.add(LocalDate.of(2025, 10, 9));  // 한글날
-        holidays.add(LocalDate.of(2025, 12, 25)); // 크리스마스
+    private void loadHolidaysForYear(int year) {
+        log.info("Loading market holidays for year {}...", year);
 
-        log.info("Loaded {} holidays for 2025", holidays.size());
+        // 고정 공휴일
+        holidays.add(LocalDate.of(year, 1, 1)); // 신정
+        holidays.add(LocalDate.of(year, 3, 1)); // 삼일절
+        holidays.add(LocalDate.of(year, 5, 5)); // 어린이날
+        holidays.add(LocalDate.of(year, 6, 6)); // 현충일
+        holidays.add(LocalDate.of(year, 8, 15)); // 광복절
+        holidays.add(LocalDate.of(year, 10, 3)); // 개천절
+        holidays.add(LocalDate.of(year, 10, 9)); // 한글날
+        holidays.add(LocalDate.of(year, 12, 25)); // 크리스마스
+
+        // 음력 기반 공휴일 - 연도별로 수동 설정 (외부 API 또는 라이브러리 사용 권장)
+        if (year == 2025) {
+            holidays.add(LocalDate.of(2025, 1, 28)); // 설날 연휴
+            holidays.add(LocalDate.of(2025, 1, 29)); // 설날
+            holidays.add(LocalDate.of(2025, 1, 30)); // 설날 연휴
+            holidays.add(LocalDate.of(2025, 3, 3)); // 대체휴일
+            holidays.add(LocalDate.of(2025, 5, 6)); // 대체휴일
+            holidays.add(LocalDate.of(2025, 10, 6)); // 추석 연휴
+            holidays.add(LocalDate.of(2025, 10, 7)); // 추석
+            holidays.add(LocalDate.of(2025, 10, 8)); // 추석 연휴
+        } else if (year == 2026) {
+            // 2026년 공휴일 (예시 - 실제 음력 날짜 확인 필요)
+            holidays.add(LocalDate.of(2026, 2, 16)); // 설날 연휴
+            holidays.add(LocalDate.of(2026, 2, 17)); // 설날
+            holidays.add(LocalDate.of(2026, 2, 18)); // 설날 연휴
+            holidays.add(LocalDate.of(2026, 9, 24)); // 추석 연휴
+            holidays.add(LocalDate.of(2026, 9, 25)); // 추석
+            holidays.add(LocalDate.of(2026, 9, 26)); // 추석 연휴
+        }
+        // TODO: 외부 API 연동으로 자동화 권장 (한국천문연구원 API 등)
+
+        log.info("Loaded holidays for year {}", year);
     }
 }

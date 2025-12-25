@@ -26,6 +26,23 @@ public class MarketDataService {
     private final FuturesDataRepository futuresDataRepository;
 
     /**
+     * OptionData를 TopTradedInstrumentDTO로 변환 (코드 중복 제거)
+     */
+    private TopTradedInstrumentDTO convertToTopTradedDTO(OptionData option) {
+        return TopTradedInstrumentDTO.builder()
+                .symbol(option.getSymbol())
+                .name(option.getName() != null && !option.getName().isEmpty()
+                        ? option.getName()
+                        : option.getSymbol() + " " + option.getStrikePrice() + " " + option.getOptionType())
+                .type(InstrumentType.OPTIONS)
+                .currentPrice(option.getCurrentPrice())
+                .volume(option.getVolume())
+                .tradingValue(option.getTradingValue())
+                .openInterest(option.getOpenInterest())
+                .build();
+    }
+
+    /**
      * 전체 시장 현황 조회
      */
     public MarketOverviewDTO getMarketOverview() {
@@ -121,72 +138,33 @@ public class MarketDataService {
      * 거래대금 상위 종목 (옵션만)
      */
     public List<TopTradedInstrumentDTO> getTopByTradingValue(int limit) {
-        List<TopTradedInstrumentDTO> result = new ArrayList<>();
-
-        // 옵션 데이터만 조회 (선물 제외)
-        List<OptionData> topOptions = optionDataRepository.findTopByTradingValueDesc();
-        topOptions.stream()
+        return optionDataRepository.findTopByTradingValueDesc()
+                .stream()
                 .limit(limit)
-                .forEach(o -> result.add(TopTradedInstrumentDTO.builder()
-                        .symbol(o.getSymbol())
-                        .name(o.getName() != null && !o.getName().isEmpty() ? o.getName()
-                                : o.getSymbol() + " " + o.getStrikePrice() + " " + o.getOptionType())
-                        .type(InstrumentType.OPTIONS)
-                        .currentPrice(o.getCurrentPrice())
-                        .volume(o.getVolume())
-                        .tradingValue(o.getTradingValue())
-                        .openInterest(o.getOpenInterest())
-                        .build()));
-
-        return result;
+                .map(this::convertToTopTradedDTO)
+                .collect(Collectors.toList());
     }
 
     /**
      * 거래량 상위 종목 (옵션만)
      */
     public List<TopTradedInstrumentDTO> getTopByVolume(int limit) {
-        List<TopTradedInstrumentDTO> result = new ArrayList<>();
-
-        // 옵션 데이터만 조회 (선물 제외)
-        List<OptionData> topOptions = optionDataRepository.findTopByVolumeDesc();
-        topOptions.stream()
+        return optionDataRepository.findTopByVolumeDesc()
+                .stream()
                 .limit(limit)
-                .forEach(o -> result.add(TopTradedInstrumentDTO.builder()
-                        .symbol(o.getSymbol())
-                        .name(o.getName() != null && !o.getName().isEmpty() ? o.getName()
-                                : o.getSymbol() + " " + o.getStrikePrice() + " " + o.getOptionType())
-                        .type(InstrumentType.OPTIONS)
-                        .currentPrice(o.getCurrentPrice())
-                        .volume(o.getVolume())
-                        .tradingValue(o.getTradingValue())
-                        .openInterest(o.getOpenInterest())
-                        .build()));
-
-        return result;
+                .map(this::convertToTopTradedDTO)
+                .collect(Collectors.toList());
     }
 
     /**
      * 미결제약정 상위 종목 (옵션만)
      */
     public List<TopTradedInstrumentDTO> getTopByOpenInterest(int limit) {
-        List<TopTradedInstrumentDTO> result = new ArrayList<>();
-
-        // 옵션 데이터만 조회 (선물 제외)
-        List<OptionData> topOptions = optionDataRepository.findTopByOpenInterestDesc();
-        topOptions.stream()
+        return optionDataRepository.findTopByOpenInterestDesc()
+                .stream()
                 .limit(limit)
-                .forEach(o -> result.add(TopTradedInstrumentDTO.builder()
-                        .symbol(o.getSymbol())
-                        .name(o.getName() != null && !o.getName().isEmpty() ? o.getName()
-                                : o.getSymbol() + " " + o.getStrikePrice() + " " + o.getOptionType())
-                        .type(InstrumentType.OPTIONS)
-                        .currentPrice(o.getCurrentPrice())
-                        .volume(o.getVolume())
-                        .tradingValue(o.getTradingValue())
-                        .openInterest(o.getOpenInterest())
-                        .build()));
-
-        return result;
+                .map(this::convertToTopTradedDTO)
+                .collect(Collectors.toList());
     }
 
     /**
