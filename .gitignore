@@ -27,3 +27,5 @@ kis_token.cache
 *.tmp
 *.swp
 *~
+
+*.bat
