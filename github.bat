@@ -1,7 +1,9 @@
-set YEAR=%date:~2,4%
-set MONTH=%date:~7,2%
-set DAY=%date:~10,2%
+:: 날짜를 변수에 년월일 각각 저장
+set YEAR=%date:~0,4%
+set MONTH=%date:~5,2%
+set DAY=%date:~8,2%
 
+:: 시간을 변수에 시분초로 각각 저장
 set HOUR=%time:~0,2%
 set MINUTE=%time:~3,2%
 
@@ -17,7 +19,7 @@ set MINUTE=%time:~3,2%
 	
 	::Commit all changes with the message "auto push". 
 	::Change as needed.
-	git commit -m "Auto Commit %YEAR%/%MONTH%/%DAY%  %HOUR%:%MINUTE%"
+	git commit -m "Auto Commit %YEAR%/%MONTH%/%DAY% %HOUR%:%MINUTE%"
 	
 	::Push all changes to GitHub 
 	git push
