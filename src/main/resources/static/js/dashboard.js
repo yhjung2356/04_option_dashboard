@@ -628,7 +628,8 @@ const OptionChainManager = (() => {
     }
 
     return {
-        fetchAndUpdate
+        fetchAndUpdate,
+        updateOptionChainData  // 외부에서도 호출 가능하도록 export
     };
 })();
 
