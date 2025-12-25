@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <!-- Header Fragment -->
+    <header th:fragment="header" class="dashboard-header-compact" role="banner">
+        <div class="header-content-compact">
+            <div class="header-left">
+                <h1><i class="fas fa-chart-line" aria-hidden="true"></i> 선물/옵션 대시보드</h1>
+                <div id="market-closed-banner" class="inline-market-status" style="display: none;" role="alert">
+                    <i class="fas fa-moon" aria-hidden="true"></i> 장 마감
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <button onclick="showInvestorNotice()" class="notice-btn-compact" 
+                        title="투자자 안내문" aria-label="투자자 안내문 열기">
+                    <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+                </button>
+                
+                <!-- 페이지 스냅샷 버튼 -->
+                <div class="snapshot-buttons" role="group" aria-label="페이지 스냅샷 도구">
+                    <button class="snapshot-btn" onclick="PageSnapshot.copyToClipboard()" 
+                            title="클립보드에 복사 (Ctrl+Shift+C)" aria-label="페이지 상태 클립보드에 복사">
+                        <i class="fas fa-copy" aria-hidden="true"></i>
+                    </button>
+                    <button class="snapshot-btn" onclick="PageSnapshot.downloadText()" 
+                            title="텍스트 파일 다운로드 (Ctrl+Shift+S)" aria-label="텍스트 리포트 다운로드">
+                        <i class="fas fa-file-alt" aria-hidden="true"></i>
+                    </button>
+                    <button class="snapshot-btn" onclick="PageSnapshot.downloadJSON()" 
+                            title="JSON 파일 다운로드 (Ctrl+Shift+J)" aria-label="JSON 데이터 다운로드">
+                        <i class="fas fa-file-code" aria-hidden="true"></i>
+                    </button>
+                </div>
+                
+                <time id="current-time" class="time-display-compact" datetime="">--:--:--</time>
+                <span id="market-status" class="status-indicator-compact" role="status" aria-live="polite">
+                    <i class="fas fa-circle status-live" aria-hidden="true"></i> 
+                    <span id="status-text">확인중</span>
+                </span>
+            </div>
+        </div>
+    </header>
+</body>
+</html>

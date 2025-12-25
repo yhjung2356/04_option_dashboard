@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <!-- Top Traded Section Fragment -->
+    <section th:fragment="top-traded" class="top-traded-section-compact" aria-label="상위 거래 종목">
+        <!-- 거래량 TOP 5 -->
+        <article class="card top-card-compact">
+            <header class="card-header-compact">
+                <i class="fas fa-chart-bar" aria-hidden="true"></i> 거래량 TOP 5
+            </header>
+            <div class="card-body-compact">
+                <table class="data-table-compact" role="table" aria-label="거래량 상위 5개 종목">
+                    <thead>
+                        <tr>
+                            <th scope="col">순위</th>
+                            <th scope="col">종목코드</th>
+                            <th scope="col">종목명</th>
+                            <th scope="col">현재가</th>
+                            <th scope="col">거래량</th>
+                            <th scope="col">거래대금</th>
+                            <th scope="col">미결제</th>
+                        </tr>
+                    </thead>
+                    <tbody id="top-by-volume">
+                        <tr style="display: none;">
+                            <td colspan="7" class="loading">데이터 로딩 중...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+
+        <!-- 미결제약정 TOP 5 -->
+        <article class="card top-card-compact">
+            <header class="card-header-compact">
+                <i class="fas fa-layer-group" aria-hidden="true"></i> 미결제약정 TOP 5
+            </header>
+            <div class="card-body-compact">
+                <table class="data-table-compact" role="table" aria-label="미결제약정 상위 5개 종목">
+                    <thead>
+                        <tr>
+                            <th scope="col">순위</th>
+                            <th scope="col">종목코드</th>
+                            <th scope="col">종목명</th>
+                            <th scope="col">현재가</th>
+                            <th scope="col">거래량</th>
+                            <th scope="col">거래대금</th>
+                            <th scope="col">미결제</th>
+                        </tr>
+                    </thead>
+                    <tbody id="top-by-oi">
+                        <tr style="display: none;">
+                            <td colspan="7" class="loading">데이터 로딩 중...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+    </section>
+</body>
+</html>

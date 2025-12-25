@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <!-- Greeks Summary Section Fragment -->
+    <section th:fragment="greeks" class="greeks-section" aria-label="Greeks 요약">
+        <article class="card greeks-card">
+            <header class="card-header-compact">
+                <i class="fas fa-calculator" aria-hidden="true"></i> Greeks 요약 (ATM 기준)
+            </header>
+            <div class="greeks-body">
+                <div class="greek-item">
+                    <span class="greek-label">
+                        Delta
+                        <i class="fas fa-info-circle greek-info" 
+                           data-tooltip="기초자산 가격이 1원 변할 때 옵션 가격의 변화량. Call은 0~1, Put은 -1~0 범위"
+                           role="tooltip" aria-label="Delta 설명"></i>
+                    </span>
+                    <span class="greek-value" id="greek-delta" aria-live="polite">
+                        <span class="greek-call" id="delta-call">--</span> / 
+                        <span class="greek-put" id="delta-put">--</span>
+                    </span>
+                </div>
+                
+                <div class="greek-item">
+                    <span class="greek-label">
+                        Gamma
+                        <i class="fas fa-info-circle greek-info" 
+                           data-tooltip="기초자산 가격 변화에 따른 Delta의 변화율. 높을수록 Delta 변동성이 큼"
+                           role="tooltip" aria-label="Gamma 설명"></i>
+                    </span>
+                    <span class="greek-value" id="greek-gamma" aria-live="polite">--</span>
+                </div>
+                
+                <div class="greek-item">
+                    <span class="greek-label">
+                        Theta
+                        <i class="fas fa-info-circle greek-info" 
+                           data-tooltip="시간 경과에 따른 옵션 가격의 하락률. 보통 음수 값으로 시간 가치 소멸을 의미"
+                           role="tooltip" aria-label="Theta 설명"></i>
+                    </span>
+                    <span class="greek-value" id="greek-theta" aria-live="polite">--</span>
+                </div>
+                
+                <div class="greek-item">
+                    <span class="greek-label">
+                        Vega
+                        <i class="fas fa-info-circle greek-info" 
+                           data-tooltip="변동성이 1% 변할 때 옵션 가격의 변화량. 높을수록 변동성에 민감"
+                           role="tooltip" aria-label="Vega 설명"></i>
+                    </span>
+                    <span class="greek-value" id="greek-vega" aria-live="polite">--</span>
+                </div>
+                
+                <div class="greek-item">
+                    <span class="greek-label">
+                        IV (내재변동성)
+                        <i class="fas fa-info-circle greek-info" 
+                           data-tooltip="시장에서 거래되는 옵션 가격에 내포된 향후 변동성 예상치. 높을수록 시장 불확실성이 큼"
+                           role="tooltip" aria-label="IV 설명"></i>
+                    </span>
+                    <span class="greek-value" id="greek-iv" aria-live="polite">--</span>
+                </div>
+            </div>
+        </article>
+    </section>
+</body>
+</html>

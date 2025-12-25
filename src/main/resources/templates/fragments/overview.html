@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <!-- Overview Section Fragment -->
+    <section th:fragment="overview" class="overview-section-compact" aria-label="시장 개요">
+        <!-- 선물 전체 카드 -->
+        <article class="card overview-card-compact">
+            <header class="card-header-compact">
+                <i class="fas fa-rocket" aria-hidden="true"></i> 선물
+            </header>
+            <div class="card-body-compact">
+                <div class="stat-compact">
+                    <span class="stat-label-mini">거래량</span>
+                    <span class="stat-value-compact" id="futures-volume" aria-live="polite">0</span>
+                </div>
+                <div class="stat-compact">
+                    <span class="stat-label-mini">거래대금</span>
+                    <span class="stat-value-compact" id="futures-value" aria-live="polite">0원</span>
+                </div>
+                <div class="stat-compact">
+                    <span class="stat-label-mini">미결제약정</span>
+                    <span class="stat-value-compact" id="futures-oi" aria-live="polite">0</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- 옵션 전체 카드 -->
+        <article class="card overview-card-compact">
+            <header class="card-header-compact">
+                <i class="fas fa-chart-pie" aria-hidden="true"></i> 옵션
+            </header>
+            <div class="card-body-compact">
+                <div class="stat-compact">
+                    <span class="stat-label-mini">거래량</span>
+                    <span class="stat-value-compact" id="options-volume" aria-live="polite">0</span>
+                </div>
+                <div class="stat-compact">
+                    <span class="stat-label-mini">거래대금</span>
+                    <span class="stat-value-compact" id="options-value" aria-live="polite">0원</span>
+                </div>
+                <div class="stat-compact">
+                    <span class="stat-label-mini">미결제약정</span>
+                    <span class="stat-value-compact" id="options-oi" aria-live="polite">0</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Put/Call Ratio 카드 -->
+        <article class="card overview-card-compact highlight-card-compact">
+            <header class="card-header-compact">
+                <i class="fas fa-balance-scale" aria-hidden="true"></i> Put/Call Ratio
+            </header>
+            <div class="card-body-compact">
+                <div class="stat-compact">
+                    <span class="stat-label-mini">거래량</span>
+                    <span class="stat-value-compact ratio-value" id="pc-ratio-volume" aria-live="polite">0.00</span>
+                </div>
+                <div class="stat-compact">
+                    <span class="stat-label-mini">미결제</span>
+                    <span class="stat-value-compact ratio-value" id="pc-ratio-oi" aria-live="polite">0.00</span>
+                </div>
+                <div class="stat-compact">
+                    <span class="stat-label-mini">거래대금</span>
+                    <span class="stat-value-compact ratio-value" id="pc-ratio-value" aria-live="polite">0.00</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- 시장 심리 카드 -->
+        <article class="card overview-card-compact market-sentiment-card">
+            <header class="card-header-compact">
+                <i class="fas fa-brain" aria-hidden="true"></i> 시장 심리
+            </header>
+            <div class="card-body-compact">
+                <div class="sentiment-gauge">
+                    <div class="gauge-bar" id="sentiment-gauge">
+                        <div class="gauge-fill" id="sentiment-fill" role="progressbar" 
+                             aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="시장 심리 지수"></div>
+                    </div>
+                    <div class="sentiment-label" id="sentiment-label" aria-live="polite">중립</div>
+                </div>
+                <div class="stat-compact">
+                    <span class="stat-label-mini">IV 지수</span>
+                    <span class="stat-value-compact" id="iv-index" aria-live="polite">--</span>
+                </div>
+            </div>
+        </article>
+    </section>
+</body>
+</html>

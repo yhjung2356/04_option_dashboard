@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <!-- Scripts Fragment -->
+    <th:block th:fragment="scripts">
+        <!-- External JavaScript Libraries -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.2/sockjs.min.js" 
+                integrity="sha512-ayv8n6x5KLl7yilJDT2w6HG74OLr0gkHmHqMdlSAmnUGiEjPMy15e+hgzV2xVNUHI5FGN4QwuJj8C4O8u1CLUA==" 
+                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" 
+                integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMhp4o0rADGw9yAC6EW4t5a4K3g==" 
+                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
+        <!-- 페이지 초기 상태 전달 (서버에서 JavaScript로) -->
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            // 서버에서 전달된 초기 상태
+            const PAGE_STATE = {
+                dataSource: /*[[${dataSource}]]*/ 'KIS',
+                demoMode: /*[[${demoMode}]]*/ false,
+                marketHoursEnabled: /*[[${marketHoursEnabled}]]*/ true,
+                initialTimestamp: /*[[${currentTimestamp}]]*/ 0
+            };
+            
+            // 전역 상태 객체
+            window.dashboardState = {
+                ...PAGE_STATE,
+                isConnected: false,
+                lastUpdate: null,
+                currentView: 'overview' // 현재 보고 있는 뷰
+            };
+            
+            console.log('초기 페이지 상태:', window.dashboardState);
+            /*]]>*/
+        </script>
+        
+        <!-- Main Dashboard JavaScript -->
+        <script th:src="@{/js/dashboard.js}"></script>
+    </th:block>
+</body>
+</html>

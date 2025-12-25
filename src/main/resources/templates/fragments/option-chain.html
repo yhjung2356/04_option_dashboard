@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <!-- Option Chain Section Fragment -->
+    <section th:fragment="option-chain" class="option-chain-section-compact" aria-label="옵션 체인 분석">
+        <article class="card option-chain-card-compact">
+            <header class="card-header-compact" style="justify-content: space-between;">
+                <div class="option-header-left">
+                    <i class="fas fa-table" aria-hidden="true"></i> 옵션 체인 분석
+                </div>
+                <div class="option-chain-info-compact">
+                    <span class="info-item-compact">
+                        기초: <strong id="underlying-price" aria-live="polite">0</strong>
+                    </span>
+                    <span class="info-item-compact">
+                        ATM: <strong id="atm-strike" aria-live="polite">0</strong>
+                    </span>
+                    <span class="info-item-compact max-pain-compact">
+                        <i class="fas fa-bullseye" aria-hidden="true"></i> 
+                        <strong id="max-pain" aria-live="polite">0</strong>
+                    </span>
+                </div>
+            </header>
+            
+            <div class="card-body-compact">
+                <div class="option-chain-table-wrapper">
+                    <table class="option-chain-table-compact" role="table" aria-label="옵션 체인 상세 정보">
+                        <thead>
+                            <tr>
+                                <th colspan="5" class="call-header" scope="colgroup">CALL</th>
+                                <th class="strike-header" scope="col">행사가</th>
+                                <th colspan="5" class="put-header" scope="colgroup">PUT</th>
+                            </tr>
+                            <tr>
+                                <th scope="col">호가</th>
+                                <th scope="col">델타</th>
+                                <th scope="col">거래량</th>
+                                <th scope="col">미결제</th>
+                                <th scope="col">현재가</th>
+                                <th scope="col">Strike</th>
+                                <th scope="col">현재가</th>
+                                <th scope="col">미결제</th>
+                                <th scope="col">거래량</th>
+                                <th scope="col">델타</th>
+                                <th scope="col">호가</th>
+                            </tr>
+                        </thead>
+                        <tbody id="option-chain-body">
+                            <tr style="display: none;">
+                                <td colspan="11" class="loading">데이터 로딩 중...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </article>
+    </section>
+</body>
+</html>
