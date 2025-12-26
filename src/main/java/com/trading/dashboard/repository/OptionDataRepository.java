@@ -41,4 +41,6 @@ public interface OptionDataRepository extends JpaRepository<OptionData, Long> {
     List<OptionData> findByStrikePrice(BigDecimal strikePrice);
 
     java.util.Optional<OptionData> findBySymbol(String symbol);
+
+    java.util.Optional<OptionData> findOptionalBySymbol(String symbol);
 }

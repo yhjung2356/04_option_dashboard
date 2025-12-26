@@ -19,6 +19,7 @@ import jakarta.annotation.PreDestroy;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -238,9 +239,18 @@ public class KisWebSocketService {
         // B로 시작: 콜옵션 (B01601560...)
         // C로 시작: 풋옵션 (C01601560...)
 
-        // ⚠️ KIS API: 선물과 옵션 모두 H0STCNT0 사용
-        // H0STCNI0은 INVALID HTSID 에러 발생
-        String trId = "H0STCNT0"; // 선물/옵션 실시간 체결가 통합
+        // 시장 시간에 따라 TR_ID 선택
+        boolean isFutures = code.startsWith("A");
+        boolean isNightSession = LocalTime.now().getHour() >= 18 || LocalTime.now().getHour() < 9;
+
+        String trId;
+        if (isNightSession) {
+            // 야간장: H0MFCNT0 (선물), H0EUCNT0 (옵션)
+            trId = isFutures ? "H0MFCNT0" : "H0EUCNT0";
+        } else {
+            // 주간장: H0STCNT0 (선물/옵션 통합)
+            trId = "H0STCNT0";
+        }
 
         Map<String, Object> request = new HashMap<>();
         request.put("header", Map.of(
@@ -263,7 +273,25 @@ public class KisWebSocketService {
      */
     private void handleRealtimeData(String message) {
         try {
-            // KIS WebSocket 응답 파싱
+            // 파이프 구분자 실시간 데이터 처리: 0|H0MFCNT0|001|A01603^...
+            if (message.startsWith("0|")) {
+                String[] parts = message.split("\\|", 4);
+                if (parts.length >= 4) {
+                    String trId = parts[1]; // H0MFCNT0 or H0EUCNT0
+                    String data = parts[3]; // A01603^210919^...
+
+                    if ("H0STCNT0".equals(trId) || "H0MFCNT0".equals(trId)) {
+                        // 선물 체결 데이터
+                        handleFuturesPipeData(data);
+                    } else if ("H0STCNI0".equals(trId) || "H0EUCNT0".equals(trId)) {
+                        // 옵션 체결 데이터
+                        handleOptionPipeData(data);
+                    }
+                }
+                return;
+            }
+
+            // JSON 형식 (구독 응답 등)
             JsonObject json = gson.fromJson(message, JsonObject.class);
 
             if (json.has("header") && json.has("body")) {
@@ -298,28 +326,86 @@ public class KisWebSocketService {
                         return;
                     }
                 }
-
-                // 실시간 데이터 처리
-                String trId = json.getAsJsonObject("header").get("tr_id").getAsString();
-
-                if ("H0STCNT0".equals(trId)) {
-                    // 선물 체결 데이터
-                    handleFuturesData(json);
-                } else if ("H0STCNI0".equals(trId)) {
-                    // 옵션 체결 데이터
-                    handleOptionData(json);
-                }
             }
 
         } catch (Exception e) {
-            log.debug("Parsing message: {}", message);
+            log.debug("Parsing error: {}", message);
+        }
+    }
+
+    /**
+     * 선물 실시간 데이터 처리 (파이프 구분자 형식)
+     * 형식:
+     * A01603^210919^0.75^2^0.13^590.70^590.30^590.80^589.90^1^1288^190102062^...
+     */
+    @Transactional
+    private void handleFuturesPipeData(String data) {
+        try {
+            String[] fields = data.split("\\^");
+            if (fields.length < 12) {
+                log.debug("[FUTURES] Invalid data format: {}", data);
+                return;
+            }
+
+            String code = fields[0]; // A01603
+            String price = fields[5]; // 현재가 (index 5)
+            String volume = fields[10]; // 누적거래량 (index 10)
+
+            log.debug("[FUTURES WS] {} - Price: {}, Volume: {}", code, price, volume);
+
+            // DB 업데이트
+            futuresDataRepository.findOptionalBySymbol(code).ifPresent(futures -> {
+                futures.setCurrentPrice(new BigDecimal(price));
+                futures.setVolume(Long.parseLong(volume));
+                futures.setTimestamp(LocalDateTime.now());
+                futuresDataRepository.save(futures);
+
+                log.debug("[FUTURES DB] Updated {} - Price: {}, Volume: {}",
+                        code, futures.getCurrentPrice(), futures.getVolume());
+            });
+
+        } catch (Exception e) {
+            log.error("[FUTURES] Parse error: {}", data, e);
+        }
+    }
+
+    /**
+     * 옵션 실시간 데이터 처리 (파이프 구분자 형식)
+     */
+    @Transactional
+    private void handleOptionPipeData(String data) {
+        try {
+            String[] fields = data.split("\\^");
+            if (fields.length < 12) {
+                log.debug("[OPTION] Invalid data format: {}", data);
+                return;
+            }
+
+            String code = fields[0];
+            String price = fields[2]; // 현재가
+            String volume = fields[10]; // 누적거래량
+
+            log.debug("[OPTION WS] {} - Price: {}, Volume: {}", code, price, volume);
+
+            // DB 업데이트
+            optionDataRepository.findOptionalBySymbol(code).ifPresent(option -> {
+                option.setCurrentPrice(new BigDecimal(price));
+                option.setVolume(Long.parseLong(volume));
+                option.setTimestamp(LocalDateTime.now());
+                optionDataRepository.save(option);
+
+                log.debug("[OPTION DB] Updated {} - Price: {}, Volume: {}",
+                        code, option.getCurrentPrice(), option.getVolume());
+            });
+
+        } catch (Exception e) {
+            log.error("[OPTION] Parse error: {}", data, e);
         }
     }
 
     /**
      * 선물 실시간 데이터 처리
-     * 주의: CNTG_VOL은 체결 거래량이므로 누적 거래량 업데이트에 사용하면 안됨
-     * 가격만 업데이트하고, 거래량/미결제는 정기 갱신으로 관리
+     * 가격, 거래량 실시간 업데이트
      */
     @Transactional
     private void handleFuturesData(JsonObject json) {
@@ -328,13 +414,29 @@ public class KisWebSocketService {
             String code = body.get("MKSC_SHRN_ISCD").getAsString();
             String price = body.get("STCK_PRPR").getAsString();
 
-            log.debug("[FUTURES] {} - Price: {}", code, price);
+            // 누적 거래량 (acml_vol) - KIS API 필드명 (소문자)
+            String volume = body.has("acml_vol") ? body.get("acml_vol").getAsString() : null;
 
-            // DB 업데이트: 가격만 업데이트
+            log.debug("[FUTURES WS] {} - Price: {}, Volume: {}", code, price, volume);
+
+            // DB 업데이트: 가격 및 거래량
             futuresDataRepository.findOptionalBySymbol(code).ifPresent(futures -> {
                 futures.setCurrentPrice(new BigDecimal(price));
+
+                // 거래량이 있으면 업데이트
+                if (volume != null && !volume.isEmpty()) {
+                    try {
+                        futures.setVolume(Long.parseLong(volume));
+                    } catch (NumberFormatException e) {
+                        log.debug("Invalid volume format: {}", volume);
+                    }
+                }
+
                 futures.setTimestamp(LocalDateTime.now());
                 futuresDataRepository.save(futures);
+
+                log.debug("[FUTURES DB] Updated {} - Price: {}, Volume: {}",
+                        code, futures.getCurrentPrice(), futures.getVolume());
             });
 
         } catch (Exception e) {
@@ -344,8 +446,7 @@ public class KisWebSocketService {
 
     /**
      * 옵션 실시간 데이터 처리
-     * 주의: CNTG_VOL은 체결 거래량이므로 누적 거래량 업데이트에 사용하면 안됨
-     * 가격만 업데이트하고, 거래량/미결제는 정기 갱신으로 관리
+     * 가격, 거래량 실시간 업데이트
      */
     @Transactional
     private void handleOptionData(JsonObject json) {
@@ -354,13 +455,29 @@ public class KisWebSocketService {
             String code = body.get("MKSC_SHRN_ISCD").getAsString();
             String price = body.get("STCK_PRPR").getAsString();
 
-            log.debug("[OPTION] {} - Price: {}", code, price);
+            // 누적 거래량 (acml_vol) - KIS API 필드명 (소문자)
+            String volume = body.has("acml_vol") ? body.get("acml_vol").getAsString() : null;
 
-            // DB 업데이트: 가격만 업데이트
+            log.debug("[OPTION WS] {} - Price: {}, Volume: {}", code, price, volume);
+
+            // DB 업데이트: 가격 및 거래량
             optionDataRepository.findBySymbol(code).ifPresent(option -> {
                 option.setCurrentPrice(new BigDecimal(price));
+
+                // 거래량이 있으면 업데이트
+                if (volume != null && !volume.isEmpty()) {
+                    try {
+                        option.setVolume(Long.parseLong(volume));
+                    } catch (NumberFormatException e) {
+                        log.debug("Invalid volume format: {}", volume);
+                    }
+                }
+
                 option.setTimestamp(LocalDateTime.now());
                 optionDataRepository.save(option);
+
+                log.debug("[OPTION DB] Updated {} - Price: {}, Volume: {}",
+                        code, option.getCurrentPrice(), option.getVolume());
             });
 
         } catch (Exception e) {

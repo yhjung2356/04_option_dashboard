@@ -66,7 +66,7 @@
               <div>
                 <p class="font-medium text-gray-800 dark:text-gray-100">데이터 소스</p>
                 <p class="text-sm text-gray-500 dark:text-gray-400">
-                  {{ marketStore.overview?.dataSource === 'LIVE' ? '실시간 API' : '데모 데이터' }}
+                  {{ marketStore.overview?.dataSource === 'KIS' ? '실시간 KIS API' : '데모 데이터' }}
                 </p>
               </div>
             </div>

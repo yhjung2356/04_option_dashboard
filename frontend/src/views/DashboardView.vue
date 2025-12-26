@@ -59,13 +59,22 @@ const toggleSidebar = () => {
 }
 
 onMounted(async () => {
-  // 1. 먼저 REST API로 초기 데이터 로딩
-  await Promise.all([
-    marketStore.fetchOverview(),
-    optionStore.fetchChainData()
-  ])
+  // console.log('[DashboardView] ✅ 마운트됨 - 데이터 로딩 시작')
+  
+  try {
+    // 1. 먼저 REST API로 초기 데이터 로딩
+    // console.log('[DashboardView] API 호출 시작...')
+    await Promise.all([
+      marketStore.fetchOverview(),
+      optionStore.fetchChainData()
+    ])
+    // console.log('[DashboardView] ✅ API 로딩 완료')
+  } catch (error) {
+    console.error('[DashboardView] ❌ API 로딩 실패:', error)
+  }
   
   // 2. 데이터 로딩 완료 후 WebSocket 연결
+  // console.log('[DashboardView] WebSocket 연결 시작...')
   wsStore.connect()
 })
 </script>

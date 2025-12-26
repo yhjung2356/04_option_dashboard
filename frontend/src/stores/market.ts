@@ -52,6 +52,12 @@ export const useMarketStore = defineStore('market', () => {
 
   // Actions
   function updateOverview(data: MarketOverview) {
+    console.log('[Market Store] 데이터 업데이트:', {
+      futuresVolume: data?.totalFuturesVolume,
+      optionsVolume: data?.totalOptionsVolume,
+      putCallRatio: data?.putCallRatio?.volumeRatio,
+      marketStatus: data?.marketStatus
+    })
     overview.value = data
     lastUpdate.value = new Date()
   }
@@ -59,12 +65,18 @@ export const useMarketStore = defineStore('market', () => {
   async function fetchOverview() {
     isLoading.value = true
     try {
+      // console.log('[Market Store] API 호출 시작...')
       const response = await fetch('/api/market/overview')
+      // console.log('[Market Store] 응답 상태:', response.status, response.statusText)
+      
       if (!response.ok) throw new Error('Failed to fetch overview')
+      
       const data = await response.json()
+      console.log('[Market Store] JSON 파싱 완료:', data)
+      
       updateOverview(data)
     } catch (error) {
-      console.error('[Market Store] 개요 로딩 실패:', error)
+      console.error('[Market Store] ❌ 개요 로딩 실패:', error)
     } finally {
       isLoading.value = false
     }

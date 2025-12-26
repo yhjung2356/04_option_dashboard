@@ -76,21 +76,40 @@ export const useOptionStore = defineStore('option', () => {
 
   // Actions
   function updateChainData(data: OptionChainData) {
+    console.log('[Option Store] 데이터 업데이트:', {
+      strikes: data?.strikeChain?.length,
+      atm: data?.atmStrike,
+      underlying: data?.underlyingPrice
+    })
+    
+    if (!data || !data.strikeChain || data.strikeChain.length === 0) {
+      console.warn('[Option Store] ⚠️ 빈 데이터 받음:', data)
+      return
+    }
+    
     chainData.value = data
     if (!selectedStrike.value) {
       selectedStrike.value = data.atmStrike
     }
+    
+    // console.log('[Option Store] ✅ 업데이트 완료:', chainData.value.strikeChain.length, '개')
   }
 
   async function fetchChainData() {
     isLoading.value = true
     try {
+      // console.log('[Option Store] API 호출 시작...')
       const response = await fetch('/api/market/option-chain')
+      // console.log('[Option Store] 응답 상태:', response.status, response.statusText)
+      
       if (!response.ok) throw new Error('Failed to fetch option chain')
+      
       const data = await response.json()
+      console.log('[Option Store] JSON 파싱 완료:', data)
+      
       updateChainData(data)
     } catch (error) {
-      console.error('[Option Store] 체인 데이터 로딩 실패:', error)
+      console.error('[Option Store] ❌ 체인 데이터 로딩 실패:', error)
     } finally {
       isLoading.value = false
     }

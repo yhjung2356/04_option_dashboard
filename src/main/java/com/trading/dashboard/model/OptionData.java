@@ -13,8 +13,9 @@ import java.time.LocalDateTime;
 @Table(name = "option_data", indexes = {
         @Index(name = "idx_option_volume", columnList = "volume"),
         @Index(name = "idx_option_strike_price", columnList = "strikePrice"),
-        @Index(name = "idx_option_timestamp", columnList = "timestamp"),
-        @Index(name = "idx_option_symbol", columnList = "symbol")
+        @Index(name = "idx_option_timestamp", columnList = "timestamp")
+}, uniqueConstraints = {
+        @UniqueConstraint(name = "uk_option_symbol", columnNames = "symbol")
 })
 @Data
 @NoArgsConstructor

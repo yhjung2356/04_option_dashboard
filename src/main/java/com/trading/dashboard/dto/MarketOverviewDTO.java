@@ -39,6 +39,9 @@ public class MarketOverviewDTO {
     // 시장 상태
     private MarketStatusInfo marketStatus;
 
+    // 데이터 소스 정보
+    private String dataSource; // "KIS" 또는 "DEMO"
+
     @Data
     @NoArgsConstructor
     @AllArgsConstructor

@@ -12,8 +12,9 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "futures_data", indexes = {
         @Index(name = "idx_futures_volume", columnList = "volume"),
-        @Index(name = "idx_futures_timestamp", columnList = "timestamp"),
-        @Index(name = "idx_futures_symbol", columnList = "symbol")
+        @Index(name = "idx_futures_timestamp", columnList = "timestamp")
+}, uniqueConstraints = {
+        @UniqueConstraint(name = "uk_futures_symbol", columnNames = "symbol")
 })
 @Data
 @NoArgsConstructor

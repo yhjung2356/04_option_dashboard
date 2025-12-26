@@ -4,7 +4,6 @@ import { Client } from '@stomp/stompjs'
 import SockJS from 'sockjs-client'
 import { useMarketStore } from './market'
 import { useOptionStore } from './option'
-import type { WebSocketMessage } from '@/types'
 
 export const useWebSocketStore = defineStore('websocket', () => {
   // State
@@ -41,7 +40,7 @@ export const useWebSocketStore = defineStore('websocket', () => {
   // Actions
   function connect() {
     if (client.value && isConnected.value) {
-      console.log('[WebSocket] 이미 연결되어 있습니다')
+      // console.log('[WebSocket] 이미 연결되어 있습니다')
       return
     }
 
@@ -84,7 +83,7 @@ export const useWebSocketStore = defineStore('websocket', () => {
         heartbeatOutgoing: 4000,
         
         onConnect: () => {
-          console.log('[WebSocket] 연결 성공')
+          // console.log('[WebSocket] 연결 성공')
           isConnected.value = true
           connectionStatus.value = 'connected'
           reconnectAttempts.value = 0
@@ -98,7 +97,7 @@ export const useWebSocketStore = defineStore('websocket', () => {
         },
         
         onWebSocketClose: () => {
-          console.log('[WebSocket] 연결 종료')
+          // console.log('[WebSocket] 연결 종료')
           isConnected.value = false
           connectionStatus.value = 'disconnected'
           handleReconnect()
@@ -129,10 +128,10 @@ export const useWebSocketStore = defineStore('websocket', () => {
     // 시장 개요 구독
     client.value.subscribe('/topic/market-overview', (message) => {
       try {
-        const data: WebSocketMessage = JSON.parse(message.body)
+        const data = JSON.parse(message.body)
         // 데이터 유효성 체크: 거래량이 0이면 스킵 (빈 데이터)
-        if (data.data && (data.data.totalFuturesVolume > 0 || data.data.totalOptionsVolume > 0)) {
-          marketStore.updateOverview(data.data)
+        if (data && (data.totalFuturesVolume > 0 || data.totalOptionsVolume > 0)) {
+          marketStore.updateOverview(data)
         }
       } catch (error) {
         console.error('[WebSocket] 시장 개요 파싱 오류:', error)
@@ -142,14 +141,23 @@ export const useWebSocketStore = defineStore('websocket', () => {
     // 옵션 체인 구독
     client.value.subscribe('/topic/option-chain', (message) => {
       try {
-        const data: WebSocketMessage = JSON.parse(message.body)
-        optionStore.updateChainData(data.data)
+        const data = JSON.parse(message.body)
+        // console.log('[WebSocket] 옵션 체인 수신:', {
+        //   hasData: !!data,
+        //   strikes: data?.strikeChain?.length,
+        //   atm: data?.atmStrike,
+        //   underlying: data?.underlyingPrice
+        // })
+        
+        if (data && data.strikeChain && data.strikeChain.length > 0) {
+          optionStore.updateChainData(data)
+        }
       } catch (error) {
         console.error('[WebSocket] 옵션 체인 파싱 오류:', error)
       }
     })
 
-    console.log('[WebSocket] 토픽 구독 완료')
+    // console.log('[WebSocket] 토픽 구독 완료')
   }
 
   function handleReconnect() {
@@ -160,7 +168,7 @@ export const useWebSocketStore = defineStore('websocket', () => {
     }
 
     reconnectAttempts.value++
-    console.log(`[WebSocket] 재연결 시도 ${reconnectAttempts.value}/${maxReconnectAttempts}`)
+    // console.log(`[WebSocket] 재연결 시도 ${reconnectAttempts.value}/${maxReconnectAttempts}`)
     
     setTimeout(() => {
       connect()
@@ -173,7 +181,7 @@ export const useWebSocketStore = defineStore('websocket', () => {
       client.value = null
       isConnected.value = false
       connectionStatus.value = 'disconnected'
-      console.log('[WebSocket] 연결 종료됨')
+      // console.log('[WebSocket] 연결 종료됨')
     }
   }
 

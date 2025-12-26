@@ -8,6 +8,7 @@ import com.trading.dashboard.repository.FuturesDataRepository;
 import com.trading.dashboard.repository.OptionDataRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +29,9 @@ public class MarketDataService {
         private final FuturesDataRepository futuresDataRepository;
         private final KisWebSocketService kisWebSocketService;
         private final MarketStatusService marketStatusService;
+
+        @Value("${trading.data-source}")
+        private String dataSource;
 
         /**
          * 장 시작 시 WebSocket 연결 (멀티 연결)
@@ -149,6 +153,7 @@ public class MarketDataService {
                                 .topByVolume(topByVolume)
                                 .topByOpenInterest(topByOpenInterest)
                                 .marketStatus(marketStatusInfo)
+                                .dataSource(dataSource)
                                 .build();
         }
 

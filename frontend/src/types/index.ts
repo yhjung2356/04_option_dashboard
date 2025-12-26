@@ -109,7 +109,7 @@ export interface MarketOverview {
   sentimentScore: number
   
   // 데이터 소스
-  dataSource: 'LIVE' | 'DEMO'
+  dataSource: 'KIS' | 'MOCK'
   
   // 상위 거래 종목
   topByVolume: Array<{
