@@ -70,13 +70,13 @@ import { useMarketStore } from '@/stores/market'
 const marketStore = useMarketStore()
 
 // Data
-const futuresVolume = computed(() => marketStore.overview?.futuresVolume ?? 0)
-const callVolume = computed(() => marketStore.overview?.callVolume ?? 0)
-const putVolume = computed(() => marketStore.overview?.putVolume ?? 0)
-const optionsVolume = computed(() => callVolume.value + putVolume.value)
+const futuresVolume = computed(() => marketStore.overview?.totalFuturesVolume ?? 0)
+const callVolume = computed(() => marketStore.overview?.putCallRatio?.callVolume ?? 0)
+const putVolume = computed(() => marketStore.overview?.putCallRatio?.putVolume ?? 0)
+const optionsVolume = computed(() => marketStore.overview?.totalOptionsVolume ?? 0)
 
-const pcRatio = computed(() => marketStore.overview?.putCallVolumeRatio ?? 0)
-const pcOIRatio = computed(() => marketStore.overview?.putCallOIRatio ?? 0)
+const pcRatio = computed(() => marketStore.overview?.putCallRatio?.volumeRatio ?? 0)
+const pcOIRatio = computed(() => marketStore.overview?.putCallRatio?.openInterestRatio ?? 0)
 
 const sentiment = computed(() => marketStore.overview?.marketSentiment ?? 'NEUTRAL')
 const sentimentScore = computed(() => marketStore.overview?.sentimentScore ?? 0)
@@ -104,12 +104,6 @@ const sentimentIcon = computed(() => {
 
 // Utilities
 function formatNumber(num: number): string {
-  if (num >= 1_000_000) {
-    return (num / 1_000_000).toFixed(1) + 'M'
-  }
-  if (num >= 1_000) {
-    return (num / 1_000).toFixed(1) + 'K'
-  }
-  return num.toLocaleString()
+  return num.toLocaleString('ko-KR')
 }
 </script>

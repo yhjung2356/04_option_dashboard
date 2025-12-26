@@ -51,12 +51,20 @@ export interface OptionChainRow {
   callVolume: number
   callOpenInterest: number
   callDelta: number
+  callGamma: number
+  callTheta: number
+  callVega: number
+  callImpliedVolatility: number
   callBidPrice: number
   callAskPrice: number
   putPrice: number
   putVolume: number
   putOpenInterest: number
   putDelta: number
+  putGamma: number
+  putTheta: number
+  putVega: number
+  putImpliedVolatility: number
   putBidPrice: number
   putAskPrice: number
   totalVolume: number
@@ -96,6 +104,13 @@ export interface MarketOverview {
     tradingValueRatio: number
   }
   
+  // 시장 심리
+  marketSentiment: 'BULLISH' | 'NEUTRAL' | 'BEARISH'
+  sentimentScore: number
+  
+  // 데이터 소스
+  dataSource: 'LIVE' | 'DEMO'
+  
   // 상위 거래 종목
   topByVolume: Array<{
     symbol: string
@@ -105,7 +120,7 @@ export interface MarketOverview {
     volume: number
     tradingValue: number
     openInterest: number
-    changePercent: number | null
+    changePercent: number | undefined
   }>
   topByOpenInterest: Array<{
     symbol: string
@@ -115,9 +130,16 @@ export interface MarketOverview {
     volume: number
     tradingValue: number
     openInterest: number
-    changePercent: number | null
+    changePercent: number | undefined
   }>
-}
+  
+  // 시장 상태
+  marketStatus?: {
+    displayName: string     // "주간장", "야간장", "휴장"
+    description: string     // "거래중", "주말", "공휴일"
+    isOpen: boolean         // true/false
+    fullText: string        // "주간장 거래중", "휴장"
+  }
 }
 
 // WebSocket 메시지 타입

@@ -14,11 +14,29 @@
     </button>
 
     <div class="p-4 space-y-4">
-      <!-- Overview Cards (Compact) -->
+      <!-- Market Status -->
       <section class="space-y-2">
         <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
           <span>📊</span>
-          <span>시장 개요</span>
+          <span>시장 계요</span>
+        </h3>
+        <div class="p-3 bg-gradient-to-br rounded-lg"
+          :class="marketStatusBgClass">
+          <div class="text-xs text-gray-600 dark:text-gray-400 mb-1">시장 상태</div>
+          <div class="flex items-center gap-2">
+            <div class="w-3 h-3 rounded-full" :class="marketStatusDotClass"></div>
+            <div class="text-lg font-bold" :class="marketStatusTextClass">
+              {{ marketStatusText }}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Overview Cards (Compact) -->
+      <section class="space-y-2">
+        <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
+          <span>📈</span>
+          <span>거래 현황</span>
         </h3>
         <div class="grid grid-cols-1 gap-2">
           <!-- Futures Volume -->
@@ -129,7 +147,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useMarketStore } from '@/stores/market'
 import { useOptionStore } from '@/stores/option'
 import VolumeChart from '@/components/charts/VolumeChart.vue'
@@ -147,23 +165,38 @@ const closeSidebar = () => {
 }
 
 const formatNumber = (value: number): string => {
-  if (value >= 1000000) {
-    return (value / 1000000).toFixed(1) + 'M'
-  } else if (value >= 1000) {
-    return (value / 1000).toFixed(1) + 'K'
+  return value.toLocaleString('ko-KR')
+}
+
+// Market status computed properties
+const marketStatusText = computed(() => {
+  return marketStore.overview?.marketStatus?.fullText || '알 수 없음'
+})
+
+const isMarketOpen = computed(() => {
+  return marketStore.overview?.marketStatus?.isOpen || false
+})
+
+const marketStatusBgClass = computed(() => {
+  if (isMarketOpen.value) {
+    return 'from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20'
   }
-  return value.toString()
-}
+  return 'from-gray-50 to-gray-100 dark:from-gray-800/50 dark:to-gray-700/50'
+})
 
-const formatGreek = (value: number): string => {
-  return value.toFixed(4)
-}
+const marketStatusDotClass = computed(() => {
+  if (isMarketOpen.value) {
+    return 'bg-green-500 dark:bg-green-400 animate-pulse'
+  }
+  return 'bg-gray-400 dark:bg-gray-500'
+})
 
-const getGreekColor = (value: number): string => {
-  if (value > 0) return 'text-green-600 dark:text-green-400'
-  if (value < 0) return 'text-red-600 dark:text-red-400'
+const marketStatusTextClass = computed(() => {
+  if (isMarketOpen.value) {
+    return 'text-green-600 dark:text-green-400'
+  }
   return 'text-gray-600 dark:text-gray-400'
-}
+})
 
 // Export for parent component
 defineExpose({

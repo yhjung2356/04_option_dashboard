@@ -78,9 +78,9 @@ function updateTime() {
 const isConnected = computed(() => wsStore.isConnected)
 const wsStatusText = computed(() => wsStore.statusText)
 
-const dataSourceText = computed(() => {
-  return marketStore.overview?.dataSource === 'LIVE' ? '실시간' : '데모'
-})
+// const dataSourceText = computed(() => {
+//   return marketStore.overview?.dataSource === 'LIVE' ? '실시간' : '데모'
+// })
 
 const lastUpdateText = computed(() => {
   if (!marketStore.lastUpdate) return '-'

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import type { OptionChainData, OptionChainRow } from '@/types'
+import type { OptionChainData } from '@/types'
 
 export const useOptionStore = defineStore('option', () => {
   // State

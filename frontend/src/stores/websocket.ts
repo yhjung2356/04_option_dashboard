@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { Client } from '@stomp/stompjs'
+import SockJS from 'sockjs-client'
 import { useMarketStore } from './market'
 import { useOptionStore } from './option'
 import type { WebSocketMessage } from '@/types'
@@ -44,84 +45,26 @@ export const useWebSocketStore = defineStore('websocket', () => {
       return
     }
 
-    // 장 시간 체크 (주간: 09:00~15:45, 야간: 18:00~05:00)
+    // 장 시간 체크는 백엔드에서 하므로 여기서는 기본 체크만 수행
     const now = new Date()
-    const year = now.getFullYear()
     const hour = now.getHours()
-    const minute = now.getMinutes()
     const dayOfWeek = now.getDay() // 0=일요일, 6=토요일
-    const month = now.getMonth() + 1 // 1-12
-    const date = now.getDate()
     
     // 주말 체크
     if (dayOfWeek === 0 || dayOfWeek === 6) {
-      console.log('[WebSocket] 주말에는 연결하지 않습니다')
+      // console.log('[WebSocket] 주말에는 연결하지 않습니다')
       connectionStatus.value = 'holiday'
       return
     }
     
-    // 한국 공휴일 체크 (2025-2026년)
-    const holidays2025 = [
-      [1, 1],   // 신정
-      [1, 28],  // 설날 연휴
-      [1, 29],  // 설날
-      [1, 30],  // 설날 연휴
-      [3, 1],   // 삼일절
-      [5, 5],   // 어린이날
-      [5, 6],   // 어린이날 대체공휴일
-      [6, 6],   // 현충일
-      [8, 15],  // 광복절
-      [9, 6],   // 추석 연휴
-      [9, 7],   // 추석 연휴
-      [9, 8],   // 추석
-      [9, 9],   // 추석 연휴
-      [10, 3],  // 개천절
-      [10, 9],  // 한글날
-      [12, 25], // 크리스마스
-    ]
-    
-    const holidays2026 = [
-      [1, 1],   // 신정
-      [1, 24],  // 설날 연휴
-      [1, 25],  // 설날 연휴
-      [1, 26],  // 설날
-      [3, 1],   // 삼일절
-      [3, 2],   // 삼일절 대체공휴일
-      [5, 5],   // 어린이날
-      [5, 25],  // 석가탄신일
-      [6, 6],   // 현충일
-      [8, 15],  // 광복절
-      [9, 24],  // 추석 연휴
-      [9, 25],  // 추석
-      [9, 26],  // 추석 연휴
-      [10, 3],  // 개천절
-      [10, 5],  // 개천절 대체공휴일
-      [10, 9],  // 한글날
-      [12, 25], // 크리스마스
-    ]
-    
-    const holidays = year === 2025 ? holidays2025 : year === 2026 ? holidays2026 : []
-    const isHoliday = holidays.some(([m, d]) => m === month && d === date)
-    
-    if (isHoliday) {
-      console.log('[WebSocket] 오늘은 휴장일입니다')
-      connectionStatus.value = 'holiday'
-      return
-    }
-    
-    // 특수 거래일 체크 (1월 첫 거래일, 수능날: 10시 시작)
-    // 1월 2일 또는 3일 (1일이 주말인 경우)
-    const isFirstTradingDay = (month === 1 && (date === 2 || (date === 3 && new Date(year, 0, 2).getDay() === 0)))
-    // 수능날 (11월 둘째 목요일 또는 셋째 목요일)
-    const isCollegeExamDay = (month === 11 && dayOfWeek === 4 && date >= 8 && date <= 21)
-    
-    // 장 시작 시간 결정
-    const marketStartHour = (isFirstTradingDay || isCollegeExamDay) ? 10 : 9
-    const isDaySession = (hour > marketStartHour || (hour === marketStartHour && minute >= 0)) && (hour < 15 || (hour === 15 && minute <= 45))
-    const isNightSession = hour >= 18 || hour < 5
+    // 간단한 장 시간 체크 (상세한 체크는 백엔드에서)
+    // 주간장: 08:45~15:45 (15:35~15:45 동시호가)
+    // 야간장: 18:00~익일 05:00
+    const isDaySession = (hour >= 8 && hour < 16)
+    const isNightSession = (hour >= 18 || hour < 5)
     
     if (!isDaySession && !isNightSession) {
-      console.log('[WebSocket] 장 시간이 아니므로 연결하지 않습니다')
+      // console.log('[WebSocket] 장 시간이 아니므로 연결하지 않습니다')
       connectionStatus.value = 'disconnected'
       return
     }
@@ -131,11 +74,11 @@ export const useWebSocketStore = defineStore('websocket', () => {
     try {
       // 개발 환경에서는 백엔드 포트(8080) 사용, 프로덕션에서는 같은 호스트 사용
       const backendUrl = import.meta.env.DEV 
-        ? 'ws://localhost:8080/ws'
-        : `ws://${window.location.host}/ws`
+        ? 'http://localhost:8080/ws'
+        : `http://${window.location.host}/ws`
       
       const stompClient = new Client({
-        brokerURL: backendUrl,
+        webSocketFactory: () => new SockJS(backendUrl),
         reconnectDelay: reconnectDelay,
         heartbeatIncoming: 4000,
         heartbeatOutgoing: 4000,
@@ -187,7 +130,10 @@ export const useWebSocketStore = defineStore('websocket', () => {
     client.value.subscribe('/topic/market-overview', (message) => {
       try {
         const data: WebSocketMessage = JSON.parse(message.body)
-        marketStore.updateOverview(data.data)
+        // 데이터 유효성 체크: 거래량이 0이면 스킵 (빈 데이터)
+        if (data.data && (data.data.totalFuturesVolume > 0 || data.data.totalOptionsVolume > 0)) {
+          marketStore.updateOverview(data.data)
+        }
       } catch (error) {
         console.error('[WebSocket] 시장 개요 파싱 오류:', error)
       }

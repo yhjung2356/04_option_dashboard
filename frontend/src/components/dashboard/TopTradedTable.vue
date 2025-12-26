@@ -21,9 +21,9 @@
           {{ index + 1 }}
         </div>
 
-        <!-- Symbol & Type -->
+        <!-- Name & Type -->
         <div class="ml-2 flex-grow min-w-0">
-          <p class="font-semibold text-sm text-gray-800 dark:text-gray-200 truncate">{{ item.symbol }}</p>
+          <p class="font-semibold text-sm text-gray-800 dark:text-gray-200 truncate">{{ formatItemName(item) }}</p>
           <p class="text-xs text-gray-500 dark:text-gray-400">{{ getOptionType(item) }}</p>
         </div>
 
@@ -61,9 +61,9 @@
           {{ index + 1 }}
         </div>
 
-        <!-- Symbol & Type -->
+        <!-- Name & Type -->
         <div class="ml-2 flex-grow min-w-0">
-          <p class="font-semibold text-sm text-gray-800 dark:text-gray-200 truncate">{{ item.symbol }}</p>
+          <p class="font-semibold text-sm text-gray-800 dark:text-gray-200 truncate">{{ formatItemName(item) }}</p>
           <p class="text-xs text-gray-500 dark:text-gray-400">{{ getOptionType(item) }}</p>
         </div>
 
@@ -91,10 +91,10 @@ const topByOI = computed(() => marketStore.overview?.topByOpenInterest ?? [])
 
 // Utilities
 function getRankClass(index: number): string {
-  if (index === 0) return 'bg-yellow-400 text-white'
-  if (index === 1) return 'bg-gray-300 text-gray-700'
-  if (index === 2) return 'bg-amber-600 text-white'
-  return 'bg-gray-200 text-gray-600'
+  if (index === 0) return 'bg-yellow-400 dark:bg-yellow-500 text-white'
+  if (index === 1) return 'bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-200'
+  if (index === 2) return 'bg-amber-600 dark:bg-amber-700 text-white'
+  return 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
 }
 
 function getOptionType(item: any): string {
@@ -113,17 +113,15 @@ function getOptionType(item: any): string {
 }
 
 function getPriceChangeClass(changePercent: number | undefined): string {
-  if (!changePercent) return 'text-gray-600'
-  if (changePercent > 0) return 'text-green-600'
-  if (changePercent < 0) return 'text-red-600'
-  return 'text-gray-600'
+  if (!changePercent) return 'text-gray-600 dark:text-gray-400'
+  if (changePercent > 0) return 'text-green-600 dark:text-green-400'
+  if (changePercent < 0) return 'text-red-600 dark:text-red-400'
+  return 'text-gray-600 dark:text-gray-400'
 }
 
 function formatVolume(value: number | undefined): string {
   if (value === undefined || value === null) return '-'
-  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1)}M`
-  if (value >= 1_000) return `${(value / 1_000).toFixed(1)}K`
-  return value.toLocaleString()
+  return value.toLocaleString('ko-KR')
 }
 
 function formatPrice(value: number | undefined): string {
@@ -131,9 +129,18 @@ function formatPrice(value: number | undefined): string {
   return value.toFixed(2)
 }
 
-function formatChangePercent(value: number | undefined): string {
-  if (value === undefined || value === null) return '-'
-  const sign = value > 0 ? '+' : ''
-  return `${sign}${value.toFixed(2)}%`
+function formatItemName(item: any): string {
+  if (!item || !item.name) return item?.symbol || '-'
+  
+  // "C 202601 575.0" → "Call 575.0"
+  // "P 202601 560.0" → "Put 560.0"
+  const parts = item.name.split(' ')
+  if (parts.length >= 3) {
+    const type = parts[0] === 'C' ? 'Call' : parts[0] === 'P' ? 'Put' : ''
+    const strike = parts[2]
+    return `${type} ${strike}`
+  }
+  
+  return item.name
 }
 </script>

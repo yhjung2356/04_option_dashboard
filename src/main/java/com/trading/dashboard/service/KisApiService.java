@@ -12,6 +12,7 @@ import com.trading.dashboard.repository.OptionDataRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.net.URI;
@@ -37,12 +38,40 @@ public class KisApiService {
     private final HttpClient httpClient;
     private final ObjectMapper objectMapper;
     private final TokenManager tokenManager;
+    private final MarketStatusService marketStatusService;
+
+    // 이전 조회의 평균 IV (변동성 기반 범위 조정용)
+    private volatile Double previousAvgIV = null;
+
+    /**
+     * 현재 야간장 시간인지 판단
+     */
+    private boolean isNightMarket() {
+        MarketStatusService.MarketStatus status = marketStatusService.getMarketStatus();
+        return status == MarketStatusService.MarketStatus.OPEN_NIGHT_SESSION;
+    }
+
+    /**
+     * 모든 데이터 삭제 (세션 전환 시 사용)
+     */
+    @Transactional
+    public void clearAllData() {
+        long futuresCount = futuresDataRepository.count();
+        long optionsCount = optionDataRepository.count();
+
+        if (futuresCount > 0 || optionsCount > 0) {
+            futuresDataRepository.deleteAll();
+            optionDataRepository.deleteAll();
+            log.info("[KIS API] Cleared {} futures, {} options", futuresCount, optionsCount);
+        }
+    }
 
     /**
      * KOSPI200 선물 데이터 로드
      */
+    @Transactional
     public void loadKospi200Futures() {
-        log.info("Loading KOSPI200 Futures data from KIS API...");
+        log.info("[KIS API] Loading KOSPI200 Futures data...");
 
         String token = getAccessToken();
         List<FuturesData> futuresList = new ArrayList<>();
@@ -56,13 +85,18 @@ public class KisApiService {
                 "A01612", // 12월물
         };
 
+        // 시장 상태에 따라 시장구분코드 결정 (F:주간선물, CM:야간선물)
+        boolean isNight = isNightMarket();
+        String marketDivCode = isNight ? "CM" : "F";
+        log.info("[FUTURES] Market session: {} (marketDivCode: {})", isNight ? "Night" : "Day", marketDivCode);
+
         for (String code : futureCodes) {
             try {
-                FuturesData futures = fetchFuturesPrice(token, code, timestamp);
+                FuturesData futures = fetchFuturesPrice(token, code, timestamp, marketDivCode);
                 if (futures != null) {
                     futuresList.add(futures);
                 }
-                Thread.sleep(100);
+                Thread.sleep(100); // API 요청 간격: 100ms (rate limit 고려)
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 throw new DataFetchException("Interrupted while fetching futures", "KisAPI", code);
@@ -73,16 +107,18 @@ public class KisApiService {
 
         if (!futuresList.isEmpty()) {
             futuresDataRepository.saveAll(futuresList);
-            log.info("✓ Loaded {} KOSPI200 futures from KIS API", futuresList.size());
+            log.info("[KIS API] Loaded {} KOSPI200 futures", futuresList.size());
         }
     }
 
     /**
      * KOSPI200 옵션 데이터 로드
+     * 
+     * @Transactional
      */
     public void loadKospi200Options() {
         try {
-            log.info("Loading KOSPI200 Options data from KIS API...");
+            log.info("[KIS API] Loading KOSPI200 Options data...");
 
             String token = getAccessToken();
             if (token == null) {
@@ -93,36 +129,80 @@ public class KisApiService {
             List<OptionData> optionsList = new ArrayList<>();
             LocalDateTime timestamp = LocalDateTime.now();
 
+            // 1. 선물 가격 조회로 기초자산 가격 추정
+            FuturesData nearestFutures = futuresDataRepository.findAll().stream()
+                    .filter(f -> f.getVolume() > 0)
+                    .findFirst()
+                    .orElse(null);
+
+            double underlyingPrice = 590.0; // 기본값
+            if (nearestFutures != null) {
+                underlyingPrice = nearestFutures.getCurrentPrice().doubleValue();
+                log.info("[OPTIONS] Estimated underlying price from futures: {}", underlyingPrice);
+            }
+
+            // 2. ATM 계산 (5pt 단위로 반올림)
+            int atmStrike = (int) (Math.round(underlyingPrice / 5.0) * 5);
+
+            // 3. 변동성 기반 동적 범위 계산
+            int baseRange = 15; // 기본 범위 ±15pt
+            int range = baseRange;
+
+            if (previousAvgIV != null && previousAvgIV > 0) {
+                // IV 기반 범위 조정: IV 20% 기준, ±15pt
+                // IV 40%면 2배 → ±30pt, IV 10%면 0.5배 → ±7.5pt
+                double ivFactor = previousAvgIV / 20.0;
+                range = (int) Math.round(baseRange * ivFactor);
+
+                // 최소 15pt, 최대 30pt로 제한 (IV 낮을 때: 26개, 높을 때: 50개)
+                range = Math.max(15, Math.min(30, range));
+                log.info(String.format("Dynamic range adjustment: IV=%.2f%%, factor=%.2f, range=±%dpt",
+                        previousAvgIV, ivFactor, range));
+            }
+
+            int strikeStart = atmStrike - range;
+            int strikeEnd = atmStrike + range;
+
+            log.info("[OPTIONS] ATM Strike: {}, Range: {}~{} (±{}pt, underlying: {})",
+                    atmStrike, strikeStart, strikeEnd, range, underlyingPrice);
+
             // 실제 KOSPI200 옵션 종목코드 (2026년 1월물)
             // 콜옵션 (Call): B01601{행사가}, 풋옵션 (Put): C01601{행사가}
-            // 행사가 540~600 (2.5pt 간격) - 넓은 범위로 조회, 프론트엔드에서 ATM 주변만 표시
+            // KOSPI200 옵션은 2.5pt 간격으로만 존재 (575.0, 577.5, 580.0, 582.5, ...)
             List<String> optionCodes = new ArrayList<>();
 
-            // 행사가 540부터 600까지 2.5pt 간격으로 생성
-            // KIS 종목코드 형식: 560.0 -> "560", 562.5 -> "562", 565.0 -> "565"
-            for (int i = 540; i <= 600; i++) {
-                // 정수 행사가 (540, 542, 545, 547, 550...)
-                String strikeCode = String.format("%03d", i);
+            // 2.5pt 간격으로 옵션 코드 생성
+            for (double strike = strikeStart; strike <= strikeEnd; strike += 2.5) {
+                int strikeInt = (int) strike; // 575.0 -> 575, 577.5 -> 577
+                String strikeCode = String.format("%03d", strikeInt);
                 optionCodes.add("B01601" + strikeCode); // 콜옵션
                 optionCodes.add("C01601" + strikeCode); // 풋옵션
             }
 
-            log.info("Querying {} option contracts from KIS API (strikes 540~600)", optionCodes.size());
+            int expectedStrikes = (int) ((strikeEnd - strikeStart) / 2.5) + 1;
+            log.info(
+                    "[OPTIONS] Querying {} contracts ({}~{}, {} strikes, ATM: {}, Range: ±{}pt)",
+                    optionCodes.size(), strikeStart, strikeEnd, expectedStrikes, atmStrike, range);
+
+            // 시장 상태에 따라 시장구분코드 결정 (O:주간옵션, EU:야간옵션)
+            boolean isNight = isNightMarket();
+            String marketDivCode = isNight ? "EU" : "O";
+            log.info("[OPTIONS] Market session: {} (marketDivCode: {})", isNight ? "Night" : "Day", marketDivCode);
 
             for (String code : optionCodes) {
                 try {
-                    // 옵션 타입 판별 (B = 콜, C = 풋)
+                    // 옵션 타입 판별 (B = 콜, C = 푻)
                     OptionType optionType = code.startsWith("B0160") ? OptionType.CALL : OptionType.PUT;
 
                     // 행사가는 API 응답(acpr)에서 추출 (정확한 값 사용)
-                    OptionData option = fetchOptionPrice(token, code, optionType, timestamp);
+                    OptionData option = fetchOptionPrice(token, code, optionType, timestamp, marketDivCode);
                     if (option != null) {
                         // 호가 정보 조회
                         fetchOptionAskingPrice(token, option);
                         optionsList.add(option);
                     }
 
-                    Thread.sleep(100);
+                    Thread.sleep(100); // API 요청 간격: 100ms (rate limit 고려)
 
                 } catch (Exception e) {
                     log.warn("Failed to fetch option {}: {}", code, e.getMessage());
@@ -131,7 +211,19 @@ public class KisApiService {
 
             if (!optionsList.isEmpty()) {
                 optionDataRepository.saveAll(optionsList);
-                log.info("✓ Loaded {} KOSPI200 options from KIS API", optionsList.size());
+                log.info("[KIS API] Loaded {} KOSPI200 options", optionsList.size());
+
+                // 평균 IV 계산 및 캐싱 (다음 조회 시 범위 조정용)
+                double avgIV = optionsList.stream()
+                        .filter(opt -> opt.getImpliedVolatility() != null
+                                && opt.getImpliedVolatility().compareTo(BigDecimal.ZERO) > 0)
+                        .mapToDouble(opt -> opt.getImpliedVolatility().doubleValue())
+                        .average()
+                        .orElse(0.20); // 기본값 20%
+
+                previousAvgIV = avgIV;
+                log.info(
+                        String.format("Average IV calculated: %.2f%% (will adjust range for next query)", avgIV));
             }
 
         } catch (Exception e) {
@@ -142,11 +234,11 @@ public class KisApiService {
     /**
      * 개별 선물 시세 조회
      */
-    private FuturesData fetchFuturesPrice(String token, String code, LocalDateTime timestamp) {
+    private FuturesData fetchFuturesPrice(String token, String code, LocalDateTime timestamp, String marketDivCode) {
         try {
             String url = config.getBaseUrl() +
                     "/uapi/domestic-futureoption/v1/quotations/inquire-price" +
-                    "?FID_COND_MRKT_DIV_CODE=F" + // F: 선물
+                    "?FID_COND_MRKT_DIV_CODE=" + marketDivCode + // F:주간선물, CM:야간선물
                     "&FID_INPUT_ISCD=" + code;
 
             HttpRequest request = HttpRequest.newBuilder()
@@ -177,18 +269,23 @@ public class KisApiService {
 
                 JsonNode output1 = root.get("output1");
                 if (output1 != null && !output1.isEmpty()) {
-                    FuturesData futures = new FuturesData();
-                    futures.setSymbol(code);
-                    futures.setName(getContractMonthName(code));
-
                     // 필드 추출
                     String prprStr = output1.path("futs_prpr").asText("0");
                     BigDecimal currentPrice = new BigDecimal(prprStr.replace(",", ""));
                     long volume = output1.path("acml_vol").asLong(0);
+                    long openInterest = output1.path("hts_otst_stpl_qty").asLong(0);
 
                     // 거래대금: API에서 제공하는 acml_tr_pbmn 필드 사용
                     String tradingValueStr = output1.path("acml_tr_pbmn").asText("0");
                     BigDecimal tradingValue = new BigDecimal(tradingValueStr.replace(",", ""));
+
+                    // 디버깅: 실제 API 데이터 확인
+                    log.info("[API DATA] {} - Price: {}, Volume: {}, OI: {}, TradingValue: {}",
+                            code, currentPrice, volume, openInterest, tradingValue);
+
+                    FuturesData futures = new FuturesData();
+                    futures.setSymbol(code);
+                    futures.setName(getContractMonthName(code));
 
                     futures.setCurrentPrice(currentPrice);
                     futures.setChangeAmount(
@@ -218,11 +315,12 @@ public class KisApiService {
     /**
      * 개별 옵션 시세 조회
      */
-    private OptionData fetchOptionPrice(String token, String code, OptionType type, LocalDateTime timestamp) {
+    private OptionData fetchOptionPrice(String token, String code, OptionType type, LocalDateTime timestamp,
+            String marketDivCode) {
         try {
             String url = config.getBaseUrl() +
                     "/uapi/domestic-futureoption/v1/quotations/inquire-price" +
-                    "?FID_COND_MRKT_DIV_CODE=O" + // O: 옵션
+                    "?FID_COND_MRKT_DIV_CODE=" + marketDivCode + // O:주간옵션, EU:야간옵션
                     "&FID_INPUT_ISCD=" + code;
 
             HttpRequest request = HttpRequest.newBuilder()
@@ -284,11 +382,23 @@ public class KisApiService {
 
                     // 내재변동성: hts_ints_vltl 필드 사용
                     String ivStr = output1.path("hts_ints_vltl").asText("0");
-                    option.setImpliedVolatility(new BigDecimal(ivStr.replace(",", "")));
+                    BigDecimal rawIV = new BigDecimal(ivStr.replace(",", ""));
 
-                    // 그릭스(Greeks) 추출
+                    // 그리스(Greeks) 추출
                     String deltaStr = output1.path("delta_val").asText("0");
-                    option.setDelta(new BigDecimal(deltaStr.replace(",", "")));
+                    BigDecimal rawDelta = new BigDecimal(deltaStr.replace(",", ""));
+
+                    // KIS API의 IV 스케일 처리:
+                    // OTM: 0.2150 (소수점) → 21.50% (100 곱함)
+                    // ITM: 23.8142 (%) → 23.81% (그대로)
+                    BigDecimal normalizedIV = rawIV.compareTo(BigDecimal.ONE) < 0
+                            ? rawIV.multiply(BigDecimal.valueOf(100))
+                            : rawIV;
+
+                    log.info("[IV DEBUG] {} - Raw IV: {}, Normalized IV: {}, Delta: {}", code, rawIV, normalizedIV,
+                            rawDelta);
+                    option.setImpliedVolatility(normalizedIV);
+                    option.setDelta(rawDelta);
 
                     String gammaStr = output1.path("gama").asText("0"); // API 오타: gama
                     option.setGamma(new BigDecimal(gammaStr.replace(",", "")));
@@ -346,6 +456,7 @@ public class KisApiService {
                     .header("appkey", config.getAppKey())
                     .header("appsecret", config.getAppSecret())
                     .header("tr_id", "FHMIF10100000") // 호가 조회 TR_ID
+                    .timeout(java.time.Duration.ofSeconds(3))
                     .GET()
                     .build();
 
@@ -397,12 +508,12 @@ public class KisApiService {
             // 2. 파일 캐시 확인
             String cachedToken = loadTokenFromFile();
             if (cachedToken != null) {
-                log.info("✓ Using cached token from file");
+                log.info("[AUTH] Using cached token from file");
                 return cachedToken;
             }
 
             // 3. 새 토큰 발급
-            log.info("Requesting new access token from KIS API...");
+            log.info("[AUTH] Requesting new access token...");
 
             String url = config.getBaseUrl() + "/oauth2/tokenP";
             String requestBody = String.format(
@@ -429,7 +540,7 @@ public class KisApiService {
                 // 파일에도 저장 (재시작 시 사용)
                 saveTokenToFile(newToken, expiry);
 
-                log.info("✓ Access token obtained successfully! Expires in {} seconds", expiresIn);
+                log.info("[AUTH] Access token obtained successfully (expires in {} seconds)", expiresIn);
                 return newToken;
             } else {
                 String responseBody = response.body();
@@ -440,7 +551,7 @@ public class KisApiService {
                     log.warn("Rate limit exceeded. Attempting to use any cached token...");
                     String forcedToken = loadTokenFromFile(true);
                     if (forcedToken != null) {
-                        log.info("✓ Using potentially expired token from cache");
+                        log.info("[AUTH] Using potentially expired token from cache");
                         return forcedToken;
                     }
                 }
@@ -538,7 +649,7 @@ public class KisApiService {
             if (response.statusCode() == 200) {
                 JsonNode root = objectMapper.readTree(response.body());
                 String approvalKey = root.get("approval_key").asText();
-                log.info("✓ WebSocket approval key obtained successfully");
+                log.info("[WS] WebSocket approval key obtained successfully");
                 return approvalKey;
             } else {
                 log.error("Failed to get WebSocket approval key: {} - {}",

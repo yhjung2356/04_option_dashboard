@@ -6,7 +6,7 @@
         옵션 체인
       </span>
       <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
-        총 {{ strikeChain.length }}개 행사가
+        {{ strikeChain.length }}개 표시 / 전체 {{ allStrikes.length }}개
       </span>
     </h3>
 
@@ -121,8 +121,23 @@ import { useOptionStore } from '@/stores/option'
 
 const optionStore = useOptionStore()
 
-// Data
-const strikeChain = computed(() => optionStore.strikeChain)
+// Data - ATM 주변 15개만 표시 (±7개)
+const allStrikes = computed(() => optionStore.strikeChain)
+const strikeChain = computed(() => {
+  const atm = atmStrike.value
+  if (!atm || allStrikes.value.length === 0) return allStrikes.value
+
+  // ATM 행사가의 인덱스 찾기
+  const atmIndex = allStrikes.value.findIndex(row => row.strikePrice === atm)
+  if (atmIndex === -1) return allStrikes.value.slice(0, 15) // ATM 없으면 상위 15개
+
+  // ATM 기준 위아래 7개씩 (총 15개)
+  const startIdx = Math.max(0, atmIndex - 7)
+  const endIdx = Math.min(allStrikes.value.length, atmIndex + 8) // +8 = ATM 포함 8개
+  
+  return allStrikes.value.slice(startIdx, endIdx)
+})
+
 const isLoading = computed(() => optionStore.isLoading)
 const atmStrike = computed(() => optionStore.atmStrike)
 const maxPain = computed(() => optionStore.maxPain)
@@ -142,13 +157,12 @@ function formatPrice(value: number | undefined): string {
 
 function formatVolume(value: number | undefined): string {
   if (value === undefined || value === null || value === 0) return '-'
-  if (value >= 1000) return `${(value / 1000).toFixed(1)}K`
-  return value.toString()
+  return value.toLocaleString('ko-KR')
 }
 
 function formatIV(value: number | undefined): string {
   if (value === undefined || value === null) return '-'
-  return (value * 100).toFixed(1)
+  return value.toFixed(1)
 }
 
 function formatDelta(value: number | undefined): string {
@@ -159,15 +173,15 @@ function formatDelta(value: number | undefined): string {
 
 <style scoped>
 .text-call {
-  @apply text-green-600;
+  @apply text-green-600 dark:text-green-400;
 }
 
 .text-put {
-  @apply text-red-600;
+  @apply text-red-600 dark:text-red-400;
 }
 
 .text-strike {
-  @apply text-orange-600;
+  @apply text-orange-600 dark:text-orange-400;
 }
 
 /* Scrollbar styling */
@@ -176,14 +190,14 @@ function formatDelta(value: number | undefined): string {
 }
 
 .overflow-x-auto::-webkit-scrollbar-track {
-  @apply bg-gray-100;
+  @apply bg-gray-100 dark:bg-gray-800;
 }
 
 .overflow-x-auto::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 rounded;
+  @apply bg-gray-300 dark:bg-gray-600 rounded;
 }
 
 .overflow-x-auto::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400;
+  @apply bg-gray-400 dark:bg-gray-500;
 }
 </style>

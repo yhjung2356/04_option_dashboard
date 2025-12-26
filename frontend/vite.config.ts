@@ -4,28 +4,31 @@ import { VitePWA } from 'vite-plugin-pwa'
 import path from 'path'
 
 export default defineConfig({
+  define: {
+    global: 'globalThis'
+  },
   plugins: [
     vue(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
+      injectRegister: 'auto',
+      devOptions: {
+        enabled: false // 개발 환경에서는 PWA 비활성화
+      },
+      includeAssets: ['favicon.svg', 'robots.txt'],
       manifest: {
-        name: 'Futures Options Dashboard',
-        short_name: 'Dashboard',
-        description: '선물/옵션 실시간 대시보드',
+        name: '선물/옵션 실시간 모니터',
+        short_name: '옵션모니터',
+        description: 'KOSPI200 선물/옵션 실시간 데이터 모니터링',
         theme_color: '#667eea',
         background_color: '#ffffff',
         display: 'standalone',
         icons: [
           {
-            src: 'pwa-192x192.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: 'pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png'
+            src: 'favicon.svg',
+            sizes: 'any',
+            type: 'image/svg+xml',
+            purpose: 'any maskable'
           }
         ]
       }

@@ -11,18 +11,18 @@ export const useMarketStore = defineStore('market', () => {
   // Getters
   const totalVolume = computed(() => {
     if (!overview.value) return 0
-    return overview.value.totalFuturesVolume + overview.value.totalOptionsVolume
+    return (overview.value.totalFuturesVolume ?? 0) + (overview.value.totalOptionsVolume ?? 0)
   })
 
   const putCallRatio = computed(() => {
-    if (!overview.value) return 0
-    return overview.value.putCallRatio.volumeRatio
+    if (!overview.value?.putCallRatio) return 0
+    return overview.value.putCallRatio.volumeRatio ?? 0
   })
 
   const marketSentiment = computed(() => {
     // 간단한 시장 심리 판단 로직
-    if (!overview.value) return 'NEUTRAL'
-    const ratio = overview.value.putCallRatio.volumeRatio
+    if (!overview.value?.putCallRatio) return 'NEUTRAL'
+    const ratio = overview.value.putCallRatio.volumeRatio ?? 1
     if (ratio > 1.5) return 'BEARISH'  // Put이 Call보다 1.5배 많으면 약세
     if (ratio < 0.7) return 'BULLISH'  // Call이 Put보다 많으면 강세
     return 'NEUTRAL'

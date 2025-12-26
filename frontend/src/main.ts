@@ -11,8 +11,8 @@ app.use(router)
 
 app.mount('#app')
 
-// Register Service Worker (PWA)
-if ('serviceWorker' in navigator) {
+// Register Service Worker (PWA) - 프로덕션에서만 활성화
+if ('serviceWorker' in navigator && import.meta.env.PROD) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(registration => {

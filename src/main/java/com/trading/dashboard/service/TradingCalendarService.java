@@ -46,7 +46,7 @@ public class TradingCalendarService {
         }
 
         String result = previousDay.format(formatter);
-        log.info("Previous trading day calculated: {} (base: {})", result, baseDate);
+        log.debug("Previous trading day calculated: {} (base: {})", result, baseDate);
         return result;
     }
 

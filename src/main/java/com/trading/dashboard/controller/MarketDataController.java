@@ -18,18 +18,18 @@ import java.util.Map;
 @RequestMapping("/api/market")
 @RequiredArgsConstructor
 public class MarketDataController {
-    
+
     private final MarketDataService marketDataService;
-    
+
     @Value("${trading.data-source}")
     private String dataSource;
-    
+
     @Value("${trading.demo-mode}")
     private boolean demoMode;
-    
+
     @Value("${trading.market-hours.enabled}")
     private boolean marketHoursEnabled;
-    
+
     /**
      * 전체 시장 현황
      */
@@ -37,7 +37,7 @@ public class MarketDataController {
     public ResponseEntity<MarketOverviewDTO> getMarketOverview() {
         return ResponseEntity.ok(marketDataService.getMarketOverview());
     }
-    
+
     /**
      * Put/Call Ratio
      */
@@ -45,7 +45,7 @@ public class MarketDataController {
     public ResponseEntity<PutCallRatioDTO> getPutCallRatio() {
         return ResponseEntity.ok(marketDataService.calculatePutCallRatio());
     }
-    
+
     /**
      * 옵션 체인 분석
      */
@@ -53,7 +53,7 @@ public class MarketDataController {
     public ResponseEntity<OptionChainAnalysisDTO> getOptionChainAnalysis() {
         return ResponseEntity.ok(marketDataService.getOptionChainAnalysis());
     }
-    
+
     /**
      * 시스템 상태 조회 (페이지 상태 전달용)
      */
@@ -65,6 +65,17 @@ public class MarketDataController {
         state.put("marketHoursEnabled", marketHoursEnabled);
         state.put("timestamp", System.currentTimeMillis());
         state.put("serverTime", new java.util.Date());
+
+        // 데이터 타임스탬프 확인
+        try {
+            var latestOption = marketDataService.getLatestOptionTimestamp();
+            var latestFutures = marketDataService.getLatestFuturesTimestamp();
+            state.put("latestOptionData", latestOption);
+            state.put("latestFuturesData", latestFutures);
+        } catch (Exception e) {
+            state.put("dataTimestampError", e.getMessage());
+        }
+
         return ResponseEntity.ok(state);
     }
 }

@@ -23,6 +23,12 @@ application-local.properties
 # KIS API Token Cache
 kis_token.cache
 
+# H2 Database files (local data)
+data/
+*.db
+*.mv.db
+*.trace.db
+
 # Temporary files
 *.tmp
 *.swp

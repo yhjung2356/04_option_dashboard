@@ -45,9 +45,11 @@ import OptionChainTable from '@/components/dashboard/OptionChainTable.vue'
 import TopTradedTable from '@/components/dashboard/TopTradedTable.vue'
 import { useMarketStore } from '@/stores/market'
 import { useOptionStore } from '@/stores/option'
+import { useWebSocketStore } from '@/stores/websocket'
 
 const marketStore = useMarketStore()
 const optionStore = useOptionStore()
+const wsStore = useWebSocketStore()
 const sidebarRef = ref()
 
 const toggleSidebar = () => {
@@ -57,10 +59,13 @@ const toggleSidebar = () => {
 }
 
 onMounted(async () => {
-  // Initial data fetch
+  // 1. 먼저 REST API로 초기 데이터 로딩
   await Promise.all([
     marketStore.fetchOverview(),
     optionStore.fetchChainData()
   ])
+  
+  // 2. 데이터 로딩 완료 후 WebSocket 연결
+  wsStore.connect()
 })
 </script>

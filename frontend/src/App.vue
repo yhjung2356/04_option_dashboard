@@ -16,8 +16,7 @@ onMounted(() => {
   // Initialize theme
   initTheme()
   
-  // Connect WebSocket on app mount
-  wsStore.connect()
+  // WebSocket은 DashboardView에서 데이터 로딩 후 연결
 })
 
 onUnmounted(() => {
