@@ -20,6 +20,7 @@ import java.math.BigDecimal;
 import java.net.URI;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -43,6 +44,7 @@ public class KisWebSocketService {
     private WebSocketClient client;
     private static final int MAX_SUBSCRIPTIONS = 40;
     private static final String WS_URL = "ws://ops.koreainvestment.com:21000";
+    private static final ZoneId KST = ZoneId.of("Asia/Seoul");
 
     // 구독 응답 대기용
     private final Map<String, CountDownLatch> subscriptionLatches = new ConcurrentHashMap<>();
@@ -239,9 +241,25 @@ public class KisWebSocketService {
         // B로 시작: 콜옵션 (B01601560...)
         // C로 시작: 풋옵션 (C01601560...)
 
-        // 시장 시간에 따라 TR_ID 선택
+        // 시장 시간에 따라 TR_ID 선택 (KST 기준)
         boolean isFutures = code.startsWith("A");
-        boolean isNightSession = LocalTime.now().getHour() >= 18 || LocalTime.now().getHour() < 9;
+        LocalDateTime now = LocalDateTime.now(KST);
+        int currentHour = now.getHour();
+        int dayOfWeek = now.getDayOfWeek().getValue(); // 1(월)~7(일)
+
+        // 야간장 판단: 월~금 18:00 ~ 익일 05:00 (금요일 야간은 토요일 새벽까지)
+        // - 월~금 18:00~23:59: 야간장
+        // - 화~토 00:00~04:59: 야간장 (전날 밤 연장)
+        // - 일요일 전체 휴장
+        // - 월요일 00:00~04:59 휴장 (일요일 밤)
+        boolean isNightSession = false;
+        if (dayOfWeek >= 1 && dayOfWeek <= 5 && currentHour >= 18) {
+            // 월~금 18시 이후
+            isNightSession = true;
+        } else if (dayOfWeek >= 2 && dayOfWeek <= 6 && currentHour < 5) {
+            // 화~토 새벽 (전날 야간장)
+            isNightSession = true;
+        }
 
         String trId;
         if (isNightSession) {

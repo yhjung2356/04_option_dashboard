@@ -20,11 +20,14 @@ export const useMarketStore = defineStore('market', () => {
   })
 
   const marketSentiment = computed(() => {
-    // 간단한 시장 심리 판단 로직
+    // P/C 비율 기반 시장 심리 판단
+    // 0.85 미만: 강세 (Call이 Put보다 많음)
+    // 0.85 ~ 1.15: 보합
+    // 1.15 초과: 약세 (Put이 Call보다 많음)
     if (!overview.value?.putCallRatio) return 'NEUTRAL'
     const ratio = overview.value.putCallRatio.volumeRatio ?? 1
-    if (ratio > 1.5) return 'BEARISH'  // Put이 Call보다 1.5배 많으면 약세
-    if (ratio < 0.7) return 'BULLISH'  // Call이 Put보다 많으면 강세
+    if (ratio > 1.15) return 'BEARISH'  // Put이 Call보다 15% 많으면 약세
+    if (ratio < 0.85) return 'BULLISH'  // Call이 Put보다 많으면 강세
     return 'NEUTRAL'
   })
 

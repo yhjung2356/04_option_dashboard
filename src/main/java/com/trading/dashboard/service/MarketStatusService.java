@@ -8,6 +8,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 
 /**
  * 시장 상태 판단 서비스
@@ -20,22 +21,31 @@ import java.time.LocalTime;
 public class MarketStatusService {
 
     private final TradingCalendarService tradingCalendarService;
+    private static final ZoneId KST = ZoneId.of("Asia/Seoul");
 
     /**
      * 시장 상태 조회
      */
     public MarketStatus getMarketStatus() {
-        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime now = LocalDateTime.now(KST);
         DayOfWeek dayOfWeek = now.getDayOfWeek();
         LocalTime time = now.toLocalTime();
         LocalDate today = now.toLocalDate();
 
-        // 주말 체크
-        if (dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY) {
+        // 일요일 전체 휴장
+        if (dayOfWeek == DayOfWeek.SUNDAY) {
             return MarketStatus.CLOSED_WEEKEND;
         }
 
-        // 공휴일 체크
+        // 토요일은 새벽 05:00까지만 야간장 (금요일 밤 연장)
+        if (dayOfWeek == DayOfWeek.SATURDAY) {
+            if (time.isBefore(LocalTime.of(5, 0))) {
+                return MarketStatus.OPEN_NIGHT_SESSION; // 금요일 야간장 연장
+            }
+            return MarketStatus.CLOSED_WEEKEND; // 05:00 이후는 휴장
+        }
+
+        // 공휴일 체크 (월~금만)
         if (isHoliday(today)) {
             return MarketStatus.CLOSED_HOLIDAY;
         }
@@ -45,8 +55,15 @@ public class MarketStatusService {
             return MarketStatus.OPEN_DAY_SESSION;
         }
 
-        // 야간 거래: 18:00 ~ 익일 05:00
-        if (time.isAfter(LocalTime.of(18, 0)) || time.isBefore(LocalTime.of(5, 0))) {
+        // 야간 거래 판단: 월~금 18:00 ~ 익일 05:00
+        // - 월~금 18:00 이후: 야간장 시작
+        // - 화~금 새벽 05:00 이전: 전날 야간장 연장
+        // - 월요일 새벽은 휴장 (일요일 밤)
+        if (time.isAfter(LocalTime.of(18, 0))) {
+            // 월~금 18시 이후
+            return MarketStatus.OPEN_NIGHT_SESSION;
+        } else if (time.isBefore(LocalTime.of(5, 0)) && dayOfWeek != DayOfWeek.MONDAY) {
+            // 화~금 새벽 (전날 야간장)
             return MarketStatus.OPEN_NIGHT_SESSION;
         }
 

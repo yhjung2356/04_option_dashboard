@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 
 @Component
 @RequiredArgsConstructor
@@ -21,6 +22,7 @@ public class MarketDataWebSocketHandler {
 
     private final SimpMessagingTemplate messagingTemplate;
     private final MarketDataService marketDataService;
+    private static final ZoneId KST = ZoneId.of("Asia/Seoul");
 
     @Value("${trading.demo-mode:false}")
     private boolean demoMode;
@@ -41,7 +43,7 @@ public class MarketDataWebSocketHandler {
             return true;
         }
 
-        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime now = LocalDateTime.now(KST);
         DayOfWeek dayOfWeek = now.getDayOfWeek();
         LocalTime time = now.toLocalTime();
 
