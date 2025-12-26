@@ -35,4 +35,5 @@ data/
 *~
 
 *.bat
-.mvn
+.mvn/
+.vscode/
