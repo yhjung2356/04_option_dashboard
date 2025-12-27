@@ -88,7 +88,7 @@ public class KisApiService {
         // 시장 상태에 따라 시장구분코드 결정 (F:주간선물, CM:야간선물)
         boolean isNight = isNightMarket();
         String marketDivCode = isNight ? "CM" : "F";
-        log.info("[FUTURES] Market session: {} (marketDivCode: {})", isNight ? "Night" : "Day", marketDivCode);
+        log.debug("[FUTURES] Market session: {} (marketDivCode: {})", isNight ? "Night" : "Day", marketDivCode);
 
         for (String code : futureCodes) {
             try {
@@ -138,7 +138,7 @@ public class KisApiService {
             double underlyingPrice = 590.0; // 기본값
             if (nearestFutures != null) {
                 underlyingPrice = nearestFutures.getCurrentPrice().doubleValue();
-                log.info("[OPTIONS] Estimated underlying price from futures: {}", underlyingPrice);
+                log.debug("[OPTIONS] Estimated underlying price from futures: {}", underlyingPrice);
             }
 
             // 2. ATM 계산 (5pt 단위로 반올림)
@@ -163,7 +163,7 @@ public class KisApiService {
             int strikeStart = atmStrike - range;
             int strikeEnd = atmStrike + range;
 
-            log.info("[OPTIONS] ATM Strike: {}, Range: {}~{} (±{}pt, underlying: {})",
+            log.debug("[OPTIONS] ATM Strike: {}, Range: {}~{} (±{}pt, underlying: {})",
                     atmStrike, strikeStart, strikeEnd, range, underlyingPrice);
 
             // 실제 KOSPI200 옵션 종목코드 (2026년 1월물)
@@ -187,7 +187,7 @@ public class KisApiService {
             // 시장 상태에 따라 시장구분코드 결정 (O:주간옵션, EU:야간옵션)
             boolean isNight = isNightMarket();
             String marketDivCode = isNight ? "EU" : "O";
-            log.info("[OPTIONS] Market session: {} (marketDivCode: {})", isNight ? "Night" : "Day", marketDivCode);
+            log.debug("[OPTIONS] Market session: {} (marketDivCode: {})", isNight ? "Night" : "Day", marketDivCode);
 
             for (String code : optionCodes) {
                 try {
@@ -280,7 +280,7 @@ public class KisApiService {
                     BigDecimal tradingValue = new BigDecimal(tradingValueStr.replace(",", ""));
 
                     // 디버깅: 실제 API 데이터 확인
-                    log.info("[API DATA] {} - Price: {}, Volume: {}, OI: {}, TradingValue: {}",
+                    log.debug("[API DATA] {} - Price: {}, Volume: {}, OI: {}, TradingValue: {}",
                             code, currentPrice, volume, openInterest, tradingValue);
 
                     FuturesData futures = new FuturesData();
@@ -395,19 +395,35 @@ public class KisApiService {
                             ? rawIV.multiply(BigDecimal.valueOf(100))
                             : rawIV;
 
-                    log.info("[IV DEBUG] {} - Raw IV: {}, Normalized IV: {}, Delta: {}", code, rawIV, normalizedIV,
+                    log.debug("[IV DEBUG] {} - Raw IV: {}, Normalized IV: {}, Delta: {}", code, rawIV, normalizedIV,
                             rawDelta);
                     option.setImpliedVolatility(normalizedIV);
                     option.setDelta(rawDelta);
 
-                    String gammaStr = output1.path("gama").asText("0"); // API 오타: gama
-                    option.setGamma(new BigDecimal(gammaStr.replace(",", "")));
+                    // Greeks 추출 및 로깅 강화
+                    String gammaStr = output1.path("gama").asText("0"); // API 오타: gama (gamma가 아님!)
+                    BigDecimal gamma = new BigDecimal(gammaStr.replace(",", ""));
+                    option.setGamma(gamma);
 
                     String thetaStr = output1.path("theta").asText("0");
-                    option.setTheta(new BigDecimal(thetaStr.replace(",", "")));
+                    BigDecimal theta = new BigDecimal(thetaStr.replace(",", ""));
+                    option.setTheta(theta);
 
                     String vegaStr = output1.path("vega").asText("0");
-                    option.setVega(new BigDecimal(vegaStr.replace(",", "")));
+                    BigDecimal vega = new BigDecimal(vegaStr.replace(",", ""));
+                    option.setVega(vega);
+
+                    // Greeks 로깅 (0인 경우 경고)
+                    log.debug("[Greeks] {} - Delta: {}, Gamma: {}, Theta: {}, Vega: {}",
+                            code, rawDelta, gamma, theta, vega);
+
+                    if (gamma.compareTo(BigDecimal.ZERO) == 0 ||
+                            theta.compareTo(BigDecimal.ZERO) == 0 ||
+                            vega.compareTo(BigDecimal.ZERO) == 0) {
+                        log.warn(
+                                "[Greeks ZERO] {} - Some Greeks are zero! Gamma: {}, Theta: {}, Vega: {} | Raw JSON fields - gama: '{}', theta: '{}', vega: '{}'",
+                                code, gamma, theta, vega, gammaStr, thetaStr, vegaStr);
+                    }
 
                     // 기초자산 가격 (KOSPI200 지수): output3에서 추출
                     JsonNode output3 = root.get("output3");

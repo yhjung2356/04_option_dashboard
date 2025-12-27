@@ -6,6 +6,29 @@ import './style.css'
 
 const app = createApp(App)
 
+// Global Error Handler
+app.config.errorHandler = (err, instance, info) => {
+  console.error('🚨 [Global Error Handler]', {
+    error: err,
+    component: instance?.$options.name || 'Unknown',
+    errorInfo: info
+  })
+  
+  // 사용자에게 친화적인 에러 메시지 표시
+  // Toast 알림으로 표시 가능
+}
+
+// Global Warning Handler (개발 환경에서만)
+if (import.meta.env.DEV) {
+  app.config.warnHandler = (msg, instance, trace) => {
+    console.warn('⚠️ [Vue Warning]', {
+      message: msg,
+      component: instance?.$options.name || 'Unknown',
+      trace
+    })
+  }
+}
+
 app.use(createPinia())
 app.use(router)
 

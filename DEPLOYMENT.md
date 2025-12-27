@@ -54,8 +54,14 @@ chmod +x scripts/health-check.sh
 
 ### 방법 2: 직접 JAR 파일 업로드
 ```bash
-# 로컬에서 빌드
-mvn clean package -DskipTests
+# 로컬에서 프론트엔드 빌드
+cd frontend
+npm install
+npm run build
+cd ..
+
+# 백엔드 빌드 (clean 없이, JVM 크래시 방지)
+mvn package -Dskip.npm=true -Dmaven.test.skip=true
 
 # SCP로 서버에 업로드
 scp target/futures-options-dashboard-*.jar ubuntu@[서버IP]:/home/ubuntu/option-monitor/futures-options-dashboard.jar
@@ -178,8 +184,14 @@ git pull
 
 ### 수동 업로드 시
 ```bash
-# 로컬에서 빌드
-mvn clean package -DskipTests
+# 로컬에서 프론트엔드 빌드
+cd frontend
+npm install
+npm run build
+cd ..
+
+# 백엔드 빌드 (clean 없이, JVM 크래시 방지)
+mvn package -Dskip.npm=true -Dmaven.test.skip=true
 
 # 서버에 업로드 및 배포
 scp target/*.jar ubuntu@[서버IP]:/home/ubuntu/option-monitor/futures-options-dashboard.jar

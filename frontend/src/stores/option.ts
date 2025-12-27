@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { OptionChainData } from '@/types'
+import { apiCall } from '@/utils/api'
 
 export const useOptionStore = defineStore('option', () => {
   // State
@@ -98,18 +99,17 @@ export const useOptionStore = defineStore('option', () => {
   async function fetchChainData() {
     isLoading.value = true
     try {
-      // console.log('[Option Store] API 호출 시작...')
-      const response = await fetch('/api/market/option-chain')
-      // console.log('[Option Store] 응답 상태:', response.status, response.statusText)
+      const data = await apiCall<OptionChainData>('/api/market/option-chain', {
+        timeout: 30000,
+        retries: 3,
+        retryDelay: 1000
+      })
       
-      if (!response.ok) throw new Error('Failed to fetch option chain')
-      
-      const data = await response.json()
-      console.log('[Option Store] JSON 파싱 완료:', data)
-      
+      console.log('[Option Store] 데이터 수신 완료:', data)
       updateChainData(data)
     } catch (error) {
       console.error('[Option Store] ❌ 체인 데이터 로딩 실패:', error)
+      throw error // Re-throw for caller to handle
     } finally {
       isLoading.value = false
     }
