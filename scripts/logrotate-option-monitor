@@ -1,0 +1,46 @@
+# =============================================================================
+# 선물/옵션 모니터 로그 로테이션 설정
+# 위치: /etc/logrotate.d/option-monitor
+# =============================================================================
+
+/var/log/option-monitor/*.log {
+    daily
+    rotate 7
+    maxsize 100M
+    compress
+    delaycompress
+    missingok
+    notifempty
+    create 0644 ubuntu ubuntu
+    dateext
+    dateformat -%Y%m%d
+    
+    postrotate
+        # 로그 로테이션 후 실행할 스크립트 (선택사항)
+        # systemctl reload option-monitor > /dev/null 2>&1 || true
+    endscript
+}
+
+# Health check 로그 별도 관리
+/var/log/option-monitor/health-check.log {
+    weekly
+    rotate 4
+    maxsize 50M
+    compress
+    delaycompress
+    missingok
+    notifempty
+    create 0644 ubuntu ubuntu
+}
+
+# 에러 로그는 더 오래 보관
+/var/log/option-monitor/*error*.log {
+    weekly
+    rotate 12
+    maxsize 100M
+    compress
+    delaycompress
+    missingok
+    notifempty
+    create 0644 ubuntu ubuntu
+}

@@ -1,0 +1,41 @@
+[Unit]
+Description=Futures/Options Monitor Dashboard
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+
+# 작업 디렉토리
+WorkingDirectory=/home/ubuntu/option-monitor
+
+# JAR 파일 경로 (실제 경로에 맞게 수정)
+ExecStart=/usr/bin/java \
+    -Xms512m \
+    -Xmx1536m \
+    -XX:+UseG1GC \
+    -XX:MaxGCPauseMillis=100 \
+    -XX:+UseStringDeduplication \
+    -Djava.security.egd=file:/dev/./urandom \
+    -Dspring.profiles.active=prod \
+    -jar /home/ubuntu/option-monitor/futures-options-dashboard.jar
+
+# 재시작 정책
+Restart=on-failure
+RestartSec=10s
+
+# 로그 설정
+StandardOutput=append:/var/log/option-monitor/application.log
+StandardError=append:/var/log/option-monitor/application-error.log
+
+# 보안 설정 (선택사항)
+# NoNewPrivileges=true
+# PrivateTmp=true
+
+# 리소스 제한 (2GB RAM 환경)
+LimitNOFILE=65535
+LimitNPROC=4096
+
+[Install]
+WantedBy=multi-user.target

@@ -19,18 +19,10 @@
       <!-- Main Content Area -->
       <main class="flex-1 lg:ml-0 w-full overflow-x-hidden">
         <div class="container mx-auto px-4 py-6 max-w-[1600px]">
-          <!-- Option Chain & Top Traded -->
-          <div class="grid grid-cols-1 xl:grid-cols-4 gap-6">
-            <!-- Option Chain (3/4 width) -->
-            <section class="xl:col-span-3">
-              <OptionChainTable />
-            </section>
-
-            <!-- Top Traded (1/4 width) -->
-            <section class="xl:col-span-1">
-              <TopTradedTable />
-            </section>
-          </div>
+          <!-- Option Chain (전체 너비) -->
+          <section>
+            <OptionChainTable />
+          </section>
         </div>
       </main>
     </div>
@@ -42,7 +34,6 @@ import { onMounted, ref } from 'vue'
 import AppHeader from '@/components/layout/AppHeader.vue'
 import DashboardSidebar from '@/components/layout/DashboardSidebar.vue'
 import OptionChainTable from '@/components/dashboard/OptionChainTable.vue'
-import TopTradedTable from '@/components/dashboard/TopTradedTable.vue'
 import { useMarketStore } from '@/stores/market'
 import { useOptionStore } from '@/stores/option'
 import { useWebSocketStore } from '@/stores/websocket'

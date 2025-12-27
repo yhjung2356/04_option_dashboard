@@ -24,34 +24,56 @@
     <div v-else class="flex-1 overflow-auto">
       <table class="w-full text-sm">
         <thead class="bg-gray-50 dark:bg-gray-800 sticky top-0 z-10">
-          <tr>
-            <th colspan="5" class="px-3 py-2 text-center border-r-2 border-gray-300 dark:border-gray-600 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 font-semibold">
-              CALL
-            </th>
-            <th class="px-3 py-2 text-center bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-400 font-semibold">
-              행사가
-            </th>
-            <th colspan="5" class="px-3 py-2 text-center border-l-2 border-gray-300 dark:border-gray-600 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 font-semibold">
-              PUT
-            </th>
-          </tr>
-          <tr class="text-xs text-gray-600 dark:text-gray-400">
+          <!-- Single Row Header with CALL/PUT labels integrated -->
+          <tr class="text-xs">
             <!-- Call Headers -->
-            <th class="px-2 py-1 text-right">거래량</th>
-            <th class="px-2 py-1 text-right">미결제</th>
-            <th class="px-2 py-1 text-right">현재가</th>
-            <th class="px-2 py-1 text-right">IV%</th>
-            <th class="px-2 py-1 text-right border-r-2 border-gray-300 dark:border-gray-600">Delta</th>
+            <th class="px-1 py-2 text-center bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 font-semibold">
+              <div class="text-[10px] mb-0.5">CALL</div>
+              <div class="text-gray-600 dark:text-gray-400 font-normal">거래량</div>
+            </th>
+            <th class="px-1 py-2 text-center bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 font-semibold hidden sm:table-cell">
+              <div class="text-[10px] mb-0.5">CALL</div>
+              <div class="text-gray-600 dark:text-gray-400 font-normal">미결제</div>
+            </th>
+            <th class="px-1 py-2 text-center bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 font-semibold">
+              <div class="text-[10px] mb-0.5">CALL</div>
+              <div class="text-gray-600 dark:text-gray-400 font-normal">현재가</div>
+            </th>
+            <th class="px-1 py-2 text-center bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 font-semibold hidden md:table-cell">
+              <div class="text-[10px] mb-0.5">CALL</div>
+              <div class="text-gray-600 dark:text-gray-400 font-normal">IV%</div>
+            </th>
+            <th class="px-1 py-2 text-center bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 font-semibold border-r-2 border-gray-300 dark:border-gray-600 hidden lg:table-cell">
+              <div class="text-[10px] mb-0.5">CALL</div>
+              <div class="text-gray-600 dark:text-gray-400 font-normal">Delta</div>
+            </th>
             
             <!-- Strike -->
-            <th class="px-3 py-1 text-center bg-orange-50 dark:bg-orange-900/20">Strike</th>
+            <th class="px-2 py-2 text-center bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-400 font-bold">
+              행사가
+            </th>
             
             <!-- Put Headers -->
-            <th class="px-2 py-1 text-left border-l-2 border-gray-300 dark:border-gray-600">Delta</th>
-            <th class="px-2 py-1 text-left">IV%</th>
-            <th class="px-2 py-1 text-left">현재가</th>
-            <th class="px-2 py-1 text-left">미결제</th>
-            <th class="px-2 py-1 text-left">거래량</th>
+            <th class="px-1 py-2 text-center bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 font-semibold border-l-2 border-gray-300 dark:border-gray-600 hidden lg:table-cell">
+              <div class="text-[10px] mb-0.5">PUT</div>
+              <div class="text-gray-600 dark:text-gray-400 font-normal">Delta</div>
+            </th>
+            <th class="px-1 py-2 text-center bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 font-semibold hidden md:table-cell">
+              <div class="text-[10px] mb-0.5">PUT</div>
+              <div class="text-gray-600 dark:text-gray-400 font-normal">IV%</div>
+            </th>
+            <th class="px-1 py-2 text-center bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 font-semibold">
+              <div class="text-[10px] mb-0.5">PUT</div>
+              <div class="text-gray-600 dark:text-gray-400 font-normal">현재가</div>
+            </th>
+            <th class="px-1 py-2 text-center bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 font-semibold hidden sm:table-cell">
+              <div class="text-[10px] mb-0.5">PUT</div>
+              <div class="text-gray-600 dark:text-gray-400 font-normal">미결제</div>
+            </th>
+            <th class="px-1 py-2 text-center bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 font-semibold">
+              <div class="text-[10px] mb-0.5">PUT</div>
+              <div class="text-gray-600 dark:text-gray-400 font-normal">거래량</div>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -65,33 +87,33 @@
             }"
           >
             <!-- Call Data -->
-            <td class="px-2 py-2 text-right text-xs">{{ formatVolume(row.callVolume) }}</td>
-            <td class="px-2 py-2 text-right text-xs">{{ formatVolume(row.callOpenInterest) }}</td>
-            <td class="px-2 py-2 text-right text-xs font-semibold text-green-600 dark:text-green-400">
+            <td class="px-1 py-1.5 text-center text-xs">{{ formatVolume(row.callVolume) }}</td>
+            <td class="px-1 py-1.5 text-center text-xs hidden sm:table-cell">{{ formatVolume(row.callOpenInterest) }}</td>
+            <td class="px-1 py-1.5 text-center text-xs font-semibold text-green-600 dark:text-green-400">
               {{ formatPrice(row.callPrice) }}
             </td>
-            <td class="px-2 py-2 text-right text-xs">{{ formatIV(row.callImpliedVolatility) }}</td>
-            <td class="px-2 py-2 text-right text-xs border-r-2 border-gray-300 dark:border-gray-600">
+            <td class="px-1 py-1.5 text-center text-xs hidden md:table-cell">{{ formatIV(row.callImpliedVolatility) }}</td>
+            <td class="px-1 py-1.5 text-center text-xs border-r-2 border-gray-300 dark:border-gray-600 hidden lg:table-cell">
               {{ formatDelta(row.callDelta) }}
             </td>
             
             <!-- Strike Price -->
-            <td class="px-3 py-2 text-center font-bold text-orange-700 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/20">
+            <td class="px-2 py-1.5 text-center text-xs md:text-sm font-bold text-orange-700 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/20">
               {{ formatNumber(row.strikePrice) }}
-              <span v-if="row.strikePrice === atmStrike" class="ml-1 text-xs">🎯</span>
-              <span v-if="row.strikePrice === maxPain" class="ml-1 text-xs">⚡</span>
+              <span v-if="row.strikePrice === atmStrike" class="ml-0.5 text-xs">🎯</span>
+              <span v-if="row.strikePrice === maxPain" class="ml-0.5 text-xs">⚡</span>
             </td>
             
             <!-- Put Data -->
-            <td class="px-2 py-2 text-left text-xs border-l-2 border-gray-300 dark:border-gray-600">
+            <td class="px-1 py-1.5 text-center text-xs border-l-2 border-gray-300 dark:border-gray-600 hidden lg:table-cell">
               {{ formatDelta(row.putDelta) }}
             </td>
-            <td class="px-2 py-2 text-left text-xs">{{ formatIV(row.putImpliedVolatility) }}</td>
-            <td class="px-2 py-2 text-left text-xs font-semibold text-red-600 dark:text-red-400">
+            <td class="px-1 py-1.5 text-center text-xs hidden md:table-cell">{{ formatIV(row.putImpliedVolatility) }}</td>
+            <td class="px-1 py-1.5 text-center text-xs font-semibold text-red-600 dark:text-red-400">
               {{ formatPrice(row.putPrice) }}
             </td>
-            <td class="px-2 py-2 text-left text-xs">{{ formatVolume(row.putOpenInterest) }}</td>
-            <td class="px-2 py-2 text-left text-xs">{{ formatVolume(row.putVolume) }}</td>
+            <td class="px-1 py-1.5 text-center text-xs hidden sm:table-cell">{{ formatVolume(row.putOpenInterest) }}</td>
+            <td class="px-1 py-1.5 text-center text-xs">{{ formatVolume(row.putVolume) }}</td>
           </tr>
         </tbody>
       </table>
